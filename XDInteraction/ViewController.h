@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "XDGestureRecognizer.h"
+
 @interface ViewController : UIViewController
 
+@property (nonatomic) XDGestureRecognizer *gestureRecognizer;
 
 @end
 

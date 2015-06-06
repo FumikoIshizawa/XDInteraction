@@ -14,9 +14,11 @@
 
 @implementation ViewController
 
+@synthesize gestureRecognizer;
+
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
+  gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
