@@ -7,6 +7,7 @@
 //
 
 #import "XDGestureManager.h"
+#import "zmq.h"
 
 @interface XDGestureManager () {
   UISwipeGestureRecognizer *swipeLeft;
@@ -41,6 +42,9 @@
                                                           action:@selector(swipeDownHandler:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [view addGestureRecognizer:swipeDown];
+    
+    
+    
   }
   return self;
 }

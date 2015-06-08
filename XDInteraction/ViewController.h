@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "XDGestureRecognizer.h"
+#import "zmq.h"
 
 @interface ViewController : UIViewController
 

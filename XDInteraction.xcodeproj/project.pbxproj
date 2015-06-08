@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		564854471B255CFA0012CE1E /* libzmq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 564854461B255CFA0012CE1E /* libzmq.a */; };
+		564854491B255E2A0012CE1E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 564854481B255E2A0012CE1E /* libc++.dylib */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
 		9ED6AF0D1B205C8C00D97675 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0C1B205C8C00D97675 /* ViewController.m */; };
@@ -30,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		564854431B255CFA0012CE1E /* zmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq.h; sourceTree = "<group>"; };
+		564854441B255CFA0012CE1E /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
+		564854461B255CFA0012CE1E /* libzmq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzmq.a; sourceTree = "<group>"; };
+		564854481B255E2A0012CE1E /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564854491B255E2A0012CE1E /* libc++.dylib in Frameworks */,
+				564854471B255CFA0012CE1E /* libzmq.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +77,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		564854401B255CFA0012CE1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				564854481B255E2A0012CE1E /* libc++.dylib */,
+				564854411B255CFA0012CE1E /* libzmq_dist */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		564854411B255CFA0012CE1E /* libzmq_dist */ = {
+			isa = PBXGroup;
+			children = (
+				564854421B255CFA0012CE1E /* include */,
+				564854451B255CFA0012CE1E /* lib */,
+			);
+			path = libzmq_dist;
+			sourceTree = "<group>";
+		};
+		564854421B255CFA0012CE1E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				564854431B255CFA0012CE1E /* zmq.h */,
+				564854441B255CFA0012CE1E /* zmq_utils.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		564854451B255CFA0012CE1E /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				564854461B255CFA0012CE1E /* libzmq.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		9ED6AEF81B205C8C00D97675 = {
 			isa = PBXGroup;
 			children = (
+				564854401B255CFA0012CE1E /* Frameworks */,
 				9ED6AF031B205C8C00D97675 /* XDInteraction */,
 				9ED6AF1D1B205C8D00D97675 /* XDInteractionTests */,
 				9ED6AF021B205C8C00D97675 /* Products */,
@@ -376,20 +420,50 @@
 		9ED6AF251B205C8D00D97675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/**",
+				);
 				INFOPLIST_FILE = XDInteraction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/lib",
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/**",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		9ED6AF261B205C8D00D97675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/**",
+				);
 				INFOPLIST_FILE = XDInteraction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/lib",
+					"$(PROJECT_DIR)/Frameworks/libzmq_dist/**",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
