@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9E5651321B243993009184F2 /* XDKeyLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5651311B243993009184F2 /* XDKeyLogManager.m */; };
+		9E7142AE1B29C3F200059956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7142AD1B29C3F200059956 /* Foundation.framework */; };
+		9E7142B01B29C3F900059956 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7142AF1B29C3F900059956 /* Security.framework */; };
+		9E7142B21B29C40100059956 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7142B11B29C40100059956 /* CFNetwork.framework */; };
+		9E7142B41B29C40B00059956 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7142B31B29C40B00059956 /* libicucore.dylib */; };
+		9E7142BD1B29DA2000059956 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7142BA1B29DA2000059956 /* SRWebSocket.m */; };
+		9E7142BE1B29DA2000059956 /* XDWebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7142BC1B29DA2000059956 /* XDWebSocketManager.m */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
 		9ED6AF0D1B205C8C00D97675 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0C1B205C8C00D97675 /* ViewController.m */; };
@@ -33,6 +39,15 @@
 /* Begin PBXFileReference section */
 		9E5651301B243993009184F2 /* XDKeyLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDKeyLogManager.h; path = Gesture/XDKeyLogManager.h; sourceTree = "<group>"; };
 		9E5651311B243993009184F2 /* XDKeyLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDKeyLogManager.m; path = Gesture/XDKeyLogManager.m; sourceTree = "<group>"; };
+		9E7142AD1B29C3F200059956 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9E7142AF1B29C3F900059956 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9E7142B11B29C40100059956 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9E7142B31B29C40B00059956 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		9E7142B81B29DA2000059956 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocketRocket-Prefix.pch"; path = "Network/SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		9E7142B91B29DA2000059956 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = Network/SRWebSocket.h; sourceTree = "<group>"; };
+		9E7142BA1B29DA2000059956 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = Network/SRWebSocket.m; sourceTree = "<group>"; };
+		9E7142BB1B29DA2000059956 /* XDWebSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDWebSocketManager.h; path = Network/XDWebSocketManager.h; sourceTree = "<group>"; };
+		9E7142BC1B29DA2000059956 /* XDWebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDWebSocketManager.m; path = Network/XDWebSocketManager.m; sourceTree = "<group>"; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E7142B41B29C40B00059956 /* libicucore.dylib in Frameworks */,
+				9E7142B21B29C40100059956 /* CFNetwork.framework in Frameworks */,
+				9E7142B01B29C3F900059956 /* Security.framework in Frameworks */,
+				9E7142AE1B29C3F200059956 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +94,10 @@
 		9ED6AEF81B205C8C00D97675 = {
 			isa = PBXGroup;
 			children = (
+				9E7142B31B29C40B00059956 /* libicucore.dylib */,
+				9E7142B11B29C40100059956 /* CFNetwork.framework */,
+				9E7142AF1B29C3F900059956 /* Security.framework */,
+				9E7142AD1B29C3F200059956 /* Foundation.framework */,
 				9ED6AF031B205C8C00D97675 /* XDInteraction */,
 				9ED6AF1D1B205C8D00D97675 /* XDInteractionTests */,
 				9ED6AF021B205C8C00D97675 /* Products */,
@@ -151,6 +174,11 @@
 		9EFB793C1B215446006F036E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				9E7142B81B29DA2000059956 /* SocketRocket-Prefix.pch */,
+				9E7142B91B29DA2000059956 /* SRWebSocket.h */,
+				9E7142BA1B29DA2000059956 /* SRWebSocket.m */,
+				9E7142BB1B29DA2000059956 /* XDWebSocketManager.h */,
+				9E7142BC1B29DA2000059956 /* XDWebSocketManager.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -256,7 +284,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EFB7D2E1B22BBCC006F036E /* XDGestureManager.m in Sources */,
+				9E7142BD1B29DA2000059956 /* SRWebSocket.m in Sources */,
 				9ED6AF0D1B205C8C00D97675 /* ViewController.m in Sources */,
+				9E7142BE1B29DA2000059956 /* XDWebSocketManager.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
 				9E5651321B243993009184F2 /* XDKeyLogManager.m in Sources */,
 				9ED6AF071B205C8C00D97675 /* main.m in Sources */,

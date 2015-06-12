@@ -19,6 +19,21 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
+//  XDWebSocketManager *socketManager = [[XDWebSocketManager alloc] initWith];
+  
+  SRWebSocket *web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.80:4210"]]];
+  [web_socket setDelegate:self];
+  [web_socket open];
+  // Do any additional setup after loading the view, typically from a nib.
+  NSLog(@"aaaaaaa");
+}
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket{
+  [webSocket send:@"{\"id\":\"1\"}"];
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
+  NSLog(@"didReceiveMessage: %@", [message description]);
 }
 
 - (void)didReceiveMemoryWarning {
