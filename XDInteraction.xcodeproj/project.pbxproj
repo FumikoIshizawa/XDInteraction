@@ -18,6 +18,7 @@
 		56503AA61B2F26C70066779A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA51B2F26C70066779A /* CFNetwork.framework */; };
 		56503AA81B2F26D30066779A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA71B2F26D30066779A /* Security.framework */; };
 		56503AAA1B2F26DF0066779A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA91B2F26DF0066779A /* Foundation.framework */; };
+		56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
 		9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0E1B205C8C00D97675 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		56503AA51B2F26C70066779A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		56503AA71B2F26D30066779A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		56503AA91B2F26DF0066779A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		56503AAB1B2F2DB20066779A /* XDJsonMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDJsonMessageManager.h; path = ../XDJsonMessageManager.h; sourceTree = "<group>"; };
+		56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDJsonMessageManager.m; path = ../XDJsonMessageManager.m; sourceTree = "<group>"; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 				56503A971B2F263A0066779A /* SRWebSocket.m */,
 				56503A981B2F263A0066779A /* XDWebSocketManager.h */,
 				56503A991B2F263A0066779A /* XDWebSocketManager.m */,
+				56503AAB1B2F2DB20066779A /* XDJsonMessageManager.h */,
+				56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -151,8 +156,8 @@
 		9ED6AF031B205C8C00D97675 /* XDInteraction */ = {
 			isa = PBXGroup;
 			children = (
-				56503A8B1B2F263A0066779A /* Gesture */,
 				56503A941B2F263A0066779A /* Network */,
+				56503A8B1B2F263A0066779A /* Gesture */,
 				9ED6AF081B205C8C00D97675 /* AppDelegate.h */,
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
 				56503AA01B2F26800066779A /* ViewController.h */,
@@ -292,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56503AA21B2F26810066779A /* ViewController.m in Sources */,
+				56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */,
 				56503A9B1B2F263A0066779A /* XDGestureRecognizer.m in Sources */,
 				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
 				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,

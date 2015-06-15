@@ -11,8 +11,9 @@
 #import "XDGestureRecognizer.h"
 #import "XDWebSocketManager.h"
 #import "SRWebSocket.h"
+#import "XDGestureManager.h"
 
-@interface ViewController : UIViewController <SRWebSocketDelegate> {
+@interface ViewController : UIViewController <SRWebSocketDelegate, UITextFieldDelegate, XDGestureDelegate> {
   SRWebSocket *socket;
 }
 
