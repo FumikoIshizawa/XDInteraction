@@ -25,8 +25,8 @@
     if (motionManager.deviceMotionAvailable) {
       [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
                                          withHandler:^(CMDeviceMotion *motion, NSError *error) {
-         NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
-               motion.attitude.roll * 180 / M_PI);
+//         NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
+//               motion.attitude.roll * 180 / M_PI);
        }];
     }
   }
