@@ -41,9 +41,6 @@
                                                           action:@selector(swipeDownHandler:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [view addGestureRecognizer:swipeDown];
-    
-    
-    
   }
   return self;
 }

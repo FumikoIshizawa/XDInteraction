@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "XDGestureRecognizer.h"
-@interface ViewController : UIViewController
+#import "XDWebSocketManager.h"
+#import "SRWebSocket.h"
+
+@interface ViewController : UIViewController <SRWebSocketDelegate> {
+  SRWebSocket *socket;
+}
 
 @property (nonatomic) XDGestureRecognizer *gestureRecognizer;
 

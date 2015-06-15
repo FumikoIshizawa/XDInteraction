@@ -10,6 +10,7 @@
 
 #import "XDGestureManager.h"
 #import "XDMotionManager.h"
+#import "XDKeyLogManager.h"
 
 @interface XDGestureRecognizer : NSObject
 
@@ -17,5 +18,6 @@
 
 @property (nonatomic) XDGestureManager *gestureManager;
 @property (nonatomic) XDMotionManager *motionManager;
+@property (nonatomic) XDKeyLogManager *keyLogManager;
 
 @end
