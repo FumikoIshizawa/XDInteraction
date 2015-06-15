@@ -7,7 +7,6 @@
 //
 
 #import "XDGestureManager.h"
-#import "zmq.h"
 
 @interface XDGestureManager () {
   UISwipeGestureRecognizer *swipeLeft;
