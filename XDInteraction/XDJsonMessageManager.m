@@ -44,7 +44,7 @@
   return json;
 }
 
-- (NSString *)jsonMessageWith:(NSString *)capturedKey {
+- (NSString *)capturedKey:(NSString *)capturedKey {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
@@ -70,5 +70,32 @@
   
   return json;
 }
-
+    
+- (NSString *)detectedSwipe:(NSString *)swipeDirection {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"swipe" forKey:@"command"];
+  [dict setObject:swipeDirection forKey:@"detail"];
+  [dict setObject:@"laptop2" forKey:@"dst"];
+#if TARGET_IPHONE_SIMULATOR
+  [dict setObject:@"myiOS" forKey:@"origin"];
+#else
+  [dict setObject:@"iOS Simulator forKey:@"origin"];
+#endif
+   
+   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                  options:NSJSONWritingPrettyPrinted
+                                                    error:&error];
+   NSString *jsonstr = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+   NSLog(@"%@", jsonstr);
+   NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                       withString:@""];
+   
+   return json;
+   }
+   
 @end
