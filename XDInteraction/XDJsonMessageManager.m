@@ -56,7 +56,7 @@
   #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"myiOS" forKey:@"origin"];
 #else
-   [dict setObject:@"iOS Simulator forKey:@"origin"];
+   [dict setObject:@"iOS Simulator" forKey:@"origin"];
 #endif
    
    NSData *data = [NSJSONSerialization dataWithJSONObject:dict
@@ -83,7 +83,7 @@
 #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"myiOS" forKey:@"origin"];
 #else
-  [dict setObject:@"iOS Simulator forKey:@"origin"];
+  [dict setObject:@"iOS Simulator" forKey:@"origin"];
 #endif
    
    NSData *data = [NSJSONSerialization dataWithJSONObject:dict
