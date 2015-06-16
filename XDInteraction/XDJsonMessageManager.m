@@ -23,12 +23,12 @@
   
 #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"iphone5" forKey:@"name"];
+  [dict setObject:@"sim" forKey:@"name"];
   [dict setObject:@"ios_sim" forKey:@"device"];
 
 #else
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"sim" forKey:@"name"];
+  [dict setObject:@"iphone5" forKey:@"name"];
   [dict setObject:@"ios_dev" forKey:@"device"];
 #endif
 
