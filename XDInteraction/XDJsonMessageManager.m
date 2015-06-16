@@ -54,9 +54,9 @@
   [dict setObject:capturedKey forKey:@"detail"];
   [dict setObject:@"laptop2" forKey:@"dst"];
   #if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"origin"];
+  [dict setObject:@"iOS Simulator" forKey:@"origin"];
 #else
-   [dict setObject:@"iOS Simulator" forKey:@"origin"];
+   [dict setObject:@"myiOS" forKey:@"origin"];
 #endif
    
    NSData *data = [NSJSONSerialization dataWithJSONObject:dict
@@ -81,9 +81,10 @@
   [dict setObject:swipeDirection forKey:@"detail"];
   [dict setObject:@"laptop2" forKey:@"dst"];
 #if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"origin"];
-#else
   [dict setObject:@"iOS Simulator" forKey:@"origin"];
+#else
+  [dict setObject:@"myiOS" forKey:@"origin"];
+  
 #endif
    
    NSData *data = [NSJSONSerialization dataWithJSONObject:dict

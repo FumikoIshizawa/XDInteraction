@@ -67,14 +67,7 @@
   
 }
 
-#pragma UITextFiled
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self endEditing:YES];
-  NSLog(@"%@", textField.text);
-  textField.text = @"";
-  
-  return YES;
-}
+
 
 
 

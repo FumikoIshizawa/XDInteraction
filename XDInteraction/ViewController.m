@@ -31,8 +31,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:10001"]]];//192.168.10.67
 #else
-  
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:10001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.63:10001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -54,7 +53,14 @@
   // Dispose of any resources that can be recreated.
 }
 
-
+#pragma UITextFiled
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [self.gestureRecognizer.keyLogManager endEditing:YES];
+  NSLog(@"%@", textField.text);
+  textField.text = @"";
+  
+  return YES;
+}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
