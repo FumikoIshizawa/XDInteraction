@@ -23,12 +23,12 @@
   
 #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"sim" forKey:@"name"];
+  [dict setObject:@"iOS Simulator" forKey:@"name"];
   [dict setObject:@"ios_sim" forKey:@"device"];
 
 #else
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"iphone5" forKey:@"name"];
+  [dict setObject:@"myiOS" forKey:@"name"];
   [dict setObject:@"ios_dev" forKey:@"device"];
 #endif
 
@@ -48,20 +48,21 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-
+  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"key" forKey:@"command"];
   [dict setObject:capturedKey forKey:@"detail"];
-  [dict setObject:@"laptop2" forKey:@"dst"];
-  #if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
+  [dict setObject:@"myiOS" forKey:@"dst"];
   [dict setObject:@"iOS Simulator" forKey:@"origin"];
 #else
-   [dict setObject:@"myiOS" forKey:@"origin"];
+  [dict setObject:@"iOS Simulator" forKey:@"dst"];
+  [dict setObject:@"myiOS" forKey:@"origin"];
 #endif
-   
-   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
-                                                  options:NSJSONWritingPrettyPrinted
-                                                    error:&error];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
   NSString *jsonstr = [[NSString alloc] initWithData:data
                                             encoding:NSUTF8StringEncoding];
   NSLog(@"%@", jsonstr);
@@ -70,7 +71,7 @@
   
   return json;
 }
-    
+
 - (NSString *)detectedSwipe:(NSString *)swipeDirection {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
@@ -79,10 +80,11 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"swipe" forKey:@"command"];
   [dict setObject:swipeDirection forKey:@"detail"];
-  [dict setObject:@"laptop2" forKey:@"dst"];
 #if TARGET_IPHONE_SIMULATOR
+  [dict setObject:@"myiOS" forKey:@"dst"];
   [dict setObject:@"iOS Simulator" forKey:@"origin"];
 #else
+  [dict setObject:@"iOS Simulator" forKey:@"dst"];
   [dict setObject:@"myiOS" forKey:@"origin"];
   
 #endif

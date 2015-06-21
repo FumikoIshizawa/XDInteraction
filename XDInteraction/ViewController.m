@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
   gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
 
   gestureRecognizer.keyLogManager.textField.delegate = self;
@@ -29,9 +30,9 @@
   
   
 #if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:10001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.63:10001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:5001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -46,8 +47,19 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
   NSLog(@"%@", [message description]);
+  [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:message]];
+  NSRange range = NSMakeRange(self.jsonTextview .text.length - 1, 1);
+  [self.jsonTextview scrollRangeToVisible:range];
 }
 
+#pragma mark -
+#pragma mark Pong
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload;
+{
+  NSLog(@"server received pong");
+}
+
+#pragma mark -
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
@@ -59,6 +71,7 @@
   NSLog(@"%@", textField.text);
   textField.text = @"";
   
+  [web_socket sendPing:nil];
   return YES;
 }
 

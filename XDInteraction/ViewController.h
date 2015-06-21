@@ -18,6 +18,7 @@
 }
 
 @property (nonatomic) XDGestureRecognizer *gestureRecognizer;
+@property (weak, nonatomic) IBOutlet UITextView *jsonTextview;
 
 @end
 
