@@ -25,15 +25,15 @@
                             0,
                             0);
     self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
-    UITextField *textField =
+    self.textField =
         [[UITextField alloc] initWithFrame:CGRectMake(view.frame.size.width / 2 - 100,
                                                       view.frame.size.height / 2 - 60,
                                                       200,
                                                       50)];
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.delegate = self;
+    self.textField.borderStyle = UITextBorderStyleRoundedRect;
+    self.textField.delegate = self;
     
-    [self addSubview:textField];
+    [self addSubview:self.textField];
     
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     closeButton.frame = CGRectMake(view.frame.size.width / 2 - 50,
@@ -65,15 +65,6 @@
                      [self removeFromSuperview];
                    }];
   
-}
-
-#pragma UITextFiled
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self endEditing:YES];
-  NSLog(@"%@", textField.text);
-  textField.text = @"";
-  
-  return YES;
 }
 
 @end

@@ -46,19 +46,28 @@
 }
 
 - (void)swipeLeftHandler:(UISwipeGestureRecognizer *)sender {
-  NSLog(@"left");
+  if ([self.delegate respondsToSelector:@selector(swipeLeftSender)]) {
+    [self.delegate swipeLeftSender];
+  }
 }
 
 - (void)swipeRightHandler:(UISwipeGestureRecognizer *)sender {
-  NSLog(@"right");
+  if ([self.delegate respondsToSelector:@selector(swipeRightSender)]) {
+    [self.delegate swipeRightSender];
+  }
 }
 
 - (void)swipeUpHandler:(UISwipeGestureRecognizer *)sender {
-  NSLog(@"up");
+  if ([self.delegate respondsToSelector:@selector(swipeUpSender)]) {
+    [self.delegate swipeUpSender];
+  }
 }
 
 - (void)swipeDownHandler:(UISwipeGestureRecognizer *)sender {
-  NSLog(@"down");
+  if ([self.delegate respondsToSelector:@selector(swipeDownSender)]) {
+    [self.delegate swipeDownSender];
+  }
 }
+
 
 @end

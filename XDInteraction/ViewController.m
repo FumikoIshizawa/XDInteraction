@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
-
+#import "XDJsonMessageManager.h"
 #include "TargetConditionals.h"
 
-@interface ViewController ()
+@interface ViewController (){
+  SRWebSocket *web_socket;
+}
 
 @end
 
@@ -20,13 +22,17 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
   gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
-//  XDWebSocketManager *socketManager = [[XDWebSocketManager alloc] initWith];
+
+  gestureRecognizer.keyLogManager.textField.delegate = self;
+  gestureRecognizer.gestureManager.delegate = self;
+  
   
 #if TARGET_IPHONE_SIMULATOR
-  SRWebSocket *web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  SRWebSocket *web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:5001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -35,44 +41,69 @@
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{
-  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-  NSError *error = nil;
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"iphone5" forKey:@"name"];
-  [dict setObject:@"ios_sim" forKey:@"device"];
-  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
-                                                 options:NSJSONWritingPrettyPrinted
-                                                   error:&error];
-  NSString *jsonstr = [[NSString alloc] initWithData:data
-                                            encoding:NSUTF8StringEncoding];
-  NSLog(@"%@", jsonstr);
-  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
-                                                      withString:@""];
-  [webSocket send:json];
-#else
-  [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"sim" forKey:@"name"];
-  [dict setObject:@"ios_dev" forKey:@"device"];
-  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
-                                                 options:NSJSONWritingPrettyPrinted
-                                                   error:&error];
-  NSString *jsonstr = [[NSString alloc] initWithData:data
-                                            encoding:NSUTF8StringEncoding];
-  NSLog(@"%@", jsonstr);
-  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
-                                                      withString:@""];
-  [webSocket send:json];
-#endif
+  XDJsonMessageManager *message = [[XDJsonMessageManager alloc] init];
+  [web_socket send:message.jsonInit];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
   NSLog(@"%@", [message description]);
+  [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:message]];
+  NSRange range = NSMakeRange(self.jsonTextview .text.length - 1, 1);
+  [self.jsonTextview scrollRangeToVisible:range];
 }
 
+#pragma mark -
+#pragma mark Pong
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload;
+{
+  NSLog(@"server received pong");
+}
+
+#pragma mark -
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
+
+#pragma UITextFiled
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [self.gestureRecognizer.keyLogManager endEditing:YES];
+  NSLog(@"%@", textField.text);
+  textField.text = @"";
+  
+  [web_socket sendPing:nil];
+  return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage capturedKey:string];
+  [web_socket send:message];
+  
+  return YES;
+}
+
+#pragma XDGestureDelegate
+- (void)swipeLeftSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedSwipe:@"Left"];
+  [web_socket send:message];
+}
+
+- (void)swipeRightSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedSwipe:@"Right"];
+  [web_socket send:message];}
+
+- (void)swipeUpSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedSwipe:@"Up"];
+  [web_socket send:message];}
+
+- (void)swipeDownSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedSwipe:@"Down"];
+  [web_socket send:message];}
 
 @end
