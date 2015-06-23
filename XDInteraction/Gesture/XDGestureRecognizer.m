@@ -28,7 +28,7 @@
     motionManager = [[XDMotionManager alloc] initWith];
     keyLogManager = [[XDKeyLogManager alloc] initWithView:view];
     
-    UIButton *inputButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *inputButton = [ UIButton buttonWithType:UIButtonTypeRoundedRect];
     inputButton.frame = CGRectMake(view.frame.size.width - 60,
                                    40,
                                    50,

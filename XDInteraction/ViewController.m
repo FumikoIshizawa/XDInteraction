@@ -21,16 +21,32 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
-//  XDWebSocketManager *socketManager = [[XDWebSocketManager alloc] initWith];
+
+  UIButton *inputButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  inputButton.frame = CGRectMake(20,
+                                 40,
+                                 50,
+                                 30);
+  [inputButton setTitle:@"Send"
+               forState:UIControlStateNormal];
+  [inputButton addTarget:self
+                  action:@selector(buttonTapped:)
+        forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:inputButton];
+  
+  textView =[[UITextView alloc] initWithFrame:CGRectMake(20, 100, 270, 400)];
+  textView.editable = NO;
+  textView.backgroundColor = [UIColor grayColor];
+  [self.view addSubview:textView];
   
 #if TARGET_IPHONE_SIMULATOR
-  SRWebSocket *web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
+  socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  SRWebSocket *web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
+  socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.67:5001"]]];//192.168.10.67
 #endif
   
-  [web_socket setDelegate:self];
-  [web_socket open];
+  [socket setDelegate:self];
+  [socket open];
   // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -67,7 +83,33 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
-  NSLog(@"%@", [message description]);
+  NSLog(@"Received: %@", [message description]);
+  textView.text = [textView.text stringByAppendingString:[message description]];
+}
+
+- (void)buttonTapped:(UIButton *)button {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  NSLog(@"Open input view");
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"swipe" forKey:@"command"];
+  [dict setObject:@"up" forKey:@"detail"];
+#if TARGET_IPHONE_SIMULATOR
+  [dict setObject:@"sim" forKey:@"dst"];
+  [dict setObject:@"iphone5" forKey:@"origin"];
+#else
+  [dict setObject:@"iphone5" forKey:@"dst"];
+  [dict setObject:@"sim" forKey:@"origin"];
+#endif
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"%@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  [socket send:json];
 }
 
 - (void)didReceiveMemoryWarning {

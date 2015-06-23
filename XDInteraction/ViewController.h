@@ -14,6 +14,7 @@
 
 @interface ViewController : UIViewController <SRWebSocketDelegate> {
   SRWebSocket *socket;
+  UITextView *textView;
 }
 
 @property (nonatomic) XDGestureRecognizer *gestureRecognizer;
