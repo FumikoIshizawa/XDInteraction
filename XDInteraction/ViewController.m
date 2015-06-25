@@ -18,15 +18,15 @@
 
 @implementation ViewController
 
-@synthesize gestureRecognizer;
+@synthesize gestureUIComponents;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
+  gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
 
-  gestureRecognizer.keyLogManager.textField.delegate = self;
-  gestureRecognizer.gestureManager.delegate = self;
+  gestureUIComponents.keyLogManager.textField.delegate = self;
+  gestureUIComponents.gestureManager.delegate = self;
   
   
 #if TARGET_IPHONE_SIMULATOR
@@ -67,7 +67,7 @@
 
 #pragma UITextFiled
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self.gestureRecognizer.keyLogManager endEditing:YES];
+  [self.gestureUIComponents.keyLogManager endEditing:YES];
   NSLog(@"%@", textField.text);
   textField.text = @"";
   

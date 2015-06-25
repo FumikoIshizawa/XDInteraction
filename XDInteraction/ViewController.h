@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "XDGestureRecognizer.h"
+#import "XDGestureUIComponents.h"
 #import "XDWebSocketManager.h"
 #import "SRWebSocket.h"
 #import "XDGestureManager.h"
@@ -17,7 +17,7 @@
   SRWebSocket *socket;
 }
 
-@property (nonatomic) XDGestureRecognizer *gestureRecognizer;
+@property (nonatomic) XDGestureUIComponents *gestureUIComponents;
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextview;
 
 @end
