@@ -10,6 +10,8 @@
 
 @interface XDKeyLogManager : UIView <UITextFieldDelegate>
 
+@property (nonatomic) UITextField *textField;
+
 - (id)initWithView:(UIView *)parentView;
 
 @end
