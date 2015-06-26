@@ -130,4 +130,14 @@
   NSLog(@"doubleTapped");
 }
 
+- (void)pinchSender:(CGFloat)scale {
+  if(scale >= 1.0f){
+    NSLog(@"Pinching IN: %f", scale);
+  }
+  else{
+    NSLog(@"Pinching OUT: %f", scale);
+  }
+  
+}
+
 @end
