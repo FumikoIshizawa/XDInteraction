@@ -12,6 +12,7 @@
 
 @interface ViewController (){
   SRWebSocket *web_socket;
+  
 }
 
 @end
@@ -123,21 +124,31 @@
 }
 
 - (void)singleTapSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedTap:@"single"];
+  [web_socket send:message];
   NSLog(@"singleTapped");
 }
 
 - (void)doubleTapSender {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedTap:@"double"];
+  [web_socket send:message];
   NSLog(@"doubleTapped");
 }
 
 - (void)pinchSender:(CGFloat)scale {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message;
   if(scale >= 1.0f){
     NSLog(@"Pinching IN: %f", scale);
+    message = [jsonMessage detectedPinch:@"in"];
   }
   else{
     NSLog(@"Pinching OUT: %f", scale);
+   message = [jsonMessage detectedPinch:@"out"];
   }
-  
+  [web_socket send:message];
 }
 
 @end

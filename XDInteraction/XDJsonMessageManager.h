@@ -13,5 +13,7 @@
 - (NSString *)jsonInit;
 - (NSString *)capturedKey:(NSString *)capturedKey;
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;
+- (NSString *)detectedTap:(NSString *)tapType;
+- (NSString *)detectedPinch:(NSString *)pinchType;
 
 @end
