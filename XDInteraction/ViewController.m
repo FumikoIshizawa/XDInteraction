@@ -107,16 +107,27 @@
 - (void)swipeRightSender {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Right"];
-  [web_socket send:message];}
+  [web_socket send:message];
+}
 
 - (void)swipeUpSender {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Up"];
-  [web_socket send:message];}
+  [web_socket send:message];
+}
 
 - (void)swipeDownSender {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Down"];
-  [web_socket send:message];}
+  [web_socket send:message];
+}
+
+- (void)singleTapSender {
+  NSLog(@"singleTapped");
+}
+
+- (void)doubleTapSender {
+  NSLog(@"doubleTapped");
+}
 
 @end

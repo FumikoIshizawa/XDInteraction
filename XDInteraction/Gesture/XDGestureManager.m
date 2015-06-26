@@ -13,6 +13,10 @@
   UISwipeGestureRecognizer *swipeRight;
   UISwipeGestureRecognizer *swipeUp;
   UISwipeGestureRecognizer *swipeDown;
+  
+  UITapGestureRecognizer   *singleTap;
+  UITapGestureRecognizer   *doubleTap;
+  
 }
 
 @end
@@ -41,6 +45,15 @@
                                                           action:@selector(swipeDownHandler:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [view addGestureRecognizer:swipeDown];
+    
+    singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTapHandler:)];
+    [view addGestureRecognizer:singleTap];
+    
+    doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapHandler:)];
+    doubleTap.numberOfTapsRequired = 2;
+    [singleTap requireGestureRecognizerToFail:doubleTap]; // Activate only when doubleTap fails
+    [view addGestureRecognizer:doubleTap];
+    
   }
   return self;
 }
@@ -69,5 +82,16 @@
   }
 }
 
+- (void)singleTapHandler:(UITapGestureRecognizer *)sender {
+  if ([self.delegate respondsToSelector:@selector(singleTapSender)]) {
+    [self.delegate singleTapSender];
+  }
+}
+
+- (void)doubleTapHandler:(UITapGestureRecognizer *)sender {
+  if ([self.delegate respondsToSelector:@selector(doubleTapSender)]) {
+    [self.delegate doubleTapSender];
+  }
+}
 
 @end
