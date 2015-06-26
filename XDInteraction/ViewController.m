@@ -30,7 +30,7 @@
   
   
 #if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:10001"]]];//192.168.10.67
 #else
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:5001"]]];//192.168.10.67
 #endif
@@ -43,6 +43,20 @@
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{
   XDJsonMessageManager *message = [[XDJsonMessageManager alloc] init];
   [web_socket send:message.jsonInit];
+  
+  // Begin 10sec-interval pinging function
+  NSTimer *pingTimer = [NSTimer scheduledTimerWithTimeInterval:10.0f
+                                                        target:self
+                                                      selector:@selector(firePing:)
+                                                      userInfo:nil
+                                                       repeats:YES];
+  [pingTimer fire];
+}
+
+- (void)firePing:(NSTimer *)timer {
+  NSLog(@"send a Ping");
+  [web_socket sendPing:nil];
+  
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
@@ -71,7 +85,6 @@
   NSLog(@"%@", textField.text);
   textField.text = @"";
   
-  [web_socket sendPing:nil];
   return YES;
 }
 
