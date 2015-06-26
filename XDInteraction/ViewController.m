@@ -33,7 +33,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:10001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:10001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -63,6 +63,7 @@
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
   NSLog(@"%@", [message description]);
   [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:message]];
+  [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:@"\n"]];
   NSRange range = NSMakeRange(self.jsonTextview .text.length - 1, 1);
   [self.jsonTextview scrollRangeToVisible:range];
 }

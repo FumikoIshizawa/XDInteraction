@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6H-WG-pTb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6H-WG-pTb">
                                 <rect key="frame" x="177" y="209" width="246" height="347"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40103320580624502" green="0.63219262827668221" blue="1" alpha="1" colorSpace="calibratedRGB"/>
