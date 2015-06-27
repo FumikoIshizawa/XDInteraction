@@ -12,20 +12,6 @@
   return self;
 }
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//  self.frame = CGRectMake(self.frame.origin.x,
-//                          self.frame.origin.y + 5,
-//                          self.frame.size.width,
-//                          self.frame.size.height);
-//}
-//
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//  self.frame = CGRectMake(self.frame.origin.x,
-//                          self.frame.origin.y - 5,
-//                          self.frame.size.width,
-//                          self.frame.size.height);
-//}
-
 - (void)drawRect:(CGRect)rect {
   CGContextRef context = UIGraphicsGetCurrentContext();
   UIColor *outerTop = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];

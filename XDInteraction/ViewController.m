@@ -22,17 +22,18 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
   gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
 
   gestureUIComponents.keyLogManager.textField.delegate = self;
   gestureUIComponents.gestureManager.delegate = self;
-  
   
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:5001"]]];//192.168.10.67
 #endif
+  web_socket.delegate = self;
   
   [socket setDelegate:self];
   [socket open];
@@ -41,6 +42,7 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{
   XDJsonMessageManager *message = [[XDJsonMessageManager alloc] init];
+
   [web_socket send:message.jsonInit];
 }
 
@@ -104,5 +106,10 @@
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Down"];
   [web_socket send:message];}
+
+#pragma XDJsonMessageDelegate
+- (void)updateUsersList:(NSMutableDictionary *)users {
+  [gestureUIComponents.tableView updateTableView:users];
+}
 
 @end

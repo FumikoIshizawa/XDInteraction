@@ -23,7 +23,7 @@
   if (self) {
     parentView = view;
     self.frame = CGRectMake(40,
-                            70,
+                            140,
                             240,
                             150);
     self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.9];

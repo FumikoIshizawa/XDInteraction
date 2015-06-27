@@ -26,6 +26,7 @@
 - (id)initWithView:(UIView *)view {
   self = [super init];
   if (self) {
+    
     parentView = view;
     gestureManager = [[XDGestureManager alloc] initWithView:view];
     motionManager = [[XDMotionManager alloc] initWith];
@@ -42,20 +43,31 @@
     [parentView addSubview:keyLogManager];
     [parentView addSubview:tableView];
     
-    WSUIButton *inputButton =
+    WSUIButton *ioButton =
+    [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
+                                                 40,
+                                                 60,
+                                                 60)
+                            withTitle:@"output"];
+    [ioButton addTarget:self
+                 action:@selector(ioButtonTapped:)
+       forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:ioButton];
+    
+    WSUIButton *keyButton =
         [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     40,
+                                                     110,
                                                      60,
                                                      60)
-                                withTitle:@"input"];
-    [inputButton addTarget:self
-                    action:@selector(inputButtonTapped:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:inputButton];
+                                withTitle:@"keyboard"];
+    [keyButton addTarget:self
+                  action:@selector(keyButtonTapped:)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:keyButton];
     
     WSUIButton *selectButton =
         [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     110,
+                                                     180,
                                                      60,
                                                      60)
                                 withTitle:@"select"];
@@ -67,7 +79,11 @@
   return self;
 }
 
-- (void)inputButtonTapped:(UIButton *)button {
+- (void)ioButtonTapped:(UIButton *)button {
+  
+}
+
+- (void)keyButtonTapped:(UIButton *)button {
   if (_keyLogOpend) {
     [UIView animateWithDuration:0.2f
                           delay:0.0f

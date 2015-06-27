@@ -11,10 +11,18 @@
 
 #import "SRWebSocket.h"
 
+@protocol XDJsonMessageDelegate <NSObject>
+
+- (void)updateUsersList:(NSMutableDictionary *)users;
+
+@end
+
 @interface XDWebSocketManager : NSObject <SRWebSocketDelegate> {
   SRWebSocket *socket;
 }
 
 - (id)initWith;
+
+@property (nonatomic, assign) id<XDJsonMessageDelegate> delegate;
 
 @end

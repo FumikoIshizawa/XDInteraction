@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XDUsersTableView : UITableView
+@interface XDUsersTableView : UITableView <UITableViewDataSource,
+                                           UITableViewDelegate>
 
 - (id)init;
+- (void)updateTableView:(NSMutableDictionary *)users;
+
+@property (nonatomic) NSMutableArray *usersNameList;
+@property (nonatomic) NSMutableArray *usersDeviceList;
 
 @end
