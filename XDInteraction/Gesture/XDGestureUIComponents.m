@@ -26,7 +26,6 @@
 - (id)initWithView:(UIView *)view {
   self = [super init];
   if (self) {
-    
     parentView = view;
     gestureManager = [[XDGestureManager alloc] initWithView:view];
     motionManager = [[XDMotionManager alloc] initWith];
@@ -34,6 +33,7 @@
     tableView = [[XDUsersTableView alloc] init];
     _keyLogOpend = NO;
     _tableViewOpend = NO;
+    view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];
     
     CGAffineTransform t1 = CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, 0);
     CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/150);
@@ -42,17 +42,6 @@
     
     [parentView addSubview:keyLogManager];
     [parentView addSubview:tableView];
-    
-    WSUIButton *ioButton =
-    [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                 40,
-                                                 60,
-                                                 60)
-                            withTitle:@"output"];
-    [ioButton addTarget:self
-                 action:@selector(ioButtonTapped:)
-       forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:ioButton];
     
     WSUIButton *keyButton =
         [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
@@ -77,10 +66,6 @@
     [view addSubview:selectButton];
   }
   return self;
-}
-
-- (void)ioButtonTapped:(UIButton *)button {
-  
 }
 
 - (void)keyButtonTapped:(UIButton *)button {

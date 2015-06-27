@@ -10,6 +10,7 @@
 
 @interface XDJsonMessageManager : NSObject
 
+- (NSMutableDictionary *)parseJsonMessage:(NSString *)jsonString;
 - (NSString *)jsonInit;
 - (NSString *)capturedKey:(NSString *)capturedKey;
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;

@@ -25,12 +25,12 @@
     self.frame = CGRectMake(40,
                             140,
                             240,
-                            150);
-    self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.9];
+                            70);
+    self.backgroundColor = [UIColor grayColor];
     
     textField =
         [[UITextField alloc] initWithFrame:CGRectMake((parentView.frame.size.width - 80) / 2 - 100,
-                                                        50,
+                                                        10,
                                                         200,
                                                         50)];
     textField.borderStyle = UITextBorderStyleRoundedRect;

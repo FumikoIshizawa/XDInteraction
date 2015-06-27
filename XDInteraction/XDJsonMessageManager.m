@@ -17,6 +17,26 @@
   return self;
 }
 
+- (NSMutableDictionary *)parseJsonMessage:(NSString *)jsonString {
+  NSString *str = [@"[" stringByAppendingString:jsonString];
+  str = [str stringByAppendingString:@"]"];
+  NSLog(@"json: %@", str);
+  NSData *jsonData = [str dataUsingEncoding:NSUnicodeStringEncoding];
+  NSError *error;
+  NSMutableArray *array = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                   options:NSJSONReadingMutableContainers
+                                                     error:&error];
+  
+  NSMutableDictionary *results = [[NSMutableDictionary alloc] init];
+  for (NSDictionary *obj in array) {
+    for (id key in [obj keyEnumerator]) {
+      [results setObject:[obj valueForKey:key] forKey:key];
+    }
+    
+  }
+  return results;
+}
+
 - (NSString *)jsonInit {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
@@ -37,7 +57,7 @@
                                                    error:&error];
   NSString *jsonstr = [[NSString alloc] initWithData:data
                                             encoding:NSUTF8StringEncoding];
-  NSLog(@"%@", jsonstr);
+  NSLog(@"Send: %@", jsonstr);
   NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
                                                       withString:@""];
   
@@ -65,7 +85,7 @@
                                                    error:&error];
   NSString *jsonstr = [[NSString alloc] initWithData:data
                                             encoding:NSUTF8StringEncoding];
-  NSLog(@"%@", jsonstr);
+  NSLog(@"Send: %@", jsonstr);
   NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
                                                       withString:@""];
   
@@ -94,7 +114,7 @@
                                                     error:&error];
    NSString *jsonstr = [[NSString alloc] initWithData:data
                                              encoding:NSUTF8StringEncoding];
-   NSLog(@"%@", jsonstr);
+   NSLog(@"Send: %@", jsonstr);
    NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
                                                        withString:@""];
    

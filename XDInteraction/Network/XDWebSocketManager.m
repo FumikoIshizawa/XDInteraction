@@ -30,11 +30,4 @@
   NSLog(@"didReceiveMessage: %@", [message description]);
 }
 
-//When receiving type "users", please call this
-- (void)receiveUsersMessage:(NSMutableDictionary *)usersList {
-  if ([self.delegate respondsToSelector:@selector(updateUsersList:)]) {
-    [self.delegate updateUsersList:usersList];
-  }
-}
-
 @end

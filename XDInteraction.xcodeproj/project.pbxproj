@@ -21,6 +21,7 @@
 		56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */; };
 		979541F91B31E50E00237E9F /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 979541F61B31E50E00237E9F /* SimplePing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		979541FA1B31E50E00237E9F /* SimplePingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 979541F81B31E50E00237E9F /* SimplePingHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */; };
 		9E3A31251B3C2FE0006A7E5E /* XDUsersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */; };
 		9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E39641B399D5F00481526 /* WSUIButton.m */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
@@ -67,6 +68,8 @@
 		979541F61B31E50E00237E9F /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		979541F71B31E50E00237E9F /* SimplePingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePingHelper.h; sourceTree = "<group>"; };
 		979541F81B31E50E00237E9F /* SimplePingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePingHelper.m; sourceTree = "<group>"; };
+		9E39E0BD1B3E811000E31F19 /* XDOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDOutputViewController.h; path = OutputWindow/XDOutputViewController.h; sourceTree = "<group>"; };
+		9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDOutputViewController.m; path = OutputWindow/XDOutputViewController.m; sourceTree = "<group>"; };
 		9E3A31231B3C2FE0006A7E5E /* XDUsersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDUsersTableView.h; sourceTree = "<group>"; };
 		9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDUsersTableView.m; sourceTree = "<group>"; };
 		9E5E39631B399D5F00481526 /* WSUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSUIButton.h; sourceTree = "<group>"; };
@@ -159,6 +162,15 @@
 			name = SimplePing;
 			sourceTree = "<group>";
 		};
+		9E39E0BC1B3E80BA00E31F19 /* OutputWindow */ = {
+			isa = PBXGroup;
+			children = (
+				9E39E0BD1B3E811000E31F19 /* XDOutputViewController.h */,
+				9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */,
+			);
+			name = OutputWindow;
+			sourceTree = "<group>";
+		};
 		9E3A31261B3C2FE5006A7E5E /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +204,7 @@
 		9ED6AF031B205C8C00D97675 /* XDInteraction */ = {
 			isa = PBXGroup;
 			children = (
+				9E39E0BC1B3E80BA00E31F19 /* OutputWindow */,
 				56503A941B2F263A0066779A /* Network */,
 				56503A8B1B2F263A0066779A /* Gesture */,
 				9ED6AF081B205C8C00D97675 /* AppDelegate.h */,
@@ -339,6 +352,7 @@
 				979541FA1B31E50E00237E9F /* SimplePingHelper.m in Sources */,
 				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
 				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,
+				9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
 				56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */,
 				9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */,
