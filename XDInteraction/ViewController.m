@@ -28,6 +28,7 @@
 
   gestureRecognizer.keyLogManager.textField.delegate = self;
   gestureRecognizer.gestureManager.delegate = self;
+  gestureRecognizer.motionManager.delegate = self;
   
   
 #if TARGET_IPHONE_SIMULATOR
@@ -150,6 +151,11 @@
    message = [jsonMessage detectedPinch:@"out"];
   }
   [web_socket send:message];
+}
+
+- (void)motionSender:(CMDeviceMotion *)motion {
+  NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
+                   motion.attitude.roll  * 180 / M_PI);
 }
 
 @end

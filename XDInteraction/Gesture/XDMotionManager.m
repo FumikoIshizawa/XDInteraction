@@ -27,10 +27,21 @@
                                          withHandler:^(CMDeviceMotion *motion, NSError *error) {
 //         NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
 //               motion.attitude.roll * 180 / M_PI);
+                                           [self motionHandler: motion];
        }];
     }
   }
   return self;
+}
+
+- (void)motionHandler:(CMDeviceMotion *)motion
+{
+  // check if user has implemeted the delegate method
+  if ([self.delegate respondsToSelector:@selector(motionSender:)])
+  {
+    // fire sampleDelegate
+    [self.delegate motionSender:motion];
+  }
 }
 
 @end
