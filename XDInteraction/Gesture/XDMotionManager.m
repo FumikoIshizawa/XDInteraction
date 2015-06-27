@@ -11,6 +11,8 @@
 @interface XDMotionManager () {
   CMMotionManager *motionManager;
   CMDeviceMotion *prevMotion;
+  int pitchDelta;
+  int rollDelta;
 }
 
 @end
@@ -21,8 +23,8 @@
   self = [super init];
   if (self) {
     motionManager = [[CMMotionManager alloc] init];
-    motionManager.deviceMotionUpdateInterval = 1 / 2;
-    
+    motionManager.deviceMotionUpdateInterval = 0.1;
+  
     if (motionManager.deviceMotionAvailable) {
       [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
                                          withHandler:^(CMDeviceMotion *motion, NSError *error) {
@@ -32,11 +34,11 @@
                                            }
                                            
                                            // Gyro filteration
-                                           int pinchDelta = (int)((prevMotion.attitude.pitch - motion.attitude.pitch) * 1000);
-                                           int rollDelta  = (int)((prevMotion.attitude.roll - motion.attitude.roll) * 1000);
-                                           //NSLog(@"%d", /*pinchDelta, */abs(rollDelta));
-                                           if( abs(rollDelta) >= 5 || abs(pinchDelta) >= 5 ){
-                                             [self motionHandler: motion];
+                                           pitchDelta = (int)((prevMotion.attitude.pitch - motion.attitude.pitch) * 100);
+                                           rollDelta  = (int)((prevMotion.attitude.roll - motion.attitude.roll) * 100);
+                                           if( abs(rollDelta) >= 5 || abs(pitchDelta) >= 5 ){
+                                             NSLog(@"%d", /*pinchDelta, */rollDelta);
+                                             [self motionHandler];
                                            }
                                            prevMotion = motion;
        }];
@@ -45,13 +47,29 @@
   return self;
 }
 
-- (void)motionHandler:(CMDeviceMotion *)motion
-{
+- (void)motionHandler {
   // check if user has implemeted the delegate method
   if ([self.delegate respondsToSelector:@selector(motionSender:)])
   {
+    
     // fire sampleDelegate
-    [self.delegate motionSender:motion];
+    if( abs(pitchDelta) > abs(rollDelta) ){
+      if( pitchDelta > 0 ){
+        [self.delegate motionSender:@"Scroll UP"];
+      }
+      else{
+        [self.delegate motionSender:@"Scroll Down"];
+      }
+    }
+    else{
+      if( rollDelta > 0 ){
+        [self.delegate motionSender:@"Scroll Left"];
+      }
+      else{
+        [self.delegate motionSender:@"Scroll Right"];
+      }
+    }
+
   }
 }
 

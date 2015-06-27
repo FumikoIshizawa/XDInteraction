@@ -15,5 +15,6 @@
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;
 - (NSString *)detectedTap:(NSString *)tapType;
 - (NSString *)detectedPinch:(NSString *)pinchType;
+- (NSString *)detectedGyro:(NSString *)gyroDirection;
 
 @end

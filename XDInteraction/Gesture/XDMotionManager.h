@@ -11,12 +11,12 @@
 
 @protocol XDMotionManagerDelegate <NSObject>
 
-- (void)motionSender:(CMDeviceMotion *)motion;
+- (void)motionSender:(NSString *)motion;
 
 @end
 
 @interface XDMotionManager : NSObject 
 @property (nonatomic, assign) id<XDMotionManagerDelegate> delegate;
 - (id)initWith;
-- (void)motionHandler:(CMDeviceMotion *)motion;
+- (void)motionHandler;
 @end

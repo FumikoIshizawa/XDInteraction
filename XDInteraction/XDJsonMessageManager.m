@@ -48,7 +48,6 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"key" forKey:@"command"];
   [dict setObject:capturedKey forKey:@"detail"];
@@ -75,7 +74,6 @@
 - (NSString *)detectedSwipe:(NSString *)swipeDirection {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
-  
   
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"swipe" forKey:@"command"];
@@ -105,7 +103,6 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"tap" forKey:@"command"];
   [dict setObject:tapType forKey:@"detail"];
@@ -134,10 +131,38 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"pinch" forKey:@"command"];
   [dict setObject:pinchType forKey:@"detail"];
+#if TARGET_IPHONE_SIMULATOR
+  [dict setObject:@"myiOS" forKey:@"dst"];
+  [dict setObject:@"iOS Simulator" forKey:@"origin"];
+#else
+  [dict setObject:@"iOS Simulator" forKey:@"dst"];
+  [dict setObject:@"myiOS" forKey:@"origin"];
+  
+#endif
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"%@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
+- (NSString *)detectedGyro:(NSString *)gyroDirection {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+
+  
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"gyro" forKey:@"command"];
+  [dict setObject:gyroDirection forKey:@"detail"];
 #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"myiOS" forKey:@"dst"];
   [dict setObject:@"iOS Simulator" forKey:@"origin"];

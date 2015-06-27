@@ -159,10 +159,10 @@
 
 #pragma -
 #pragma mark
-- (void)motionSender:(CMDeviceMotion *)motion {
-  NSLog(@"Gyro Detected");
-//  NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
-//                   motion.attitude.roll  * 180 / M_PI);
+- (void)motionSender:(NSString *)motion {
+  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
+  NSString *message = [jsonMessage detectedGyro:motion];
+  [web_socket send:message];
 }
 
 @end
