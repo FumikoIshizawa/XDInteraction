@@ -100,7 +100,8 @@
   return YES;
 }
 
-#pragma XDGestureDelegate
+#pragma -
+#pragma mark swipeSender
 - (void)swipeLeftSender {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Left"];
@@ -125,6 +126,8 @@
   [web_socket send:message];
 }
 
+#pragma -
+#pragma mark tapSender
 - (void)singleTapSender {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedTap:@"single"];
@@ -138,7 +141,8 @@
   [web_socket send:message];
   NSLog(@"doubleTapped");
 }
-
+#pragma -
+#pragma mark
 - (void)pinchSender:(CGFloat)scale {
   XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message;
@@ -153,9 +157,12 @@
   [web_socket send:message];
 }
 
+#pragma -
+#pragma mark
 - (void)motionSender:(CMDeviceMotion *)motion {
-  NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
-                   motion.attitude.roll  * 180 / M_PI);
+  NSLog(@"Gyro Detected");
+//  NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
+//                   motion.attitude.roll  * 180 / M_PI);
 }
 
 @end

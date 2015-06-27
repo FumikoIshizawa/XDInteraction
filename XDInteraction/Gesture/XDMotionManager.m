@@ -10,6 +10,7 @@
 
 @interface XDMotionManager () {
   CMMotionManager *motionManager;
+  CMDeviceMotion *prevMotion;
 }
 
 @end
@@ -25,9 +26,19 @@
     if (motionManager.deviceMotionAvailable) {
       [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
                                          withHandler:^(CMDeviceMotion *motion, NSError *error) {
-//         NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
-//               motion.attitude.roll * 180 / M_PI);
-                                           [self motionHandler: motion];
+                                           // function first touch
+                                           if (!prevMotion) {
+                                             prevMotion = motion;
+                                           }
+                                           
+                                           // Gyro filteration
+                                           int pinchDelta = (int)((prevMotion.attitude.pitch - motion.attitude.pitch) * 1000);
+                                           int rollDelta  = (int)((prevMotion.attitude.roll - motion.attitude.roll) * 1000);
+                                           //NSLog(@"%d", /*pinchDelta, */abs(rollDelta));
+                                           if( abs(rollDelta) >= 5 || abs(pinchDelta) >= 5 ){
+                                             [self motionHandler: motion];
+                                           }
+                                           prevMotion = motion;
        }];
     }
   }
