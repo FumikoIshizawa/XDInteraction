@@ -17,7 +17,7 @@
 
 @interface ViewController : UIViewController <SRWebSocketDelegate,
                                               UITextFieldDelegate,
-                                              XDGestureDelegate> {
+                                              XDGestureDelegate, UITableViewDelegate> {
   SRWebSocket *socket;
   UITextView *textView;
 }

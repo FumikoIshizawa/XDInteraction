@@ -16,28 +16,18 @@
 - (id)init {
   self = [super initWithFrame:CGRectMake(40, 210, 240, 300) style:UITableViewStylePlain];
   if (self) {
-    self.delegate = self;
     self.dataSource = self;
-    
-    //Dubug
-    usersNameList = [[NSMutableArray alloc] init];
-    usersDeviceList = [[NSMutableArray alloc] init];
-    
-    [usersNameList addObject:@"iOS Simulator"];
-    [usersNameList addObject:@"myiOS"];
-    [usersDeviceList addObject:@"ios_sim"];
-    [usersDeviceList addObject:@"ios_dev"];
   }
   return self;
 }
 
-- (void)updateTableView:(NSMutableDictionary *)users {
+- (void)updateTableViewWith:(NSArray *)names
+                withDevices:(NSArray *)devices {
   [usersNameList removeAllObjects];
   [usersDeviceList removeAllObjects];
-  for (id key in [users keyEnumerator]) {
-    [usersNameList addObject:key];
-    [usersDeviceList addObject:users[key]];
-  }
+  
+  usersNameList = [NSMutableArray arrayWithArray:names];
+  usersDeviceList = [NSMutableArray arrayWithArray:devices];
   
   [self reloadData];
 }
@@ -78,14 +68,6 @@ titleForHeaderInSection:(NSInteger)section {
   }
   
   return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  
-  // indexPath.rowを利用して、接続ユーザの変更
-  
-  NSLog(@"%@ is selected", usersNameList[indexPath.row]);
 }
 
 @end

@@ -15,4 +15,7 @@
 - (NSString *)capturedKey:(NSString *)capturedKey;
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;
 
+@property (nonatomic) NSString *endUser;
+@property (nonatomic) NSString *myName;
+
 @end

@@ -11,8 +11,15 @@
 
 @implementation XDJsonMessageManager
 
+@synthesize endUser;
+@synthesize myName;
+
 - (id)init {
   self = [super init];
+  if (self) {
+    endUser = @"no user";
+    myName = @"no name";
+  }
   
   return self;
 }
@@ -45,11 +52,13 @@
   [dict setObject:@"open" forKey:@"type"];
   [dict setObject:@"iOS Simulator" forKey:@"name"];
   [dict setObject:@"ios_sim" forKey:@"device"];
+  self.myName = @"iOS Simulator";
 
 #else
   [dict setObject:@"open" forKey:@"type"];
   [dict setObject:@"myiOS" forKey:@"name"];
   [dict setObject:@"ios_dev" forKey:@"device"];
+  self.myName = @"myiOS";
 #endif
 
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
@@ -72,13 +81,8 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"key" forKey:@"command"];
   [dict setObject:capturedKey forKey:@"detail"];
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"dst"];
-  [dict setObject:@"iOS Simulator" forKey:@"origin"];
-#else
-  [dict setObject:@"iOS Simulator" forKey:@"dst"];
-  [dict setObject:@"myiOS" forKey:@"origin"];
-#endif
+  [dict setObject:endUser forKey:@"dst"];
+  [dict setObject:myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
@@ -100,15 +104,9 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"swipe" forKey:@"command"];
   [dict setObject:swipeDirection forKey:@"detail"];
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"dst"];
-  [dict setObject:@"iOS Simulator" forKey:@"origin"];
-#else
-  [dict setObject:@"iOS Simulator" forKey:@"dst"];
-  [dict setObject:@"myiOS" forKey:@"origin"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
-#endif
-   
    NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                   options:NSJSONWritingPrettyPrinted
                                                     error:&error];

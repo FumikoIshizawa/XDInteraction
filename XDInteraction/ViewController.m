@@ -43,6 +43,7 @@
 
   gestureUIComponents.keyLogManager.textField.delegate = self;
   gestureUIComponents.gestureManager.delegate = self;
+  gestureUIComponents.tableView.delegate = self;
   
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
@@ -60,9 +61,7 @@
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{
-  XDJsonMessageManager *message = [[XDJsonMessageManager alloc] init];
-
-  [web_socket send:message.jsonInit];
+  [web_socket send:jsonMessage.jsonInit];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
@@ -75,19 +74,34 @@
   
   // Add new type!
   if ([type isEqualToString:@"users"]) {
-    NSLog(@"users recieved");
+    [self receiveUsersMessageWith:[dict objectForKey:@"names"]
+                      withDevices:[dict objectForKey:@"devices"]];
   } else if ([type isEqualToString:@"error"]) {
-    NSLog(@"error recieved");
+//    NSLog(@"error recieved");
+    NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
   } else if ([type isEqualToString:@"swipe"]) {
-    
+//    NSLog(@"swipe");
   } else if ([type isEqualToString:@"key"]) {
-    
+//    NSLog(@"key");
   }
 }
 
 //When receiving type "users", please call this
-- (void)receiveUsersMessage:(NSMutableDictionary *)usersList {
-  [gestureUIComponents.tableView updateTableView:usersList];
+- (void)receiveUsersMessageWith:(NSArray *)names
+                    withDevices:(NSArray *)devices {
+  if ([names indexOfObject:jsonMessage.endUser] == NSNotFound
+          && ![jsonMessage.endUser isEqualToString:@"no user"]) {
+    UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:@"User Lost"
+                                            message:@"Please Select endUser."
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {}]];
+    [self presentViewController:alertController animated:YES completion:nil];
+  }
+  [gestureUIComponents.tableView updateTableViewWith:names
+                                         withDevices:devices];
 }
 
 #pragma mark -
@@ -138,5 +152,13 @@
 - (void)swipeDownSender {
   NSString *message = [jsonMessage detectedSwipe:@"Down"];
   [web_socket send:message];}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  if (![jsonMessage.myName isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+    jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
+  }
+}
 
 @end
