@@ -7,16 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56503A9A1B2F263A0066779A /* XDGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A8D1B2F263A0066779A /* XDGestureManager.m */; };
+		56503A9B1B2F263A0066779A /* XDGestureUIComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */; };
+		56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A911B2F263A0066779A /* XDKeyLogManager.m */; };
+		56503A9D1B2F263A0066779A /* XDMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A931B2F263A0066779A /* XDMotionManager.m */; };
+		56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A971B2F263A0066779A /* SRWebSocket.m */; };
+		56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A991B2F263A0066779A /* XDWebSocketManager.m */; };
+		56503AA21B2F26810066779A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503AA11B2F26800066779A /* ViewController.m */; };
+		56503AA41B2F26B60066779A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA31B2F26B60066779A /* libicucore.dylib */; };
+		56503AA61B2F26C70066779A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA51B2F26C70066779A /* CFNetwork.framework */; };
+		56503AA81B2F26D30066779A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA71B2F26D30066779A /* Security.framework */; };
+		56503AAA1B2F26DF0066779A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA91B2F26DF0066779A /* Foundation.framework */; };
+		56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */; };
+		979541F91B31E50E00237E9F /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 979541F61B31E50E00237E9F /* SimplePing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		979541FA1B31E50E00237E9F /* SimplePingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 979541F81B31E50E00237E9F /* SimplePingHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */; };
+		9E3A31251B3C2FE0006A7E5E /* XDUsersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */; };
+		9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E39641B399D5F00481526 /* WSUIButton.m */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
-		9ED6AF0D1B205C8C00D97675 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0C1B205C8C00D97675 /* ViewController.m */; };
 		9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0E1B205C8C00D97675 /* Main.storyboard */; };
 		9ED6AF121B205C8C00D97675 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF111B205C8C00D97675 /* Images.xcassets */; };
 		9ED6AF151B205C8C00D97675 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF131B205C8C00D97675 /* LaunchScreen.xib */; };
 		9ED6AF211B205C8D00D97675 /* XDInteractionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF201B205C8D00D97675 /* XDInteractionTests.m */; };
-		9EFB793B1B209A0B006F036E /* XDGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFB793A1B209A0B006F036E /* XDGestureRecognizer.m */; };
-		9EFB7D2E1B22BBCC006F036E /* XDGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFB7D2D1B22BBCC006F036E /* XDGestureManager.m */; };
-		9EFB7D311B22BBEC006F036E /* XDMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFB7D301B22BBEC006F036E /* XDMotionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,25 +43,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56503A8C1B2F263A0066779A /* XDGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureManager.h; sourceTree = "<group>"; };
+		56503A8D1B2F263A0066779A /* XDGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureManager.m; sourceTree = "<group>"; };
+		56503A8E1B2F263A0066779A /* XDGestureUIComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureUIComponents.h; sourceTree = "<group>"; };
+		56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureUIComponents.m; sourceTree = "<group>"; };
+		56503A901B2F263A0066779A /* XDKeyLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDKeyLogManager.h; sourceTree = "<group>"; };
+		56503A911B2F263A0066779A /* XDKeyLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDKeyLogManager.m; sourceTree = "<group>"; };
+		56503A921B2F263A0066779A /* XDMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMotionManager.h; sourceTree = "<group>"; };
+		56503A931B2F263A0066779A /* XDMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMotionManager.m; sourceTree = "<group>"; };
+		56503A951B2F263A0066779A /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		56503A961B2F263A0066779A /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		56503A971B2F263A0066779A /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		56503A981B2F263A0066779A /* XDWebSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDWebSocketManager.h; sourceTree = "<group>"; };
+		56503A991B2F263A0066779A /* XDWebSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDWebSocketManager.m; sourceTree = "<group>"; };
+		56503AA01B2F26800066779A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		56503AA11B2F26800066779A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		56503AA31B2F26B60066779A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		56503AA51B2F26C70066779A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		56503AA71B2F26D30066779A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		56503AA91B2F26DF0066779A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		56503AAB1B2F2DB20066779A /* XDJsonMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDJsonMessageManager.h; path = ../XDJsonMessageManager.h; sourceTree = "<group>"; };
+		56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDJsonMessageManager.m; path = ../XDJsonMessageManager.m; sourceTree = "<group>"; };
+		979541F51B31E50E00237E9F /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		979541F61B31E50E00237E9F /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		979541F71B31E50E00237E9F /* SimplePingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePingHelper.h; sourceTree = "<group>"; };
+		979541F81B31E50E00237E9F /* SimplePingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePingHelper.m; sourceTree = "<group>"; };
+		9E39E0BD1B3E811000E31F19 /* XDOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDOutputViewController.h; path = OutputWindow/XDOutputViewController.h; sourceTree = "<group>"; };
+		9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDOutputViewController.m; path = OutputWindow/XDOutputViewController.m; sourceTree = "<group>"; };
+		9E3A31231B3C2FE0006A7E5E /* XDUsersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDUsersTableView.h; sourceTree = "<group>"; };
+		9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDUsersTableView.m; sourceTree = "<group>"; };
+		9E5E39631B399D5F00481526 /* WSUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSUIButton.h; sourceTree = "<group>"; };
+		9E5E39641B399D5F00481526 /* WSUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSUIButton.m; sourceTree = "<group>"; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ED6AF081B205C8C00D97675 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ED6AF091B205C8C00D97675 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9ED6AF0B1B205C8C00D97675 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9ED6AF0C1B205C8C00D97675 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9ED6AF0F1B205C8C00D97675 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ED6AF111B205C8C00D97675 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9ED6AF141B205C8C00D97675 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9ED6AF1A1B205C8D00D97675 /* XDInteractionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XDInteractionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF1F1B205C8D00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF201B205C8D00D97675 /* XDInteractionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDInteractionTests.m; sourceTree = "<group>"; };
-		9EFB79391B209A0B006F036E /* XDGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDGestureRecognizer.h; path = Gesture/XDGestureRecognizer.h; sourceTree = "<group>"; };
-		9EFB793A1B209A0B006F036E /* XDGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDGestureRecognizer.m; path = Gesture/XDGestureRecognizer.m; sourceTree = "<group>"; };
-		9EFB7D2C1B22BBCC006F036E /* XDGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDGestureManager.h; path = Gesture/XDGestureManager.h; sourceTree = "<group>"; };
-		9EFB7D2D1B22BBCC006F036E /* XDGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDGestureManager.m; path = Gesture/XDGestureManager.m; sourceTree = "<group>"; };
-		9EFB7D2F1B22BBEC006F036E /* XDMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDMotionManager.h; path = Gesture/XDMotionManager.h; sourceTree = "<group>"; };
-		9EFB7D301B22BBEC006F036E /* XDMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDMotionManager.m; path = Gesture/XDMotionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56503AAA1B2F26DF0066779A /* Foundation.framework in Frameworks */,
+				56503AA81B2F26D30066779A /* Security.framework in Frameworks */,
+				56503AA61B2F26C70066779A /* CFNetwork.framework in Frameworks */,
+				56503AA41B2F26B60066779A /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +109,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		564854401B255CFA0012CE1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56503AA91B2F26DF0066779A /* Foundation.framework */,
+				56503AA71B2F26D30066779A /* Security.framework */,
+				56503AA51B2F26C70066779A /* CFNetwork.framework */,
+				56503AA31B2F26B60066779A /* libicucore.dylib */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		56503A8B1B2F263A0066779A /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+				9E3A31261B3C2FE5006A7E5E /* UI */,
+				56503A8E1B2F263A0066779A /* XDGestureUIComponents.h */,
+				56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */,
+				56503A8C1B2F263A0066779A /* XDGestureManager.h */,
+				56503A8D1B2F263A0066779A /* XDGestureManager.m */,
+				56503A901B2F263A0066779A /* XDKeyLogManager.h */,
+				56503A911B2F263A0066779A /* XDKeyLogManager.m */,
+				56503A921B2F263A0066779A /* XDMotionManager.h */,
+				56503A931B2F263A0066779A /* XDMotionManager.m */,
+			);
+			path = Gesture;
+			sourceTree = "<group>";
+		};
+		56503A941B2F263A0066779A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				56503A951B2F263A0066779A /* SocketRocket-Prefix.pch */,
+				56503A961B2F263A0066779A /* SRWebSocket.h */,
+				56503A971B2F263A0066779A /* SRWebSocket.m */,
+				56503A981B2F263A0066779A /* XDWebSocketManager.h */,
+				56503A991B2F263A0066779A /* XDWebSocketManager.m */,
+				56503AAB1B2F2DB20066779A /* XDJsonMessageManager.h */,
+				56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */,
+				979542041B31EDD500237E9F /* SimplePing */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		979542041B31EDD500237E9F /* SimplePing */ = {
+			isa = PBXGroup;
+			children = (
+				979541F51B31E50E00237E9F /* SimplePing.h */,
+				979541F61B31E50E00237E9F /* SimplePing.m */,
+				979541F71B31E50E00237E9F /* SimplePingHelper.h */,
+				979541F81B31E50E00237E9F /* SimplePingHelper.m */,
+			);
+			name = SimplePing;
+			sourceTree = "<group>";
+		};
+		9E39E0BC1B3E80BA00E31F19 /* OutputWindow */ = {
+			isa = PBXGroup;
+			children = (
+				9E39E0BD1B3E811000E31F19 /* XDOutputViewController.h */,
+				9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */,
+			);
+			name = OutputWindow;
+			sourceTree = "<group>";
+		};
+		9E3A31261B3C2FE5006A7E5E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9E5E39631B399D5F00481526 /* WSUIButton.h */,
+				9E5E39641B399D5F00481526 /* WSUIButton.m */,
+				9E3A31231B3C2FE0006A7E5E /* XDUsersTableView.h */,
+				9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		9ED6AEF81B205C8C00D97675 = {
 			isa = PBXGroup;
 			children = (
+				564854401B255CFA0012CE1E /* Frameworks */,
 				9ED6AF031B205C8C00D97675 /* XDInteraction */,
 				9ED6AF1D1B205C8D00D97675 /* XDInteractionTests */,
 				9ED6AF021B205C8C00D97675 /* Products */,
@@ -90,12 +204,13 @@
 		9ED6AF031B205C8C00D97675 /* XDInteraction */ = {
 			isa = PBXGroup;
 			children = (
-				9EFB793C1B215446006F036E /* Network */,
-				9EFB79381B20996F006F036E /* Gesture */,
+				9E39E0BC1B3E80BA00E31F19 /* OutputWindow */,
+				56503A941B2F263A0066779A /* Network */,
+				56503A8B1B2F263A0066779A /* Gesture */,
 				9ED6AF081B205C8C00D97675 /* AppDelegate.h */,
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
-				9ED6AF0B1B205C8C00D97675 /* ViewController.h */,
-				9ED6AF0C1B205C8C00D97675 /* ViewController.m */,
+				56503AA01B2F26800066779A /* ViewController.h */,
+				56503AA11B2F26800066779A /* ViewController.m */,
 				9ED6AF0E1B205C8C00D97675 /* Main.storyboard */,
 				9ED6AF111B205C8C00D97675 /* Images.xcassets */,
 				9ED6AF131B205C8C00D97675 /* LaunchScreen.xib */,
@@ -128,26 +243,6 @@
 				9ED6AF1F1B205C8D00D97675 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9EFB79381B20996F006F036E /* Gesture */ = {
-			isa = PBXGroup;
-			children = (
-				9EFB79391B209A0B006F036E /* XDGestureRecognizer.h */,
-				9EFB793A1B209A0B006F036E /* XDGestureRecognizer.m */,
-				9EFB7D2C1B22BBCC006F036E /* XDGestureManager.h */,
-				9EFB7D2D1B22BBCC006F036E /* XDGestureManager.m */,
-				9EFB7D2F1B22BBEC006F036E /* XDMotionManager.h */,
-				9EFB7D301B22BBEC006F036E /* XDMotionManager.m */,
-			);
-			name = Gesture;
-			sourceTree = "<group>";
-		};
-		9EFB793C1B215446006F036E /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,12 +345,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EFB7D2E1B22BBCC006F036E /* XDGestureManager.m in Sources */,
-				9ED6AF0D1B205C8C00D97675 /* ViewController.m in Sources */,
+				56503AA21B2F26810066779A /* ViewController.m in Sources */,
+				56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */,
+				56503A9B1B2F263A0066779A /* XDGestureUIComponents.m in Sources */,
+				979541F91B31E50E00237E9F /* SimplePing.m in Sources */,
+				979541FA1B31E50E00237E9F /* SimplePingHelper.m in Sources */,
+				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
+				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,
+				9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
+				56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */,
+				9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */,
 				9ED6AF071B205C8C00D97675 /* main.m in Sources */,
-				9EFB793B1B209A0B006F036E /* XDGestureRecognizer.m in Sources */,
-				9EFB7D311B22BBEC006F036E /* XDMotionManager.m in Sources */,
+				56503A9A1B2F263A0066779A /* XDGestureManager.m in Sources */,
+				9E3A31251B3C2FE0006A7E5E /* XDUsersTableView.m in Sources */,
+				56503A9D1B2F263A0066779A /* XDMotionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,20 +480,40 @@
 		9ED6AF251B205C8D00D97675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = XDInteraction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		9ED6AF261B205C8D00D97675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = XDInteraction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
