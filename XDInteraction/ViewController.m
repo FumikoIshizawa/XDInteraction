@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -77,12 +77,29 @@
     [self receiveUsersMessageWith:[dict objectForKey:@"names"]
                       withDevices:[dict objectForKey:@"devices"]];
   } else if ([type isEqualToString:@"error"]) {
-//    NSLog(@"error recieved");
     NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
   } else if ([type isEqualToString:@"swipe"]) {
-//    NSLog(@"swipe");
+    if ([[dict objectForKey:@"detail"] isEqualToString:@"Up"]) {
+      [outputView scrollDownByChange:@"5"];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Down"]) {
+      [outputView scrollUpByChange:@"5" ];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Left"]) {
+      [outputView goForwardPage];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Right"]) {
+      [outputView goBackPage];
+    }
   } else if ([type isEqualToString:@"key"]) {
-//    NSLog(@"key");
+    [outputView updateMousePositionByChangeX:@"2"
+                                     changeY:@"4"];
+  } else if ([type isEqualToString:@"mouse"]) {
+    [outputView updateMousePositionByChangeX:[dict objectForKey:@"X"]
+                                     changeY:[dict objectForKey:@"Y"]];
+  } else if ([type isEqualToString:@"click"]) {
+    if ([[dict objectForKey:@"detail"] isEqualToString:@"single"]) {
+      [outputView handleSingleClick];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"double"]) {
+      
+    }
   }
 }
 
