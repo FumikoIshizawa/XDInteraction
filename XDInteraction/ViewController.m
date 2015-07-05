@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -176,6 +176,41 @@
   if (![jsonMessage.myName isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
     jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
   }
+}
+
+#pragma -
+#pragma mark tapSender
+- (void)singleTapSender {
+  NSString *message = [jsonMessage detectedTap:@"single"];
+  [web_socket send:message];
+  NSLog(@"singleTapped");
+}
+
+- (void)doubleTapSender {
+  NSString *message = [jsonMessage detectedTap:@"double"];
+  [web_socket send:message];
+  NSLog(@"doubleTapped");
+}
+#pragma -
+#pragma mark
+- (void)pinchSender:(CGFloat)scale {
+  NSString *message;
+  if(scale >= 1.0f){
+    NSLog(@"Pinching IN: %f", scale);
+    message = [jsonMessage detectedPinch:@"in"];
+  }
+  else{
+    NSLog(@"Pinching OUT: %f", scale);
+    message = [jsonMessage detectedPinch:@"out"];
+  }
+  [web_socket send:message];
+}
+
+#pragma -
+#pragma mark
+- (void)motionSender:(NSString *)motion {
+  NSString *message = [jsonMessage detectedGyro:motion];
+  [web_socket send:message];
 }
 
 @end

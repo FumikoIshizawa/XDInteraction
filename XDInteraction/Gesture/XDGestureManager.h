@@ -16,6 +16,11 @@
 - (void)swipeDownSender;
 - (void)swipeRightSender;
 
+- (void)singleTapSender;
+- (void)doubleTapSender;
+
+-(void)pinchSender:(CGFloat)scale;
+
 @end
 
 @interface XDGestureManager : NSObject <UIGestureRecognizerDelegate>
