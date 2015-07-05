@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -80,8 +80,10 @@
     NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
   } else if ([type isEqualToString:@"swipe"]) {
     if ([[dict objectForKey:@"detail"] isEqualToString:@"Up"]) {
+      // 5 tmp
       [outputView scrollDownByChange:@"5"];
     } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Down"]) {
+      // 5 tmp
       [outputView scrollUpByChange:@"5" ];
     } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Left"]) {
       [outputView goForwardPage];
@@ -89,15 +91,22 @@
       [outputView goBackPage];
     }
   } else if ([type isEqualToString:@"key"]) {
+    // debug
     [outputView updateMousePositionByChangeX:@"2"
                                      changeY:@"4"];
-  } else if ([type isEqualToString:@"mouse"]) {
-    [outputView updateMousePositionByChangeX:[dict objectForKey:@"X"]
-                                     changeY:[dict objectForKey:@"Y"]];
-  } else if ([type isEqualToString:@"click"]) {
+  } else if ([type isEqualToString:@"gyro"]) {
+//    [outputView updateMousePositionByChangeX:[dict objectForKey:@"X"]
+//                                     changeY:[dict objectForKey:@"Y"]];
+  } else if ([type isEqualToString:@"tap"]) {
     if ([[dict objectForKey:@"detail"] isEqualToString:@"single"]) {
       [outputView handleSingleClick];
     } else if ([[dict objectForKey:@"detail"] isEqualToString:@"double"]) {
+      
+    }
+  } else if ([type isEqualToString:@"pinch"]) {
+    if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
+      
+    } else if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
       
     }
   }
@@ -144,7 +153,9 @@
   return YES;
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
 {
   NSString *message = [jsonMessage capturedKey:string];
   [web_socket send:message];
@@ -173,7 +184,8 @@
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  if (![jsonMessage.myName isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+  if (![jsonMessage.myName
+        isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
     jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
   }
 }

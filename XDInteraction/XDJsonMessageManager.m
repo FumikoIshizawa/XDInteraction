@@ -79,8 +79,8 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"key" forKey:@"command"];
   [dict setObject:capturedKey forKey:@"detail"];
-  [dict setObject:endUser forKey:@"dst"];
-  [dict setObject:myName forKey:@"origin"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
@@ -123,14 +123,8 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"tap" forKey:@"command"];
   [dict setObject:tapType forKey:@"detail"];
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"dst"];
-  [dict setObject:@"iOS Simulator" forKey:@"origin"];
-#else
-  [dict setObject:@"iOS Simulator" forKey:@"dst"];
-  [dict setObject:@"myiOS" forKey:@"origin"];
-  
-#endif
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
@@ -151,14 +145,8 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"pinch" forKey:@"command"];
   [dict setObject:pinchType forKey:@"detail"];
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"dst"];
-  [dict setObject:@"iOS Simulator" forKey:@"origin"];
-#else
-  [dict setObject:@"iOS Simulator" forKey:@"dst"];
-  [dict setObject:@"myiOS" forKey:@"origin"];
-  
-#endif
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
@@ -180,14 +168,8 @@
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"gyro" forKey:@"command"];
   [dict setObject:gyroDirection forKey:@"detail"];
-#if TARGET_IPHONE_SIMULATOR
-  [dict setObject:@"myiOS" forKey:@"dst"];
-  [dict setObject:@"iOS Simulator" forKey:@"origin"];
-#else
-  [dict setObject:@"iOS Simulator" forKey:@"dst"];
-  [dict setObject:@"myiOS" forKey:@"origin"];
-  
-#endif
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
