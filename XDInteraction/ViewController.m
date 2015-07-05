@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -77,12 +77,38 @@
     [self receiveUsersMessageWith:[dict objectForKey:@"names"]
                       withDevices:[dict objectForKey:@"devices"]];
   } else if ([type isEqualToString:@"error"]) {
-//    NSLog(@"error recieved");
     NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
   } else if ([type isEqualToString:@"swipe"]) {
-//    NSLog(@"swipe");
+    if ([[dict objectForKey:@"detail"] isEqualToString:@"Up"]) {
+      // 5 tmp
+      [outputView scrollDownByChange:@"5"];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Down"]) {
+      // 5 tmp
+      [outputView scrollUpByChange:@"5" ];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Left"]) {
+      [outputView goForwardPage];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"Right"]) {
+      [outputView goBackPage];
+    }
   } else if ([type isEqualToString:@"key"]) {
-//    NSLog(@"key");
+    // debug
+    [outputView updateMousePositionByChangeX:@"2"
+                                     changeY:@"4"];
+  } else if ([type isEqualToString:@"gyro"]) {
+//    [outputView updateMousePositionByChangeX:[dict objectForKey:@"X"]
+//                                     changeY:[dict objectForKey:@"Y"]];
+  } else if ([type isEqualToString:@"tap"]) {
+    if ([[dict objectForKey:@"detail"] isEqualToString:@"single"]) {
+      [outputView handleSingleClick];
+    } else if ([[dict objectForKey:@"detail"] isEqualToString:@"double"]) {
+      
+    }
+  } else if ([type isEqualToString:@"pinch"]) {
+    if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
+      
+    } else if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
+      
+    }
   }
 }
 
@@ -127,7 +153,9 @@
   return YES;
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
 {
   NSString *message = [jsonMessage capturedKey:string];
   [web_socket send:message];
@@ -156,9 +184,45 @@
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  if (![jsonMessage.myName isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+  if (![jsonMessage.myName
+        isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
     jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
   }
+}
+
+#pragma -
+#pragma mark tapSender
+- (void)singleTapSender {
+  NSString *message = [jsonMessage detectedTap:@"single"];
+  [web_socket send:message];
+  NSLog(@"singleTapped");
+}
+
+- (void)doubleTapSender {
+  NSString *message = [jsonMessage detectedTap:@"double"];
+  [web_socket send:message];
+  NSLog(@"doubleTapped");
+}
+#pragma -
+#pragma mark
+- (void)pinchSender:(CGFloat)scale {
+  NSString *message;
+  if(scale >= 1.0f){
+    NSLog(@"Pinching IN: %f", scale);
+    message = [jsonMessage detectedPinch:@"in"];
+  }
+  else{
+    NSLog(@"Pinching OUT: %f", scale);
+    message = [jsonMessage detectedPinch:@"out"];
+  }
+  [web_socket send:message];
+}
+
+#pragma -
+#pragma mark
+- (void)motionSender:(NSString *)motion {
+  NSString *message = [jsonMessage detectedGyro:motion];
+  [web_socket send:message];
 }
 
 @end

@@ -53,14 +53,13 @@
   [dict setObject:@"iOS Simulator" forKey:@"name"];
   [dict setObject:@"ios_sim" forKey:@"device"];
   self.myName = @"iOS Simulator";
-
 #else
   [dict setObject:@"open" forKey:@"type"];
   [dict setObject:@"myiOS" forKey:@"name"];
   [dict setObject:@"ios_dev" forKey:@"device"];
   self.myName = @"myiOS";
 #endif
-
+  
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
                                                    error:&error];
@@ -77,12 +76,11 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"key" forKey:@"command"];
   [dict setObject:capturedKey forKey:@"detail"];
-  [dict setObject:endUser forKey:@"dst"];
-  [dict setObject:myName forKey:@"origin"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict
                                                  options:NSJSONWritingPrettyPrinted
@@ -100,7 +98,6 @@
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
-  
   [dict setObject:@"com" forKey:@"type"];
   [dict setObject:@"swipe" forKey:@"command"];
   [dict setObject:swipeDirection forKey:@"detail"];
@@ -117,6 +114,73 @@
                                                        withString:@""];
    
    return json;
-   }
-   
+}
+
+- (NSString *)detectedTap:(NSString *)tapType {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"tap" forKey:@"command"];
+  [dict setObject:tapType forKey:@"detail"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"%@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
+- (NSString *)detectedPinch:(NSString *)pinchType {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"pinch" forKey:@"command"];
+  [dict setObject:pinchType forKey:@"detail"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"%@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
+- (NSString *)detectedGyro:(NSString *)gyroDirection {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  
+  [dict setObject:@"com" forKey:@"type"];
+  [dict setObject:@"gyro" forKey:@"command"];
+  [dict setObject:gyroDirection forKey:@"detail"];
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"%@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
 @end

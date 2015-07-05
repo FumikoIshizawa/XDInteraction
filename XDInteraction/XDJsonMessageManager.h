@@ -14,6 +14,9 @@
 - (NSString *)jsonInit;
 - (NSString *)capturedKey:(NSString *)capturedKey;
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;
+- (NSString *)detectedTap:(NSString *)tapType;
+- (NSString *)detectedPinch:(NSString *)pinchType;
+- (NSString *)detectedGyro:(NSString *)gyroDirection;
 
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;

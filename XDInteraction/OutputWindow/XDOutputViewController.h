@@ -13,5 +13,18 @@
 @interface XDOutputViewController : UIViewController
 
 - (id)init;
+- (void)updateMousePositionByChangeX:(NSString *)changeX changeY:(NSString *)changeY;
+- (void)scrollUpByChange:(NSString *)changeUp;
+- (void)scrollDownByChange:(NSString *)changeDown;
+- (void)goBackPage;
+- (void)goForwardPage;
+- (void)handleSingleClick;
+
+@property (nonatomic) NSInteger positionX;
+@property (nonatomic) NSInteger positionY;
+@property (nonatomic) UIImageView *mouse;
+@property (nonatomic) UIWebView *webView1;
+@property (nonatomic) NSURL *currentURL;
+@property (nonatomic) NSInteger currentPosition;
 
 @end
