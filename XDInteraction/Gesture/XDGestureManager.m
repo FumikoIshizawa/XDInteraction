@@ -55,7 +55,7 @@
     doubleTap.numberOfTapsRequired = 2;
     [singleTap requireGestureRecognizerToFail:doubleTap]; // Activate only when doubleTap fails
     [view addGestureRecognizer:doubleTap];
-   
+    
     pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchHandler:)];
     [view addGestureRecognizer:pinch];
   }

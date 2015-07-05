@@ -7,34 +7,48 @@
 //
 
 #import "ViewController.h"
-#import "XDJsonMessageManager.h"
 #include "TargetConditionals.h"
 
 @interface ViewController (){
   SRWebSocket *web_socket;
-  
 }
 
 @end
 
 @implementation ViewController
 
-@synthesize gestureRecognizer;
+@synthesize gestureUIComponents;
+@synthesize jsonMessage;
+@synthesize outputView;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  gestureRecognizer = [[XDGestureRecognizer alloc] initWithView:self.view];
-
-  gestureRecognizer.keyLogManager.textField.delegate = self;
-  gestureRecognizer.gestureManager.delegate = self;
-  gestureRecognizer.motionManager.delegate = self;
+  self.jsonTextview.editable = NO;
   
+  jsonMessage = [[XDJsonMessageManager alloc] init];
+  outputView = [[XDOutputViewController alloc] init];
+  WSUIButton *ioButton =
+  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
+                                               40,
+                                               60,
+                                               60)
+                          withTitle:@"input"];
+  [ioButton addTarget:self
+               action:@selector(ioButtonTapped:)
+     forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:ioButton];
+  
+  gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
+
+  gestureUIComponents.keyLogManager.textField.delegate = self;
+  gestureUIComponents.gestureManager.delegate = self;
+  gestureUIComponents.tableView.delegate = self;
   
 #if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:10001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.3:10001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.67
 #endif
   
   [web_socket setDelegate:self];
@@ -42,31 +56,52 @@
   // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)webSocketDidOpen:(SRWebSocket *)webSocket{
-  XDJsonMessageManager *message = [[XDJsonMessageManager alloc] init];
-  [web_socket send:message.jsonInit];
-  
-  // Begin 10sec-interval pinging function
-  NSTimer *pingTimer = [NSTimer scheduledTimerWithTimeInterval:10.0f
-                                                        target:self
-                                                      selector:@selector(firePing:)
-                                                      userInfo:nil
-                                                       repeats:YES];
-  [pingTimer fire];
+- (void)ioButtonTapped:(UIButton *)button {
+  [self presentViewController:outputView animated:YES completion:^{}];
 }
 
-- (void)firePing:(NSTimer *)timer {
-  NSLog(@"send a Ping");
-  [web_socket sendPing:nil];
-  
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket{
+  [web_socket send:jsonMessage.jsonInit];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
-  NSLog(@"%@", [message description]);
   [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:message]];
-  [self.jsonTextview setText:[self.jsonTextview.text stringByAppendingString:@"\n"]];
   NSRange range = NSMakeRange(self.jsonTextview .text.length - 1, 1);
   [self.jsonTextview scrollRangeToVisible:range];
+  
+  NSMutableDictionary *dict = [jsonMessage parseJsonMessage:message];
+  NSString *type = [dict objectForKey:@"type"];
+  
+  // Add new type!
+  if ([type isEqualToString:@"users"]) {
+    [self receiveUsersMessageWith:[dict objectForKey:@"names"]
+                      withDevices:[dict objectForKey:@"devices"]];
+  } else if ([type isEqualToString:@"error"]) {
+//    NSLog(@"error recieved");
+    NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
+  } else if ([type isEqualToString:@"swipe"]) {
+//    NSLog(@"swipe");
+  } else if ([type isEqualToString:@"key"]) {
+//    NSLog(@"key");
+  }
+}
+
+//When receiving type "users", please call this
+- (void)receiveUsersMessageWith:(NSArray *)names
+                    withDevices:(NSArray *)devices {
+  if ([names indexOfObject:jsonMessage.endUser] == NSNotFound
+          && ![jsonMessage.endUser isEqualToString:@"no user"]) {
+    UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:@"User Lost"
+                                            message:@"Please Select endUser."
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {}]];
+    [self presentViewController:alertController animated:YES completion:nil];
+  }
+  [gestureUIComponents.tableView updateTableViewWith:names
+                                         withDevices:devices];
 }
 
 #pragma mark -
@@ -84,59 +119,58 @@
 
 #pragma UITextFiled
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self.gestureRecognizer.keyLogManager endEditing:YES];
+  [self.gestureUIComponents.keyLogManager endEditing:YES];
   NSLog(@"%@", textField.text);
   textField.text = @"";
   
+  [web_socket sendPing:nil];
   return YES;
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage capturedKey:string];
   [web_socket send:message];
   
   return YES;
 }
 
-#pragma -
-#pragma mark swipeSender
+#pragma XDGestureDelegate
 - (void)swipeLeftSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Left"];
   [web_socket send:message];
 }
 
 - (void)swipeRightSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Right"];
-  [web_socket send:message];
-}
+  [web_socket send:message];}
 
 - (void)swipeUpSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Up"];
-  [web_socket send:message];
-}
+  [web_socket send:message];}
 
 - (void)swipeDownSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedSwipe:@"Down"];
-  [web_socket send:message];
+  [web_socket send:message];}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  if (![jsonMessage.myName isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+    jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
+  }
 }
+
 
 #pragma -
 #pragma mark tapSender
 - (void)singleTapSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedTap:@"single"];
   [web_socket send:message];
   NSLog(@"singleTapped");
 }
 
 - (void)doubleTapSender {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedTap:@"double"];
   [web_socket send:message];
   NSLog(@"doubleTapped");
@@ -144,7 +178,6 @@
 #pragma -
 #pragma mark
 - (void)pinchSender:(CGFloat)scale {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message;
   if(scale >= 1.0f){
     NSLog(@"Pinching IN: %f", scale);
@@ -152,7 +185,7 @@
   }
   else{
     NSLog(@"Pinching OUT: %f", scale);
-   message = [jsonMessage detectedPinch:@"out"];
+    message = [jsonMessage detectedPinch:@"out"];
   }
   [web_socket send:message];
 }
@@ -160,7 +193,6 @@
 #pragma -
 #pragma mark
 - (void)motionSender:(NSString *)motion {
-  XDJsonMessageManager *jsonMessage = [[XDJsonMessageManager alloc] init];
   NSString *message = [jsonMessage detectedGyro:motion];
   [web_socket send:message];
 }

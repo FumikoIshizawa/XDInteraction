@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		562F78221B457D51007A2F3D /* XDOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562F78211B457D51007A2F3D /* XDOutputViewController.m */; };
 		56503A9A1B2F263A0066779A /* XDGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A8D1B2F263A0066779A /* XDGestureManager.m */; };
-		56503A9B1B2F263A0066779A /* XDGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A8F1B2F263A0066779A /* XDGestureRecognizer.m */; };
 		56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A911B2F263A0066779A /* XDKeyLogManager.m */; };
 		56503A9D1B2F263A0066779A /* XDMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A931B2F263A0066779A /* XDMotionManager.m */; };
 		56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503A971B2F263A0066779A /* SRWebSocket.m */; };
@@ -38,10 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		562F78201B457D51007A2F3D /* XDOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDOutputViewController.h; sourceTree = "<group>"; };
+		562F78211B457D51007A2F3D /* XDOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDOutputViewController.m; sourceTree = "<group>"; };
 		56503A8C1B2F263A0066779A /* XDGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureManager.h; sourceTree = "<group>"; };
 		56503A8D1B2F263A0066779A /* XDGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureManager.m; sourceTree = "<group>"; };
-		56503A8E1B2F263A0066779A /* XDGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureRecognizer.h; sourceTree = "<group>"; };
-		56503A8F1B2F263A0066779A /* XDGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureRecognizer.m; sourceTree = "<group>"; };
 		56503A901B2F263A0066779A /* XDKeyLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDKeyLogManager.h; sourceTree = "<group>"; };
 		56503A911B2F263A0066779A /* XDKeyLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDKeyLogManager.m; sourceTree = "<group>"; };
 		56503A921B2F263A0066779A /* XDMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMotionManager.h; sourceTree = "<group>"; };
@@ -94,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		562F781F1B457D51007A2F3D /* OutputWindow */ = {
+			isa = PBXGroup;
+			children = (
+				562F78201B457D51007A2F3D /* XDOutputViewController.h */,
+				562F78211B457D51007A2F3D /* XDOutputViewController.m */,
+			);
+			path = OutputWindow;
+			sourceTree = "<group>";
+		};
 		564854401B255CFA0012CE1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +119,6 @@
 			children = (
 				56503A8C1B2F263A0066779A /* XDGestureManager.h */,
 				56503A8D1B2F263A0066779A /* XDGestureManager.m */,
-				56503A8E1B2F263A0066779A /* XDGestureRecognizer.h */,
-				56503A8F1B2F263A0066779A /* XDGestureRecognizer.m */,
 				56503A901B2F263A0066779A /* XDKeyLogManager.h */,
 				56503A911B2F263A0066779A /* XDKeyLogManager.m */,
 				56503A921B2F263A0066779A /* XDMotionManager.h */,
@@ -156,6 +163,7 @@
 		9ED6AF031B205C8C00D97675 /* XDInteraction */ = {
 			isa = PBXGroup;
 			children = (
+				562F781F1B457D51007A2F3D /* OutputWindow */,
 				56503A941B2F263A0066779A /* Network */,
 				56503A8B1B2F263A0066779A /* Gesture */,
 				9ED6AF081B205C8C00D97675 /* AppDelegate.h */,
@@ -298,12 +306,12 @@
 			files = (
 				56503AA21B2F26810066779A /* ViewController.m in Sources */,
 				56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */,
-				56503A9B1B2F263A0066779A /* XDGestureRecognizer.m in Sources */,
 				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
 				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
 				56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */,
 				9ED6AF071B205C8C00D97675 /* main.m in Sources */,
+				562F78221B457D51007A2F3D /* XDOutputViewController.m in Sources */,
 				56503A9A1B2F263A0066779A /* XDGestureManager.m in Sources */,
 				56503A9D1B2F263A0066779A /* XDMotionManager.m in Sources */,
 			);

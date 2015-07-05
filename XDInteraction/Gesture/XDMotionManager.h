@@ -9,14 +9,8 @@
 #import <CoreMotion/CoreMotion.h>
 #import <Foundation/Foundation.h>
 
-@protocol XDMotionManagerDelegate <NSObject>
-
-- (void)motionSender:(NSString *)motion;
-
-@end
-
 @interface XDMotionManager : NSObject 
-@property (nonatomic, assign) id<XDMotionManagerDelegate> delegate;
+
 - (id)initWith;
-- (void)motionHandler;
+
 @end
