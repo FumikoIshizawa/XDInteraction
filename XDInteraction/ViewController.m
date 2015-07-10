@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -94,21 +94,18 @@
     // debug
     [outputView updateMousePositionByChangeX:@"2"
                                      changeY:@"4"];
-  } else if ([type isEqualToString:@"gyro"]) {
+  } else if ([type isEqualToString:@"point"]) {
+// TODO: implement :)
 //    [outputView updateMousePositionByChangeX:[dict objectForKey:@"X"]
 //                                     changeY:[dict objectForKey:@"Y"]];
-  } else if ([type isEqualToString:@"tap"]) {
+  } else if ([type isEqualToString:@"click"]) {
     if ([[dict objectForKey:@"detail"] isEqualToString:@"single"]) {
       [outputView handleSingleClick];
     } else if ([[dict objectForKey:@"detail"] isEqualToString:@"double"]) {
       
     }
   } else if ([type isEqualToString:@"pinch"]) {
-    if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
-      
-    } else if ([[dict objectForKeyedSubscript:@"detail"] isEqualToString:@"in"]) {
-      
-    }
+
   }
 }
 
@@ -209,11 +206,11 @@ replacementString:(NSString *)string
   NSString *message;
   if(scale >= 1.0f){
     NSLog(@"Pinching IN: %f", scale);
-    message = [jsonMessage detectedPinch:@"in"];
+    message = [jsonMessage detectedPinch:[NSString stringWithFormat:@"%g", scale]];
   }
   else{
     NSLog(@"Pinching OUT: %f", scale);
-    message = [jsonMessage detectedPinch:@"out"];
+    message = [jsonMessage detectedPinch:[NSString stringWithFormat:@"%g", scale]];
   }
   [web_socket send:message];
 }
@@ -221,7 +218,8 @@ replacementString:(NSString *)string
 #pragma -
 #pragma mark
 - (void)motionSender:(NSString *)motion {
-  NSString *message = [jsonMessage detectedGyro:motion];
+  // TODO: xとyの変位を送信
+  NSString *message = [jsonMessage detectedGyroX:@"x" gyroY:@"y"];
   [web_socket send:message];
 }
 

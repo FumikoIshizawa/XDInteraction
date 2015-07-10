@@ -16,7 +16,7 @@
 - (NSString *)detectedSwipe:(NSString *)swipeDirection;
 - (NSString *)detectedTap:(NSString *)tapType;
 - (NSString *)detectedPinch:(NSString *)pinchType;
-- (NSString *)detectedGyro:(NSString *)gyroDirection;
+- (NSString *)detectedGyroX:(NSString *)x gyroY:(NSString *)y;
 
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;

@@ -121,7 +121,7 @@
   NSError *error = nil;
   
   [dict setObject:@"com" forKey:@"type"];
-  [dict setObject:@"tap" forKey:@"command"];
+  [dict setObject:@"click" forKey:@"command"];
   [dict setObject:tapType forKey:@"detail"];
   [dict setObject:self.endUser forKey:@"dst"];
   [dict setObject:self.myName forKey:@"origin"];
@@ -160,14 +160,16 @@
   return json;
 }
 
-- (NSString *)detectedGyro:(NSString *)gyroDirection {
+- (NSString *)detectedGyroX:(NSString *)x
+                      gyroY:(NSString *)y {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   
   
   [dict setObject:@"com" forKey:@"type"];
-  [dict setObject:@"gyro" forKey:@"command"];
-  [dict setObject:gyroDirection forKey:@"detail"];
+  [dict setObject:@"point" forKey:@"command"];
+  [dict setObject:x forKey:@"x"];
+  [dict setObject:y forKey:@"y"];
   [dict setObject:self.endUser forKey:@"dst"];
   [dict setObject:self.myName forKey:@"origin"];
   
