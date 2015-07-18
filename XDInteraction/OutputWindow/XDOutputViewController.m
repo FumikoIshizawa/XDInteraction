@@ -103,4 +103,9 @@
   [webView1 stringByEvaluatingJavaScriptFromString:script];
 }
 
+- (void)handleDoubleClick {
+  NSString *script = [NSString stringWithFormat:@"el = document.elementFromPoint(%d,%d); document.elementById(el.id).focus();", positionX, positionY];
+  [webView1 stringByEvaluatingJavaScriptFromString:script];
+}
+
 @end

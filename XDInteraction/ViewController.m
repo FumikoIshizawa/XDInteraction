@@ -48,7 +48,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.54:5001"]]];//192.168.10.54
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -102,7 +102,7 @@
     if ([[dict objectForKey:@"detail"] isEqualToString:@"single"]) {
       [outputView handleSingleClick];
     } else if ([[dict objectForKey:@"detail"] isEqualToString:@"double"]) {
-      
+      [outputView handleDoubleClick];
     }
   } else if ([type isEqualToString:@"pinch"]) {
 

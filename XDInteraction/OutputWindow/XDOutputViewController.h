@@ -19,6 +19,7 @@
 - (void)goBackPage;
 - (void)goForwardPage;
 - (void)handleSingleClick;
+- (void)handleDoubleClick;
 
 @property (nonatomic) NSInteger positionX;
 @property (nonatomic) NSInteger positionY;
