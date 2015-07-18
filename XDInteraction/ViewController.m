@@ -20,6 +20,8 @@
 @synthesize gestureUIComponents;
 @synthesize jsonMessage;
 @synthesize outputView;
+@synthesize defineNavController;
+@synthesize defineViewController;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -28,6 +30,9 @@
   
   jsonMessage = [[XDJsonMessageManager alloc] init];
   outputView = [[XDOutputViewController alloc] init];
+  defineViewController = [[XDUsersDefineViewController alloc] init];
+  defineNavController = [[UINavigationController alloc] initWithRootViewController:defineViewController];
+
   WSUIButton *ioButton =
   [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
                                                40,
@@ -38,7 +43,18 @@
                action:@selector(ioButtonTapped:)
      forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:ioButton];
-  
+
+  WSUIButton *defineButton =
+  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 280,
+                                               40,
+                                               60,
+                                               60)
+                          withTitle:@""];
+  [defineButton addTarget:self
+               action:@selector(defineButtonTapped:)
+         forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:defineButton];
+
   gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
 
   gestureUIComponents.keyLogManager.textField.delegate = self;
@@ -58,6 +74,10 @@
 
 - (void)ioButtonTapped:(UIButton *)button {
   [self presentViewController:outputView animated:YES completion:^{}];
+}
+
+- (void)defineButtonTapped:(UIButton *)button {
+  [self presentViewController:defineNavController animated:YES completion:^{}];
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{

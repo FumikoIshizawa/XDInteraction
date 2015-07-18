@@ -44,8 +44,8 @@
     [parentView addSubview:tableView];
     
     WSUIButton *keyButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     110,
+        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 140,
+                                                     40,
                                                      60,
                                                      60)
                                 withTitle:@"keyboard"];
@@ -55,8 +55,8 @@
     [view addSubview:keyButton];
     
     WSUIButton *selectButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     180,
+        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 210,
+                                                     40,
                                                      60,
                                                      60)
                                 withTitle:@"select"];

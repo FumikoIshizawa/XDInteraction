@@ -14,6 +14,7 @@
 #import "XDJsonMessageManager.h"
 #import "XDGestureManager.h"
 #import "XDOutputViewController.h"
+#import "XDInteraction-Swift.h"
 
 @interface ViewController : UIViewController <SRWebSocketDelegate,
                                               UITextFieldDelegate,
@@ -24,6 +25,8 @@
 
 @property (nonatomic) XDGestureUIComponents *gestureUIComponents;
 @property (nonatomic) XDOutputViewController *outputView;
+@property (nonatomic) UINavigationController *defineNavController;
+@property (nonatomic) XDUsersDefineViewController *defineViewController;
 @property (nonatomic) XDJsonMessageManager *jsonMessage;
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextview;
 
