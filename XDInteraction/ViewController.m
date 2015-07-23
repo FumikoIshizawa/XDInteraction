@@ -22,6 +22,7 @@
 @synthesize outputView;
 @synthesize defineNavController;
 @synthesize defineViewController;
+@synthesize model;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -32,6 +33,8 @@
   outputView = [[XDOutputViewController alloc] init];
   defineViewController = [[XDUsersDefineViewController alloc] init];
   defineNavController = [[UINavigationController alloc] initWithRootViewController:defineViewController];
+  model = [[XDUserDefineModel alloc] init];
+  [defineViewController prepareForUse:model];
 
   WSUIButton *ioButton =
   [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,

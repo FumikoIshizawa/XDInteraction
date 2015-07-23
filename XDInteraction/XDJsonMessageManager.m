@@ -13,6 +13,7 @@
 
 @synthesize endUser;
 @synthesize myName;
+@synthesize model;
 
 - (id)init {
   self = [super init];

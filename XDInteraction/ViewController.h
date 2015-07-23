@@ -29,6 +29,7 @@
 @property (nonatomic) XDUsersDefineViewController *defineViewController;
 @property (nonatomic) XDJsonMessageManager *jsonMessage;
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextview;
+@property (nonatomic) XDUserDefineModel *model;
 
 @end
 

@@ -31,6 +31,7 @@
     motionManager = [[XDMotionManager alloc] initWith];
     keyLogManager = [[XDKeyLogManager alloc] initWithView:view];
     tableView = [[XDUsersTableView alloc] init];
+
     _keyLogOpend = NO;
     _tableViewOpend = NO;
     view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];

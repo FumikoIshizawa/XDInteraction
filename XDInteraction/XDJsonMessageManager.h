@@ -20,5 +20,6 @@
 
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;
+@property (nonatomic) XDUserDefineModel *model;
 
 @end
