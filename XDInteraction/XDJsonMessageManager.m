@@ -74,12 +74,15 @@
 }
 
 - (NSString *)getJSONMessageWithType:(NSString *)type {
+  NSInteger actionType = [model getAction:type];
+  if (actionType == NoGesture) {
+    return nil;
+  }
+
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
   NSError *error = nil;
   [dict setObject:@"com" forKey:@"type"];
   NSString *detail;
-
-  NSInteger actionType = [model getAction:type];
 
   switch (actionType) {
     case ScrollUp:

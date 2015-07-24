@@ -28,12 +28,6 @@ typedef NS_ENUM(NSInteger, actionType) {
 - (NSString *)jsonInit;
 - (NSString *)getJSONMessageWithType:(NSString *)type;
 
-- (NSString *)capturedKey:(NSString *)capturedKey;
-- (NSString *)detectedSwipe:(NSString *)swipeDirection;
-- (NSString *)detectedTap:(NSString *)tapType;
-- (NSString *)detectedPinch:(NSString *)pinchType;
-- (NSString *)detectedGyroX:(NSString *)x gyroY:(NSString *)y;
-
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;
 @property (nonatomic) XDUserDefineModel *model;

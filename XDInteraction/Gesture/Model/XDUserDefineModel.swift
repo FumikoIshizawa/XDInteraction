@@ -82,24 +82,4 @@ class XDUserDefineModel: NSObject {
     return userDefineDictionary[UserDefineType(rawValue: gestureType)!]!.hashValue
   }
 
-  func checkSameActionType() -> Bool {
-    var result:Bool = false
-
-    for (defineType, actionType) in userDefineDictionary {
-      for (fdefineType, factionType) in userDefineDictionary {
-        if defineType == fdefineType {
-          continue
-        }
-        if actionType == factionType {
-          result = true
-          break
-        }
-      }
-      if result {
-        break
-      }
-    }
-
-    return result
-  }
 }

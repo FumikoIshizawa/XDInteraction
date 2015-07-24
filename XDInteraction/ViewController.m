@@ -63,11 +63,12 @@
   gestureUIComponents.keyLogManager.textField.delegate = self;
   gestureUIComponents.gestureManager.delegate = self;
   gestureUIComponents.tableView.delegate = self;
+  gestureUIComponents.motionManager.delegate = self;
   
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.11.2:5001"]]];//192.168.10.54
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.72:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -177,29 +178,44 @@
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
-  NSString *message = [jsonMessage capturedKey:string];
-  [web_socket send:message];
-  
+//  NSString *message = [jsonMessage capturedKey:string];
+//  [web_socket send:message];
+
   return YES;
 }
 
 #pragma XDGestureDelegate
 - (void)swipeLeftSender {
-  NSString *message = [jsonMessage detectedSwipe:@"Left"];
-  [web_socket send:message];
+  NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeLeft"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: SwipeLeft");
 }
 
 - (void)swipeRightSender {
-  NSString *message = [jsonMessage detectedSwipe:@"Right"];
-  [web_socket send:message];}
+  NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeRight"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: SwipeRight");
+}
 
 - (void)swipeUpSender {
-  NSString *message = [jsonMessage detectedSwipe:@"Up"];
-  [web_socket send:message];}
+  NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeUp"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: SwipeUp");
+}
 
 - (void)swipeDownSender {
-  NSString *message = [jsonMessage detectedSwipe:@"Down"];
-  [web_socket send:message];}
+  NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeDown"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: SwipeDown");
+}
 
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -213,15 +229,19 @@ replacementString:(NSString *)string
 #pragma -
 #pragma mark tapSender
 - (void)singleTapSender {
-  NSString *message = [jsonMessage detectedTap:@"single"];
-  [web_socket send:message];
-  NSLog(@"singleTapped");
+  NSString *message = [jsonMessage getJSONMessageWithType:@"SingleTap"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: SingleTap");
 }
 
 - (void)doubleTapSender {
-  NSString *message = [jsonMessage detectedTap:@"double"];
-  [web_socket send:message];
-  NSLog(@"doubleTapped");
+  NSString *message = [jsonMessage getJSONMessageWithType:@"DoubleTap"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: DoubleTap");
 }
 #pragma -
 #pragma mark
@@ -229,21 +249,35 @@ replacementString:(NSString *)string
   NSString *message;
   if(scale >= 1.0f){
     NSLog(@"Pinching IN: %f", scale);
-    message = [jsonMessage detectedPinch:[NSString stringWithFormat:@"%g", scale]];
+    message = [jsonMessage getJSONMessageWithType:@"PinchIn"];
+    NSLog(@"Detected: PinchIn");
   }
   else{
     NSLog(@"Pinching OUT: %f", scale);
-    message = [jsonMessage detectedPinch:[NSString stringWithFormat:@"%g", scale]];
+    message = [jsonMessage getJSONMessageWithType:@"PinchOut"];
+    NSLog(@"Detected: PinchOut");
   }
-  [web_socket send:message];
+  if (message != nil) {
+    [web_socket send:message];
+  }
 }
 
 #pragma -
 #pragma mark
-- (void)motionSender:(NSString *)motion {
-  // TODO: xとyの変位を送信
-  NSString *message = [jsonMessage detectedGyroX:@"x" gyroY:@"y"];
-  [web_socket send:message];
+- (void)motionUpSender {
+  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroUp"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: GyroUp");
+}
+
+- (void)motionDownSender {
+  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroDown"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: GyroDown");
 }
 
 @end

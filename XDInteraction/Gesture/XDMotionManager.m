@@ -10,6 +10,7 @@
 
 @interface XDMotionManager () {
   CMMotionManager *motionManager;
+  float previousValue;
 }
 
 @end
@@ -19,14 +20,20 @@
 - (id)initWith {
   self = [super init];
   if (self) {
+    previousValue = 0.0;
     motionManager = [[CMMotionManager alloc] init];
-    motionManager.deviceMotionUpdateInterval = 1 / 2;
+    motionManager.deviceMotionUpdateInterval = 0.1;
     
     if (motionManager.deviceMotionAvailable) {
       [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
                                          withHandler:^(CMDeviceMotion *motion, NSError *error) {
-//         NSLog(@"%f, %f", motion.attitude.pitch * 180 / M_PI,
-//               motion.attitude.roll * 180 / M_PI);
+           float value = motion.attitude.pitch * 180 / M_PI;
+           if (value - previousValue > 40) {
+             [self.delegate motionUpSender];
+           } else if (previousValue - value > 40) {
+             [self.delegate motionDownSender];
+           }
+           previousValue = value;
        }];
     }
   }

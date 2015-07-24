@@ -99,6 +99,10 @@
 }
 
 - (void)pinchHandler:(UITapGestureRecognizer *)sender {
+  if (sender.state != UIGestureRecognizerStateEnded) {
+    return;
+  }
+
   if ([self.delegate respondsToSelector:@selector(pinchSender:)]) {
     CGFloat pinchScale = [(UIPinchGestureRecognizer *)sender scale];
     [self.delegate pinchSender:pinchScale];
