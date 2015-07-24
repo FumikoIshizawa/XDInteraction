@@ -22,6 +22,10 @@
 		9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */; };
 		9E3A31251B3C2FE0006A7E5E /* XDUsersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */; };
 		9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E39641B399D5F00481526 /* WSUIButton.m */; };
+		9E78C0D31B60F08A004E4075 /* XDUserDefineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78C0D21B60F08A004E4075 /* XDUserDefineModel.swift */; };
+		9EA16BD91B5AA4CA007725C5 /* XDUsersDefineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA16BD81B5AA4CA007725C5 /* XDUsersDefineViewController.swift */; };
+		9EA16BDE1B5C8222007725C5 /* UsersDefineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA16BDC1B5C8222007725C5 /* UsersDefineCell.swift */; };
+		9EA16BDF1B5C8222007725C5 /* UsersDefineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA16BDD1B5C8222007725C5 /* UsersDefineCell.xib */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
 		9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0E1B205C8C00D97675 /* Main.storyboard */; };
@@ -68,6 +72,11 @@
 		9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDUsersTableView.m; sourceTree = "<group>"; };
 		9E5E39631B399D5F00481526 /* WSUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSUIButton.h; sourceTree = "<group>"; };
 		9E5E39641B399D5F00481526 /* WSUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSUIButton.m; sourceTree = "<group>"; };
+		9E78C0D21B60F08A004E4075 /* XDUserDefineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XDUserDefineModel.swift; path = Model/XDUserDefineModel.swift; sourceTree = "<group>"; };
+		9EA16BD71B5AA4C9007725C5 /* XDInteraction-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XDInteraction-Bridging-Header.h"; path = "Gesture/XDInteraction-Bridging-Header.h"; sourceTree = "<group>"; };
+		9EA16BD81B5AA4CA007725C5 /* XDUsersDefineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XDUsersDefineViewController.swift; path = UI/XDUsersDefineViewController.swift; sourceTree = "<group>"; };
+		9EA16BDC1B5C8222007725C5 /* UsersDefineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersDefineCell.swift; path = UI/UsersDefineCell.swift; sourceTree = "<group>"; };
+		9EA16BDD1B5C8222007725C5 /* UsersDefineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UsersDefineCell.xib; path = UI/UsersDefineCell.xib; sourceTree = "<group>"; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		56503A8B1B2F263A0066779A /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
+				9E78C0D11B60EFE3004E4075 /* Model */,
 				9E3A31261B3C2FE5006A7E5E /* UI */,
 				56503A8E1B2F263A0066779A /* XDGestureUIComponents.h */,
 				56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */,
@@ -160,8 +170,19 @@
 				9E5E39641B399D5F00481526 /* WSUIButton.m */,
 				9E3A31231B3C2FE0006A7E5E /* XDUsersTableView.h */,
 				9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */,
+				9EA16BD81B5AA4CA007725C5 /* XDUsersDefineViewController.swift */,
+				9EA16BDC1B5C8222007725C5 /* UsersDefineCell.swift */,
+				9EA16BDD1B5C8222007725C5 /* UsersDefineCell.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		9E78C0D11B60EFE3004E4075 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9E78C0D21B60F08A004E4075 /* XDUserDefineModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		9ED6AEF81B205C8C00D97675 = {
@@ -193,6 +214,7 @@
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
 				56503AA01B2F26800066779A /* ViewController.h */,
 				56503AA11B2F26800066779A /* ViewController.m */,
+				9EA16BD71B5AA4C9007725C5 /* XDInteraction-Bridging-Header.h */,
 				9ED6AF0E1B205C8C00D97675 /* Main.storyboard */,
 				9ED6AF111B205C8C00D97675 /* Images.xcassets */,
 				9ED6AF131B205C8C00D97675 /* LaunchScreen.xib */,
@@ -308,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */,
+				9EA16BDF1B5C8222007725C5 /* UsersDefineCell.xib in Resources */,
 				9ED6AF151B205C8C00D97675 /* LaunchScreen.xib in Resources */,
 				9ED6AF121B205C8C00D97675 /* Images.xcassets in Resources */,
 			);
@@ -330,10 +353,13 @@
 				56503AA21B2F26810066779A /* ViewController.m in Sources */,
 				56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */,
 				56503A9B1B2F263A0066779A /* XDGestureUIComponents.m in Sources */,
+				9EA16BDE1B5C8222007725C5 /* UsersDefineCell.swift in Sources */,
 				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
 				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
+				9EA16BD91B5AA4CA007725C5 /* XDUsersDefineViewController.swift in Sources */,
 				56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */,
+				9E78C0D31B60F08A004E4075 /* XDUserDefineModel.swift in Sources */,
 				9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */,
 				9ED6AF071B205C8C00D97675 /* main.m in Sources */,
 				9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */,
@@ -462,6 +488,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -472,6 +499,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XDInteraction/Gesture/XDInteraction-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -482,6 +511,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -492,6 +522,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XDInteraction/Gesture/XDInteraction-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

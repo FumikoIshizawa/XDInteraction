@@ -31,6 +31,7 @@
     motionManager = [[XDMotionManager alloc] initWith];
     keyLogManager = [[XDKeyLogManager alloc] initWithView:view];
     tableView = [[XDUsersTableView alloc] init];
+
     _keyLogOpend = NO;
     _tableViewOpend = NO;
     view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];
@@ -40,23 +41,23 @@
     keyLogManager.transform = t2;
     tableView.transform = t2;
     
-    [parentView addSubview:keyLogManager];
+//    [parentView addSubview:keyLogManager];
     [parentView addSubview:tableView];
     
     WSUIButton *keyButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     110,
+        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 140,
+                                                     40,
                                                      60,
                                                      60)
                                 withTitle:@"keyboard"];
     [keyButton addTarget:self
                   action:@selector(keyButtonTapped:)
         forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:keyButton];
-    
+//    [view addSubview:keyButton];
+
     WSUIButton *selectButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 70,
-                                                     180,
+        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 210,
+                                                     40,
                                                      60,
                                                      60)
                                 withTitle:@"select"];

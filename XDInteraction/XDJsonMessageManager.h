@@ -7,18 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XDInteraction-Swift.h"
+
+typedef NS_ENUM(NSInteger, actionType) {
+  ScrollUp,
+  ScrollDown,
+  ZoomIn,
+  ZoomOut,
+  TextBig,
+  TextSmall,
+  NextPage,
+  NoGesture,
+};
 
 @interface XDJsonMessageManager : NSObject
 
+- initWithModel:(XDUserDefineModel *)model;
+
 - (NSMutableDictionary *)parseJsonMessage:(NSString *)jsonString;
 - (NSString *)jsonInit;
-- (NSString *)capturedKey:(NSString *)capturedKey;
-- (NSString *)detectedSwipe:(NSString *)swipeDirection;
-- (NSString *)detectedTap:(NSString *)tapType;
-- (NSString *)detectedPinch:(NSString *)pinchType;
-- (NSString *)detectedGyroX:(NSString *)x gyroY:(NSString *)y;
+- (NSString *)getJSONMessageWithType:(NSString *)type;
 
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;
+@property (nonatomic) XDUserDefineModel *model;
 
 @end
