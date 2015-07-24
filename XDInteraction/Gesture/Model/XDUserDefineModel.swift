@@ -75,7 +75,7 @@ class XDUserDefineModel: NSObject {
   }
 
   func changeInteraction(defineType: UserDefineType, actionType: ActionType) {
-    userDefineDictionary.updateValue(actionType, forKey: defineType)
+    userDefineDictionary.updateValue(actionType, forKey: defineType) 
   }
 
   func getAction(gestureType: String) -> Int {

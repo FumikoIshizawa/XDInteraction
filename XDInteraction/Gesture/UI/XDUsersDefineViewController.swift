@@ -51,7 +51,6 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
   }
 
   func changeUDInteraction(defineType: UserDefineType, selectedRow: Int) {
-    println("\(defineType.hashValue) -> \(selectedRow)")
     model.changeInteraction(defineType, actionType: ActionType(rawValue: selectedRow)!)
   }
 

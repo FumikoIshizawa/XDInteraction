@@ -50,7 +50,6 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   }
 
   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    println("row \(row)")
     pickerValue = row
     if let userDefinePickerChangedBlock = userDefinePickerChangedBlock {
       userDefinePickerChangedBlock(selectedRow: row)
