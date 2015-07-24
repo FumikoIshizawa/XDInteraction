@@ -15,7 +15,6 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   private var superTableView: UITableView!
   var defineType: UserDefineType!
   var userDefinePickerChangedBlock: ((selectedRow: Int) -> Void)?
-  private let pickerValues:NSArray = ["Scroll Up", "Scroll Down", "Zoom In", "Zoom Out", "Text Big", "Text Small", "Next Page"]
 
   func prepareForTableView(tableView: UITableView) {
     superTableView = tableView
@@ -43,11 +42,11 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   }
 
   func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return pickerValues.count
+    return ActionType.count
   }
 
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-    return pickerValues[row] as! String
+    return ActionType(rawValue: row)?.toString()
   }
 
   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

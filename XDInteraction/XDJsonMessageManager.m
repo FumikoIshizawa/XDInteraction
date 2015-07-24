@@ -15,13 +15,13 @@
 @synthesize myName;
 @synthesize model;
 
-- (id)init {
+- (id)initWithModel:(XDUserDefineModel *)mmodel {
   self = [super init];
   if (self) {
     endUser = @"no user";
     myName = @"no name";
+    self.model = mmodel;
   }
-  
   return self;
 }
 
@@ -70,6 +70,57 @@
   NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
                                                       withString:@""];
   
+  return json;
+}
+
+- (NSString *)getJSONMessageWithType:(NSString *)type {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  [dict setObject:@"com" forKey:@"type"];
+  NSString *detail;
+
+  NSInteger actionType = [model getAction:type];
+
+  switch (actionType) {
+    case ScrollUp:
+    case ScrollDown:
+      detail = (actionType == ScrollUp) ? @"up" : @"down";
+      [dict setObject:@"scroll" forKey:@"command"];
+      [dict setObject:detail forKey:@"detail"];
+      break;
+    case ZoomOut:
+    case ZoomIn:
+      detail = (actionType == ZoomOut) ? @"out" : @"in";
+      [dict setObject:@"zoom" forKey:@"command"];
+      [dict setObject:detail forKey:@"detail"];
+      break;
+    case TextBig:
+    case TextSmall:
+      detail = (actionType == TextBig) ? @"big" : @"small";
+      [dict setObject:@"text" forKey:@"command"];
+      [dict setObject:detail forKey:@"detail"];
+      break;
+    case NextPage:
+      detail = (actionType == NextPage) ? @"next" : @"back";
+      [dict setObject:@"page" forKey:@"command"];
+      [dict setObject:detail forKey:@"detail"];
+      break;
+    default:
+      break;
+  }
+
+  [dict setObject:self.endUser forKey:@"dst"];
+  [dict setObject:self.myName forKey:@"origin"];
+
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"Send: %@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+
   return json;
 }
 

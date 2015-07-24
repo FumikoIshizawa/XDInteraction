@@ -11,10 +11,14 @@ enum UserDefineType: String {
   case GyroDown = "GyroDown"
   case PinchIn = "PinchIn"
   case PinchOut = "PinchOut"
-  case ButtonA = "ButtonA"
-  case ButtonB = "ButtonB"
-  case ButtonC = "ButtonC"
-  case ButtonD = "ButtonD"
+  case SwipeUp = "SwipeUp"
+  case SwipeDown = "SwipeDown"
+  case SwipeLeft = "SwipeLeft"
+  case SwipeRight = "SwipeRight"
+  case SingleTap = "SingleTap"
+  case DoubleTap = "DoubleTap"
+
+  static let count = 10
 }
 
 enum ActionType: Int {
@@ -26,6 +30,29 @@ enum ActionType: Int {
   case TextSmall = 5
   case NextPage = 6
   case NoGesture = 7
+
+  func toString() -> String {
+    switch self {
+    case .ScrollUp:
+      return "Scroll Up"
+    case .ScrollDown:
+      return "Scroll Down"
+    case .ZoomIn:
+      return "Zoom In"
+    case .ZoomOut:
+      return "Zoom Out"
+    case .TextBig:
+      return "Text Big"
+    case .TextSmall:
+      return "Text Small"
+    case .NextPage:
+      return "Next Page"
+    default:
+      return "No Gesture"
+    }
+  }
+
+  static let count = 8
 }
 
 class XDUserDefineModel: NSObject {
@@ -37,15 +64,22 @@ class XDUserDefineModel: NSObject {
     userDefineDictionary[.GyroDown] = .ScrollDown
     userDefineDictionary[.PinchIn] = .ZoomIn
     userDefineDictionary[.PinchOut] = .ZoomOut
-    userDefineDictionary[.ButtonA] = .TextBig
-    userDefineDictionary[.ButtonB] = .TextSmall
-    userDefineDictionary[.ButtonC] = .NextPage
-    userDefineDictionary[.ButtonD] = .NoGesture
+    userDefineDictionary[.SwipeUp] = .TextBig
+    userDefineDictionary[.SwipeDown] = .TextSmall
+    userDefineDictionary[.SwipeLeft] = .NextPage
+    userDefineDictionary[.SwipeRight] = .NoGesture
+    userDefineDictionary[.SingleTap] = .NoGesture
+    userDefineDictionary[.DoubleTap] = .NoGesture
+
     super.init()
   }
 
   func changeInteraction(defineType: UserDefineType, actionType: ActionType) {
     userDefineDictionary.updateValue(actionType, forKey: defineType)
+  }
+
+  func getAction(gestureType: String) -> Int {
+    return userDefineDictionary[UserDefineType(rawValue: gestureType)!]!.hashValue
   }
 
   func checkSameActionType() -> Bool {

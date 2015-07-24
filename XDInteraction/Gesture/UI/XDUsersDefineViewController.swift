@@ -12,7 +12,6 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
   var tableView: UITableView!
   private var userDefineCell: UsersDefineCell!
   private let nameNib:String = "UsersDefineCell"
-  private let tableViewValue: NSArray = ["Gyro Up", "Gyro Down", "Pinch In", "Pinch Out", "Button A", "Button B", "Button C", "Button D"]
   var model: XDUserDefineModel!
 
   func prepareForUse(model: XDUserDefineModel) {
@@ -62,65 +61,107 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return tableViewValue.count
+    return UserDefineType.count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell:UsersDefineCell = tableView.dequeueReusableCellWithIdentifier(nameNib, forIndexPath: indexPath) as! UsersDefineCell
-    var title: String = ""
+
     switch indexPath.row {
     case 0:
-      title = tableViewValue[0] as! String
+      cell.title = UserDefineType.GyroUp.rawValue
       cell.defineType = .GyroUp
+      if let row = model.userDefineDictionary[.GyroUp]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.GyroUp, selectedRow: selectedRow)
       }
     case 1:
-      title = tableViewValue[1] as! String
+      cell.title = UserDefineType.GyroDown.rawValue
       cell.defineType = .GyroDown
+      if let row = model.userDefineDictionary[.GyroDown]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.GyroDown, selectedRow: selectedRow)
       }
     case 2:
-      title = tableViewValue[2] as! String
+      cell.title = UserDefineType.PinchIn.rawValue
       cell.defineType = .PinchIn
+      if let row = model.userDefineDictionary[.PinchIn]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.PinchIn, selectedRow: selectedRow)
       }
     case 3:
-      title = tableViewValue[3] as! String
+      cell.title = UserDefineType.PinchOut.rawValue
       cell.defineType = .PinchOut
+      if let row = model.userDefineDictionary[.PinchOut]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.PinchOut, selectedRow: selectedRow)
       }
     case 4:
-      title = tableViewValue[4] as! String
-      cell.defineType = .ButtonA
+      cell.title = UserDefineType.SwipeUp.rawValue
+      cell.defineType = .SwipeUp
+      if let row = model.userDefineDictionary[.SwipeUp]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.ButtonA, selectedRow: selectedRow)
+        self.changeUDInteraction(.SwipeUp, selectedRow: selectedRow)
       }
     case 5:
-      title = tableViewValue[5] as! String
-      cell.defineType = .ButtonB
+      cell.title = UserDefineType.SwipeDown.rawValue
+      cell.defineType = .SwipeDown
+      if let row = model.userDefineDictionary[.SwipeDown]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.ButtonB, selectedRow: selectedRow)
+        self.changeUDInteraction(.SwipeDown, selectedRow: selectedRow)
       }
     case 6:
-      title = tableViewValue[6] as! String
-      cell.defineType = .ButtonC
+      cell.title = UserDefineType.SwipeLeft.rawValue
+      cell.defineType = .SwipeLeft
+      if let row = model.userDefineDictionary[.SwipeLeft]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.ButtonC, selectedRow: selectedRow)
+        self.changeUDInteraction(.SwipeLeft, selectedRow: selectedRow)
       }
     case 7:
-      title = tableViewValue[7] as! String
-      cell.defineType = .ButtonD
+      cell.title = UserDefineType.SwipeRight.rawValue
+      cell.defineType = .SwipeRight
+      if let row = model.userDefineDictionary[.SwipeRight]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.ButtonD, selectedRow: selectedRow)
+        self.changeUDInteraction(.SwipeRight, selectedRow: selectedRow)
+      }
+    case 8:
+      cell.title = UserDefineType.SingleTap.rawValue
+      cell.defineType = .SingleTap
+      if let row = model.userDefineDictionary[.SingleTap]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
+      cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
+        self.changeUDInteraction(.SingleTap, selectedRow: selectedRow)
+      }
+    case 9:
+      cell.title = UserDefineType.DoubleTap.rawValue
+      cell.defineType = .DoubleTap
+      if let row = model.userDefineDictionary[.DoubleTap]?.rawValue {
+        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
+      }
+      cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
+        self.changeUDInteraction(.DoubleTap, selectedRow: selectedRow)
       }
     default:
       break
     }
-    cell.title = title
+
     return cell
   }
 

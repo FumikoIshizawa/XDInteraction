@@ -28,13 +28,13 @@
   [super viewDidLoad];
   
   self.jsonTextview.editable = NO;
-  
-  jsonMessage = [[XDJsonMessageManager alloc] init];
+
   outputView = [[XDOutputViewController alloc] init];
   defineViewController = [[XDUsersDefineViewController alloc] init];
   defineNavController = [[UINavigationController alloc] initWithRootViewController:defineViewController];
   model = [[XDUserDefineModel alloc] init];
   [defineViewController prepareForUse:model];
+  jsonMessage = [[XDJsonMessageManager alloc] initWithModel:model];
 
   WSUIButton *ioButton =
   [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
@@ -76,7 +76,7 @@
 }
 
 - (void)ioButtonTapped:(UIButton *)button {
-  [self presentViewController:outputView animated:YES completion:^{}];
+//  [self presentViewController:outputView animated:YES completion:^{}];
 }
 
 - (void)defineButtonTapped:(UIButton *)button {

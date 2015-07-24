@@ -41,7 +41,7 @@
     keyLogManager.transform = t2;
     tableView.transform = t2;
     
-    [parentView addSubview:keyLogManager];
+//    [parentView addSubview:keyLogManager];
     [parentView addSubview:tableView];
     
     WSUIButton *keyButton =
@@ -53,8 +53,8 @@
     [keyButton addTarget:self
                   action:@selector(keyButtonTapped:)
         forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:keyButton];
-    
+//    [view addSubview:keyButton];
+
     WSUIButton *selectButton =
         [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 210,
                                                      40,
