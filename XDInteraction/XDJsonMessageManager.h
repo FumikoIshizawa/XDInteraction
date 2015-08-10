@@ -17,7 +17,13 @@ typedef NS_ENUM(NSInteger, actionType) {
   TextBig,
   TextSmall,
   NextPage,
+  SwitchWindow,
   NoGesture,
+};
+
+typedef NS_ENUM(NSInteger, Window) {
+  Window1,
+  Window2,
 };
 
 @interface XDJsonMessageManager : NSObject
@@ -31,5 +37,6 @@ typedef NS_ENUM(NSInteger, actionType) {
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;
 @property (nonatomic) XDUserDefineModel *model;
+@property (nonatomic) Window window;
 
 @end
