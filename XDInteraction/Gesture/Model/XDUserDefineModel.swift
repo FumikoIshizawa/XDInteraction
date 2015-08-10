@@ -30,6 +30,7 @@ enum ActionType: Int {
   case TextSmall = 5
   case NextPage = 6
   case NoGesture = 7
+  case SwitchWindow = 8
 
   func toString() -> String {
     switch self {
@@ -47,12 +48,14 @@ enum ActionType: Int {
       return "Text Small"
     case .NextPage:
       return "Next Page"
+    case .SwitchWindow:
+      return "Switch Window"
     default:
       return "No Gesture"
     }
   }
 
-  static let count = 8
+  static let count = 9
 }
 
 class XDUserDefineModel: NSObject {

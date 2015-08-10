@@ -37,7 +37,7 @@
   jsonMessage = [[XDJsonMessageManager alloc] initWithModel:model];
 
   WSUIButton *ioButton =
-  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
+  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 280,
                                                40,
                                                60,
                                                60)
@@ -45,14 +45,14 @@
   [ioButton addTarget:self
                action:@selector(ioButtonTapped:)
      forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:ioButton];
+//  [self.view addSubview:ioButton];
 
   WSUIButton *defineButton =
-  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 280,
+  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
                                                40,
                                                60,
                                                60)
-                          withTitle:@""];
+                          withTitle:@"output"];
   [defineButton addTarget:self
                action:@selector(defineButtonTapped:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -149,6 +149,15 @@
   }
   [gestureUIComponents.tableView updateTableViewWith:names
                                          withDevices:devices];
+}
+- (IBAction)window1ButtonTouchUpInside:(id)sender {
+  NSLog(@"Switched to Window1");
+  jsonMessage.window = Window1;
+}
+
+- (IBAction)window2ButtonTouchUpInside:(id)sender {
+  NSLog(@"Switched to Window2");
+  jsonMessage.window = Window2;
 }
 
 #pragma mark -
