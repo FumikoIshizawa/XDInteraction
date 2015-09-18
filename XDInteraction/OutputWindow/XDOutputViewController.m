@@ -99,12 +99,12 @@
 }
 
 - (void)handleSingleClick {
-  NSString *script = [NSString stringWithFormat:@"var ev = document.createEvent('MouseEvents'); var el = document.elementFromPoint(%d,%d); ev.initMouseEvent('click', true, true, window, null, %d, %d, %d, %d, false, false, false, false, 0, null); el.dispatchEvent(ev);" , positionX, positionY, positionX, positionY, positionX, positionY];
+  NSString *script = [NSString stringWithFormat:@"var ev = document.createEvent('MouseEvents'); var el = document.elementFromPoint(%ld,%ld); ev.initMouseEvent('click', true, true, window, null, %ld, %ld, %ld, %ld, false, false, false, false, 0, null); el.dispatchEvent(ev);" , (long)positionX, (long)positionY, (long)positionX, (long)positionY, (long)positionX, (long)positionY];
   [webView1 stringByEvaluatingJavaScriptFromString:script];
 }
 
 - (void)handleDoubleClick {
-  NSString *script = [NSString stringWithFormat:@"el = document.elementFromPoint(%d,%d); document.elementById(el.id).focus();", positionX, positionY];
+  NSString *script = [NSString stringWithFormat:@"el = document.elementFromPoint(%ld,%ld); document.elementById(el.id).focus();", (long)positionX, (long)positionY];
   [webView1 stringByEvaluatingJavaScriptFromString:script];
 }
 
