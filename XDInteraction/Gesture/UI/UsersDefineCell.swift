@@ -15,6 +15,7 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   private var superTableView: UITableView!
   var defineType: UserDefineType!
   var userDefinePickerChangedBlock: ((selectedRow: Int) -> Void)?
+  @IBOutlet weak var cellView: UIView!
 
   func prepareForTableView(tableView: UITableView) {
     superTableView = tableView
@@ -34,6 +35,14 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
     didSet {
       cellLabel.text = title
     }
+  }
+
+  func updateViewColorWhite() {
+    cellView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+  }
+
+  func updateViewColor() {
+    cellView.backgroundColor = UIColor(red: 200, green: 200, blue: 200, alpha: 1)
   }
 
 // MARK: - UIPickerViewDataSource

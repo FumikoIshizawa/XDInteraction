@@ -10,6 +10,7 @@
 #import "XDInteraction-Swift.h"
 
 typedef NS_ENUM(NSInteger, actionType) {
+  Click,
   ScrollUp,
   ScrollDown,
   ZoomIn,

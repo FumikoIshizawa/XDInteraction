@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -28,32 +29,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS0-X7-Kt0">
-                                <rect key="frame" x="142.5" y="110" width="155" height="80"/>
-                                <color key="backgroundColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS0-X7-Kt0" customClass="WSUIButton">
+                                <rect key="frame" x="270" y="30" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="155" id="RRh-zW-fB4"/>
+                                    <constraint firstAttribute="width" constant="80" id="RRh-zW-fB4"/>
                                     <constraint firstAttribute="height" constant="80" id="Txk-Qc-epE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <size key="titleShadowOffset" width="2" height="2"/>
                                 <state key="normal" title="Window1">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="window1ButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0SB-jM-Q3g"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-TY-hBt">
-                                <rect key="frame" x="302.5" y="110" width="155" height="80"/>
-                                <color key="backgroundColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-TY-hBt" customClass="WSUIButton">
+                                <rect key="frame" x="360" y="30" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="155" id="KYZ-FV-hMw"/>
+                                    <constraint firstAttribute="width" constant="80" id="KYZ-FV-hMw"/>
                                     <constraint firstAttribute="height" constant="80" id="pCL-uu-jCl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Window2">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="window2ButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="DQU-FZ-dK3"/>
@@ -65,16 +63,20 @@
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="j6H-WG-pTb" secondAttribute="bottom" constant="44" id="GNp-Kb-HoK"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Je8-1F-6wK"/>
-                            <constraint firstAttribute="centerX" secondItem="aS0-X7-Kt0" secondAttribute="centerX" constant="80" id="Oj7-0H-QHb"/>
+                            <constraint firstAttribute="centerX" secondItem="aS0-X7-Kt0" secondAttribute="centerX" constant="60" id="Oj7-0H-QHb"/>
+                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="right" secondItem="1Hq-TY-hBt" secondAttribute="left" constant="-10" id="aWo-0U-X0e"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="350" id="cS0-bb-2PC"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="110" id="eC8-ZE-DgZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Hq-TY-hBt" secondAttribute="trailing" constant="140" id="d0a-1x-ixH"/>
+                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="30" id="eC8-ZE-DgZ"/>
                             <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="110" id="iCZ-3V-CuM"/>
-                            <constraint firstItem="1Hq-TY-hBt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="110" id="s7o-fw-Hp4"/>
-                            <constraint firstAttribute="centerX" secondItem="1Hq-TY-hBt" secondAttribute="centerX" constant="-80" id="vkd-dG-51u"/>
+                            <constraint firstItem="1Hq-TY-hBt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="30" id="s7o-fw-Hp4"/>
+                            <constraint firstAttribute="centerX" secondItem="1Hq-TY-hBt" secondAttribute="centerX" constant="-60" id="vkd-dG-51u"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Oj7-0H-QHb"/>
                                 <exclude reference="iCZ-3V-CuM"/>
+                                <exclude reference="vkd-dG-51u"/>
                             </mask>
                         </variation>
                     </view>

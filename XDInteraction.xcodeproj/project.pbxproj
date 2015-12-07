@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		56503A8C1B2F263A0066779A /* XDGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureManager.h; sourceTree = "<group>"; };
-		56503A8D1B2F263A0066779A /* XDGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDGestureManager.m; path = Gesture/XDGestureManager.m; sourceTree = "<group>"; };
+		56503A8D1B2F263A0066779A /* XDGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureManager.m; sourceTree = "<group>"; };
 		56503A8E1B2F263A0066779A /* XDGestureUIComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDGestureUIComponents.h; sourceTree = "<group>"; };
 		56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDGestureUIComponents.m; sourceTree = "<group>"; };
 		56503A901B2F263A0066779A /* XDKeyLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDKeyLogManager.h; sourceTree = "<group>"; };
@@ -131,6 +131,7 @@
 				56503A8E1B2F263A0066779A /* XDGestureUIComponents.h */,
 				56503A8F1B2F263A0066779A /* XDGestureUIComponents.m */,
 				56503A8C1B2F263A0066779A /* XDGestureManager.h */,
+				56503A8D1B2F263A0066779A /* XDGestureManager.m */,
 				56503A901B2F263A0066779A /* XDKeyLogManager.h */,
 				56503A911B2F263A0066779A /* XDKeyLogManager.m */,
 				56503A921B2F263A0066779A /* XDMotionManager.h */,
@@ -213,7 +214,6 @@
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
 				56503AA01B2F26800066779A /* ViewController.h */,
 				56503AA11B2F26800066779A /* ViewController.m */,
-				56503A8D1B2F263A0066779A /* XDGestureManager.m */,
 				9EA16BD71B5AA4C9007725C5 /* XDInteraction-Bridging-Header.h */,
 				9ED6AF0E1B205C8C00D97675 /* Main.storyboard */,
 				9ED6AF111B205C8C00D97675 /* Images.xcassets */,

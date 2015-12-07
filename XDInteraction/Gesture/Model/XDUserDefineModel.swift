@@ -22,18 +22,21 @@ enum UserDefineType: String {
 }
 
 enum ActionType: Int {
-  case ScrollUp = 0
-  case ScrollDown = 1
-  case ZoomIn = 2
-  case ZoomOut = 3
-  case TextBig = 4
-  case TextSmall = 5
-  case NextPage = 6
-  case NoGesture = 7
+  case Click = 0
+  case ScrollUp = 1
+  case ScrollDown = 2
+  case ZoomIn = 3
+  case ZoomOut = 4
+  case TextBig = 5
+  case TextSmall = 6
+  case NextPage = 7
   case SwitchWindow = 8
+  case NoGesture = 9
 
   func toString() -> String {
     switch self {
+    case .Click:
+      return "Click"
     case .ScrollUp:
       return "Scroll Up"
     case .ScrollDown:
@@ -48,14 +51,14 @@ enum ActionType: Int {
       return "Text Small"
     case .NextPage:
       return "Next Page"
+    case .NoGesture:
+      return "No Gesture"
     case .SwitchWindow:
       return "Switch Window"
-    default:
-      return "No Gesture"
     }
   }
 
-  static let count = 9
+  static let count = 10
 }
 
 class XDUserDefineModel: NSObject {

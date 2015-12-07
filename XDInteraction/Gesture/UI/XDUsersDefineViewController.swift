@@ -85,6 +85,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.GyroDown, selectedRow: selectedRow)
       }
+      cell.updateViewColorWhite()
     case 2:
       cell.title = UserDefineType.PinchIn.rawValue
       cell.defineType = .PinchIn
@@ -103,6 +104,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.PinchOut, selectedRow: selectedRow)
       }
+      cell.updateViewColorWhite()
     case 4:
       cell.title = UserDefineType.SwipeUp.rawValue
       cell.defineType = .SwipeUp
@@ -121,6 +123,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.SwipeDown, selectedRow: selectedRow)
       }
+      cell.updateViewColorWhite()
     case 6:
       cell.title = UserDefineType.SwipeLeft.rawValue
       cell.defineType = .SwipeLeft
@@ -139,6 +142,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.SwipeRight, selectedRow: selectedRow)
       }
+      cell.updateViewColorWhite()
     case 8:
       cell.title = UserDefineType.SingleTap.rawValue
       cell.defineType = .SingleTap
@@ -157,6 +161,8 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
         self.changeUDInteraction(.DoubleTap, selectedRow: selectedRow)
       }
+      cell.updateViewColorWhite()
+      
     default:
       break
     }

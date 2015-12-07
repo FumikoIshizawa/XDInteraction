@@ -79,6 +79,10 @@
   NSInteger actionType = [model getAction:type];
   if (actionType == NoGesture) {
     return nil;
+  } else if (actionType == SwitchWindow) {
+    self.window = self.window == Window1 ? Window2 : Window1;
+    NSLog(@"Switched Window");
+    return nil;
   }
 
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -87,6 +91,10 @@
   NSString *detail;
 
   switch (actionType) {
+    case Click:
+      detail = @"click";
+      [dict setObject:@"click" forKey:@"command"];
+      break;
     case ScrollUp:
     case ScrollDown:
       detail = (actionType == ScrollUp) ? @"up" : @"down";
@@ -110,10 +118,6 @@
       [dict setObject:@"page" forKey:@"command"];
       [dict setObject:detail forKey:@"detail"];
       break;
-    case SwitchWindow:
-      detail = @"window";
-      [dict setObject:@"switch" forKey:@"command"];
-      [dict setObject:detail forKey:@"detail"];
     default:
       break;
   }
