@@ -66,7 +66,7 @@
   gestureUIComponents.motionManager.delegate = self;
   
 #if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.82:5001"]]];//192.168.10.67
 #else
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.72:5001"]]];//192.168.10.54
 #endif

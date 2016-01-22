@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6H-WG-pTb">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6H-WG-pTb">
                                 <rect key="frame" x="177" y="370" width="246" height="186"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.40103320580624502" green="0.63219262827668221" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="246" id="YUf-Iv-ask"/>
@@ -30,13 +29,13 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS0-X7-Kt0" customClass="WSUIButton">
-                                <rect key="frame" x="270" y="30" width="80" height="80"/>
+                                <rect key="frame" x="15" y="60" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="RRh-zW-fB4"/>
-                                    <constraint firstAttribute="height" constant="80" id="Txk-Qc-epE"/>
+                                    <constraint firstAttribute="width" constant="70" id="RRh-zW-fB4"/>
+                                    <constraint firstAttribute="height" constant="70" id="Txk-Qc-epE"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                <state key="normal" title="Window1">
+                                <state key="normal" title="A">
                                     <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -44,13 +43,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-TY-hBt" customClass="WSUIButton">
-                                <rect key="frame" x="360" y="30" width="80" height="80"/>
+                                <rect key="frame" x="95" y="60" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="KYZ-FV-hMw"/>
-                                    <constraint firstAttribute="height" constant="80" id="pCL-uu-jCl"/>
+                                    <constraint firstAttribute="width" constant="70" id="KYZ-FV-hMw"/>
+                                    <constraint firstAttribute="height" constant="70" id="pCL-uu-jCl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="Window2">
+                                <state key="normal" title="B">
                                     <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -58,34 +57,38 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="j6H-WG-pTb" secondAttribute="bottom" constant="44" id="GNp-Kb-HoK"/>
+                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="HFb-cR-PzW"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Je8-1F-6wK"/>
                             <constraint firstAttribute="centerX" secondItem="aS0-X7-Kt0" secondAttribute="centerX" constant="60" id="Oj7-0H-QHb"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="right" secondItem="1Hq-TY-hBt" secondAttribute="left" constant="-10" id="aWo-0U-X0e"/>
+                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="trailing" secondItem="1Hq-TY-hBt" secondAttribute="leading" constant="-10" id="aWo-0U-X0e"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="350" id="cS0-bb-2PC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Hq-TY-hBt" secondAttribute="trailing" constant="140" id="d0a-1x-ixH"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="30" id="eC8-ZE-DgZ"/>
+                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="60" id="eC8-ZE-DgZ"/>
                             <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="110" id="iCZ-3V-CuM"/>
-                            <constraint firstItem="1Hq-TY-hBt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="30" id="s7o-fw-Hp4"/>
+                            <constraint firstItem="1Hq-TY-hBt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="60" id="s7o-fw-Hp4"/>
                             <constraint firstAttribute="centerX" secondItem="1Hq-TY-hBt" secondAttribute="centerX" constant="-60" id="vkd-dG-51u"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Oj7-0H-QHb"/>
                                 <exclude reference="iCZ-3V-CuM"/>
+                                <exclude reference="d0a-1x-ixH"/>
                                 <exclude reference="vkd-dG-51u"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="buttonA" destination="aS0-X7-Kt0" id="Ejs-Vo-Hdq"/>
+                        <outlet property="buttonB" destination="1Hq-TY-hBt" id="wyc-NH-oWM"/>
                         <outlet property="jsonTextview" destination="j6H-WG-pTb" id="lbB-vy-z1m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-124" y="253"/>
         </scene>
     </scenes>
 </document>
