@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -28,25 +30,35 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP5-Wa-Vcw">
-                                <rect key="frame" x="460" y="120" width="125" height="80"/>
+                                <rect key="frame" x="315" y="120" width="270" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="FF4-Gd-vyv"/>
-                                    <constraint firstAttribute="height" constant="80" id="M4F-kh-RQV"/>
+                                    <constraint firstAttribute="height" constant="100" id="M4F-kh-RQV"/>
                                 </constraints>
                                 <state key="normal" title="B"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FF4-Gd-vyv"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="buttonRightTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eRP-Np-kOY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brE-B5-Ypv">
-                                <rect key="frame" x="310" y="120" width="125" height="80"/>
+                                <rect key="frame" x="25" y="120" width="283" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="SIt-SS-uK7"/>
+                                    <constraint firstAttribute="height" constant="100" id="SIt-SS-uK7"/>
                                     <constraint firstAttribute="width" constant="125" id="yxk-TR-dlY"/>
                                 </constraints>
                                 <state key="normal" title="A"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yxk-TR-dlY"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="buttonLeftTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tij-1n-rjq"/>
                                 </connections>
@@ -54,14 +66,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oP5-Wa-Vcw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="centerX" constant="15" id="4lf-fa-EAL"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="j6H-WG-pTb" secondAttribute="bottom" constant="44" id="GNp-Kb-HoK"/>
+                            <constraint firstItem="brE-B5-Ypv" firstAttribute="trailingMargin" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GgO-dP-5Xu"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Je8-1F-6wK"/>
+                            <constraint firstItem="oP5-Wa-Vcw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="Sjv-Wq-5sK"/>
+                            <constraint firstItem="brE-B5-Ypv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="YUK-IA-ZRb"/>
                             <constraint firstItem="oP5-Wa-Vcw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="asF-Ac-PsI"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="350" id="cS0-bb-2PC"/>
                             <constraint firstAttribute="trailing" secondItem="oP5-Wa-Vcw" secondAttribute="trailing" constant="15" id="hWi-bO-zQL"/>
+                            <constraint firstItem="brE-B5-Ypv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="jQO-dG-6n3"/>
+                            <constraint firstAttribute="trailing" secondItem="oP5-Wa-Vcw" secondAttribute="trailing" constant="15" id="kDC-CW-p0Z"/>
                             <constraint firstItem="oP5-Wa-Vcw" firstAttribute="leading" secondItem="brE-B5-Ypv" secondAttribute="trailing" constant="25" id="mDZ-j1-7NR"/>
                             <constraint firstItem="brE-B5-Ypv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="rGh-zW-xxy"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rGh-zW-xxy"/>
+                                <exclude reference="asF-Ac-PsI"/>
+                                <exclude reference="hWi-bO-zQL"/>
+                                <exclude reference="mDZ-j1-7NR"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="buttonA" destination="brE-B5-Ypv" id="tzp-Mq-2ie"/>
