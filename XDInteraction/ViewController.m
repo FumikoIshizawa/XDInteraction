@@ -35,16 +35,16 @@
   model = [[XDUserDefineModel alloc] init];
   [defineViewController prepareForUse:model];
   jsonMessage = [[XDJsonMessageManager alloc] initWithModel:model];
-
-  WSUIButton *ioButton =
-  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 280,
-                                               40,
-                                               60,
-                                               60)
-                          withTitle:@"input"];
-  [ioButton addTarget:self
-               action:@selector(ioButtonTapped:)
-     forControlEvents:UIControlEventTouchUpInside];
+  
+//  WSUIButton *ioButton =
+//  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 280,
+//                                               40,
+//                                               60,
+//                                               60)
+//                          withTitle:@"input"];
+//  [ioButton addTarget:self
+//               action:@selector(ioButtonTapped:)
+//     forControlEvents:UIControlEventTouchUpInside];
 //  [self.view addSubview:ioButton];
 
   WSUIButton *defineButton =
@@ -60,20 +60,26 @@
 
   gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
 
-  gestureUIComponents.keyLogManager.textField.delegate = self;
+//  gestureUIComponents.keyLogManager.textField.delegate = self;
   gestureUIComponents.gestureManager.delegate = self;
   gestureUIComponents.tableView.delegate = self;
   gestureUIComponents.motionManager.delegate = self;
   
 #if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.82:5001"]]];//192.168.10.67
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.72:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
   [web_socket open];
-  // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  [self.buttonA setTitle:[model getButtonLeftActionTitle] forState:UIControlStateNormal];
+  [self.buttonB setTitle:[model getButtonRightActionTitle] forState:UIControlStateNormal];
 }
 
 - (void)ioButtonTapped:(UIButton *)button {
@@ -150,14 +156,21 @@
   [gestureUIComponents.tableView updateTableViewWith:names
                                          withDevices:devices];
 }
-- (IBAction)window1ButtonTouchUpInside:(id)sender {
-  NSLog(@"Switched to Window1");
-  jsonMessage.window = Window1;
+
+- (IBAction)buttonLeftTouchUpInside:(UIButton *)sender {
+  NSString *message = [jsonMessage getJSONMessageWithType:@"buttonLeft"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: Button left");
 }
 
-- (IBAction)window2ButtonTouchUpInside:(id)sender {
-  NSLog(@"Switched to Window2");
-  jsonMessage.window = Window2;
+- (IBAction)buttonRightTouchUpInside:(UIButton *)sender {
+  NSString *message = [jsonMessage getJSONMessageWithType:@"buttonRight"];
+  if (message != nil) {
+    [web_socket send:message];
+  }
+  NSLog(@"Detected: Button right");
 }
 
 #pragma mark -
@@ -175,7 +188,7 @@
 
 #pragma UITextFiled
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self.gestureUIComponents.keyLogManager endEditing:YES];
+//  [self.gestureUIComponents.keyLogManager endEditing:YES];
   NSLog(@"%@", textField.text);
   textField.text = @"";
   

@@ -17,8 +17,10 @@ enum UserDefineType: String {
   case SwipeRight = "SwipeRight"
   case SingleTap = "SingleTap"
   case DoubleTap = "DoubleTap"
+  case ButtonLeft = "buttonLeft"
+  case ButtonRight = "buttonRight"
 
-  static let count = 10
+  static let count = 12
 }
 
 enum ActionType: Int {
@@ -30,8 +32,7 @@ enum ActionType: Int {
   case TextBig = 5
   case TextSmall = 6
   case NextPage = 7
-  case SwitchWindow = 8
-  case NoGesture = 9
+  case NoGesture = 8
 
   func toString() -> String {
     switch self {
@@ -53,16 +54,15 @@ enum ActionType: Int {
       return "Next Page"
     case .NoGesture:
       return "No Gesture"
-    case .SwitchWindow:
-      return "Switch Window"
     }
   }
 
-  static let count = 10
+  static let count = 9
 }
 
 class XDUserDefineModel: NSObject {
   var userDefineDictionary: Dictionary<UserDefineType, ActionType>!
+  var defineWindowDictionary: Dictionary<UserDefineType, Int>!
 
   override init() {
     userDefineDictionary = Dictionary<UserDefineType, ActionType>()
@@ -76,6 +76,22 @@ class XDUserDefineModel: NSObject {
     userDefineDictionary[.SwipeRight] = .NoGesture
     userDefineDictionary[.SingleTap] = .NoGesture
     userDefineDictionary[.DoubleTap] = .NoGesture
+    userDefineDictionary[.ButtonLeft] = .NoGesture
+    userDefineDictionary[.ButtonRight] = .NoGesture
+    
+    defineWindowDictionary = Dictionary<UserDefineType, Int>()
+    defineWindowDictionary[.GyroUp] = 0
+    defineWindowDictionary[.GyroDown] = 0
+    defineWindowDictionary[.PinchIn] = 0
+    defineWindowDictionary[.PinchOut] = 0
+    defineWindowDictionary[.SwipeUp] = 0
+    defineWindowDictionary[.SwipeDown] = 0
+    defineWindowDictionary[.SwipeLeft] = 0
+    defineWindowDictionary[.SwipeRight] = 0
+    defineWindowDictionary[.SingleTap] = 0
+    defineWindowDictionary[.DoubleTap] = 0
+    defineWindowDictionary[.ButtonLeft] = 0
+    defineWindowDictionary[.ButtonRight] = 0
 
     super.init()
   }
@@ -87,5 +103,29 @@ class XDUserDefineModel: NSObject {
   func getAction(gestureType: String) -> Int {
     return userDefineDictionary[UserDefineType(rawValue: gestureType)!]!.hashValue
   }
+  
+  func getButtonLeftActionTitle() -> String {
+    return  userDefineDictionary[.ButtonLeft]?.toString() ?? "No Gesture"
+  }
+  
+  func getButtonRightActionTitle() -> String {
+    return  userDefineDictionary[.ButtonRight]?.toString() ?? "No Gesture"
+  }
+  
+  func changeWindow(defineType: UserDefineType, window: Int) {
+    defineWindowDictionary.updateValue(window, forKey: defineType)
+  }
 
+  func getWindow(gestureType: String) -> String {
+    switch defineWindowDictionary[UserDefineType(rawValue: gestureType)!]!.hashValue {
+    case 0:
+      return "1"
+    case 1:
+      return "2"
+    case 2:
+      return "both"
+    default:
+      return "1"
+    }
+  }
 }

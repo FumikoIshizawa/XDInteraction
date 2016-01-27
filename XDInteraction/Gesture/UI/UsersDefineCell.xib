@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -22,34 +23,53 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tG-lV-tdE">
-                        <rect key="frame" x="112" y="8" width="200" height="145.5"/>
+                        <rect key="frame" x="160" y="8" width="152" height="145.5"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" staticText="YES"/>
                         </accessibility>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="51S-fa-J5V"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="51S-fa-J5V"/>
+                            </mask>
+                        </variation>
                     </pickerView>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MRq-Sc-peh">
-                        <rect key="frame" x="25" y="74" width="68" height="29"/>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MRq-Sc-peh">
+                        <rect key="frame" x="25" y="60" width="110" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="750" constant="200" id="9TP-5o-09g"/>
+                        </constraints>
                         <segments>
                             <segment title="1"/>
                             <segment title="2"/>
                             <segment title="b"/>
                         </segments>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9TP-5o-09g"/>
+                            </mask>
+                        </variation>
                     </segmentedControl>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="1tG-lV-tdE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" id="1BQ-IA-2r9"/>
+                    <constraint firstItem="MRq-Sc-peh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="9FD-ob-OqX"/>
                     <constraint firstItem="Wf2-UN-r3W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="EwZ-u5-lxS"/>
                     <constraint firstAttribute="trailingMargin" secondItem="1tG-lV-tdE" secondAttribute="trailing" id="FY6-ou-FkO"/>
+                    <constraint firstItem="1tG-lV-tdE" firstAttribute="leading" secondItem="MRq-Sc-peh" secondAttribute="trailing" constant="25" id="OUm-4v-siu"/>
                     <constraint firstAttribute="centerY" secondItem="Wf2-UN-r3W" secondAttribute="centerY" id="RrN-5g-JcP"/>
                     <constraint firstItem="Wf2-UN-r3W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="ZIi-oA-zoG"/>
+                    <constraint firstItem="MRq-Sc-peh" firstAttribute="top" secondItem="Wf2-UN-r3W" secondAttribute="bottom" constant="15" id="cf3-fA-ecU"/>
                     <constraint firstItem="1tG-lV-tdE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="eCs-Wb-SQV"/>
+                    <constraint firstItem="1tG-lV-tdE" firstAttribute="leading" secondItem="MRq-Sc-peh" secondAttribute="trailing" constant="15" id="fgR-Kp-zjf"/>
                     <constraint firstAttribute="centerY" secondItem="1tG-lV-tdE" secondAttribute="centerY" id="jLJ-Iw-9oX"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="RrN-5g-JcP"/>
+                        <exclude reference="fgR-Kp-zjf"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -57,8 +77,9 @@
                 <outlet property="cellLabel" destination="Wf2-UN-r3W" id="FTT-38-ikV"/>
                 <outlet property="cellView" destination="H2p-sc-9uM" id="apc-Ch-6ap"/>
                 <outlet property="dataPicker" destination="1tG-lV-tdE" id="G48-fn-50q"/>
+                <outlet property="windowSegmentedControl" destination="MRq-Sc-peh" id="pPh-KH-OWv"/>
             </connections>
-            <point key="canvasLocation" x="446" y="269"/>
+            <point key="canvasLocation" x="-291" y="92"/>
         </tableViewCell>
     </objects>
 </document>

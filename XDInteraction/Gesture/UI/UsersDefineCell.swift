@@ -15,7 +15,9 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   private var superTableView: UITableView!
   var defineType: UserDefineType!
   var userDefinePickerChangedBlock: ((selectedRow: Int) -> Void)?
+  var segmentedControlChangedBlock: ((selectedRow: Int, value: Int) -> Void)?
   @IBOutlet weak var cellView: UIView!
+  @IBOutlet weak var windowSegmentedControl: UISegmentedControl!
 
   func prepareForTableView(tableView: UITableView) {
     superTableView = tableView
@@ -25,6 +27,7 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
     super.awakeFromNib()
     dataPicker.delegate = self
     dataPicker.dataSource = self
+    windowSegmentedControl.addTarget(self, action: "segmentedControlChanged:", forControlEvents: UIControlEvents.ValueChanged)
   }
 
   override func setSelected(selected: Bool, animated: Bool) {
@@ -64,5 +67,12 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
       userDefinePickerChangedBlock(selectedRow: row)
     }
   }
-
+  
+  internal func segmentedControlChanged(segcon: UISegmentedControl) {
+    print(segcon.selectedSegmentIndex)
+    if let segmentedControlChangedBlock = segmentedControlChangedBlock {
+      segmentedControlChangedBlock(selectedRow: 1, value: segcon.selectedSegmentIndex)
+    }
+  }
 }
+  

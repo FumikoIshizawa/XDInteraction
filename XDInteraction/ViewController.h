@@ -32,8 +32,8 @@
 @property (nonatomic) XDJsonMessageManager *jsonMessage;
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextview;
 @property (nonatomic) XDUserDefineModel *model;
-@property (weak, nonatomic) IBOutlet WSUIButton *buttonA;
-@property (weak, nonatomic) IBOutlet WSUIButton *buttonB;
+@property (weak, nonatomic) IBOutlet UIButton *buttonA;
+@property (weak, nonatomic) IBOutlet UIButton *buttonB;
 
 @end
 

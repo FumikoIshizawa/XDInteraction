@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -28,61 +27,45 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS0-X7-Kt0" customClass="WSUIButton">
-                                <rect key="frame" x="15" y="60" width="70" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP5-Wa-Vcw">
+                                <rect key="frame" x="460" y="120" width="125" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="RRh-zW-fB4"/>
-                                    <constraint firstAttribute="height" constant="70" id="Txk-Qc-epE"/>
+                                    <constraint firstAttribute="width" constant="125" id="FF4-Gd-vyv"/>
+                                    <constraint firstAttribute="height" constant="80" id="M4F-kh-RQV"/>
                                 </constraints>
-                                <size key="titleShadowOffset" width="2" height="2"/>
-                                <state key="normal" title="A">
-                                    <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="B"/>
                                 <connections>
-                                    <action selector="window1ButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0SB-jM-Q3g"/>
+                                    <action selector="buttonRightTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eRP-Np-kOY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-TY-hBt" customClass="WSUIButton">
-                                <rect key="frame" x="95" y="60" width="70" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brE-B5-Ypv">
+                                <rect key="frame" x="310" y="120" width="125" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="KYZ-FV-hMw"/>
-                                    <constraint firstAttribute="height" constant="70" id="pCL-uu-jCl"/>
+                                    <constraint firstAttribute="height" constant="80" id="SIt-SS-uK7"/>
+                                    <constraint firstAttribute="width" constant="125" id="yxk-TR-dlY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="B">
-                                    <color key="titleColor" red="0.40103320580000001" green="0.6321926283" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="A"/>
                                 <connections>
-                                    <action selector="window2ButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="DQU-FZ-dK3"/>
+                                    <action selector="buttonLeftTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tij-1n-rjq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="j6H-WG-pTb" secondAttribute="bottom" constant="44" id="GNp-Kb-HoK"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="15" id="HFb-cR-PzW"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Je8-1F-6wK"/>
-                            <constraint firstAttribute="centerX" secondItem="aS0-X7-Kt0" secondAttribute="centerX" constant="60" id="Oj7-0H-QHb"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="trailing" secondItem="1Hq-TY-hBt" secondAttribute="leading" constant="-10" id="aWo-0U-X0e"/>
+                            <constraint firstItem="oP5-Wa-Vcw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="asF-Ac-PsI"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="350" id="cS0-bb-2PC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Hq-TY-hBt" secondAttribute="trailing" constant="140" id="d0a-1x-ixH"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="60" id="eC8-ZE-DgZ"/>
-                            <constraint firstItem="aS0-X7-Kt0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="110" id="iCZ-3V-CuM"/>
-                            <constraint firstItem="1Hq-TY-hBt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="60" id="s7o-fw-Hp4"/>
-                            <constraint firstAttribute="centerX" secondItem="1Hq-TY-hBt" secondAttribute="centerX" constant="-60" id="vkd-dG-51u"/>
+                            <constraint firstAttribute="trailing" secondItem="oP5-Wa-Vcw" secondAttribute="trailing" constant="15" id="hWi-bO-zQL"/>
+                            <constraint firstItem="oP5-Wa-Vcw" firstAttribute="leading" secondItem="brE-B5-Ypv" secondAttribute="trailing" constant="25" id="mDZ-j1-7NR"/>
+                            <constraint firstItem="brE-B5-Ypv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="rGh-zW-xxy"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Oj7-0H-QHb"/>
-                                <exclude reference="iCZ-3V-CuM"/>
-                                <exclude reference="d0a-1x-ixH"/>
-                                <exclude reference="vkd-dG-51u"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="buttonA" destination="aS0-X7-Kt0" id="Ejs-Vo-Hdq"/>
-                        <outlet property="buttonB" destination="1Hq-TY-hBt" id="wyc-NH-oWM"/>
+                        <outlet property="buttonA" destination="brE-B5-Ypv" id="tzp-Mq-2ie"/>
+                        <outlet property="buttonB" destination="oP5-Wa-Vcw" id="DZU-W4-6gH"/>
                         <outlet property="jsonTextview" destination="j6H-WG-pTb" id="lbB-vy-z1m"/>
                     </connections>
                 </viewController>

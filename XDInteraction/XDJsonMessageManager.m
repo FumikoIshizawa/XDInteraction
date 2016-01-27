@@ -14,7 +14,6 @@
 @synthesize endUser;
 @synthesize myName;
 @synthesize model;
-@synthesize window;
 
 - (id)initWithModel:(XDUserDefineModel *)mmodel {
   self = [super init];
@@ -22,7 +21,6 @@
     endUser = @"no user";
     myName = @"no name";
     self.model = mmodel;
-    self.window = Window1;
   }
   return self;
 }
@@ -79,10 +77,6 @@
   NSInteger actionType = [model getAction:type];
   if (actionType == NoGesture) {
     return nil;
-  } else if (actionType == SwitchWindow) {
-    self.window = self.window == Window1 ? Window2 : Window1;
-    NSLog(@"Switched Window");
-    return nil;
   }
 
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -122,8 +116,8 @@
       break;
   }
 
-  NSString *windowNumber = window == Window1 ? @"1": @"2";
-  [dict setObject:windowNumber forKey:@"window"];
+  NSString *window = [model getWindow: type];
+  [dict setObject:window forKey:@"window"];
   [dict setObject:self.endUser forKey:@"dst"];
   [dict setObject:self.myName forKey:@"origin"];
 

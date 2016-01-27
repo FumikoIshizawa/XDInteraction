@@ -22,11 +22,6 @@ typedef NS_ENUM(NSInteger, actionType) {
   NoGesture,
 };
 
-typedef NS_ENUM(NSInteger, Window) {
-  Window1,
-  Window2,
-};
-
 @interface XDJsonMessageManager : NSObject
 
 - initWithModel:(XDUserDefineModel *)model;
@@ -38,6 +33,5 @@ typedef NS_ENUM(NSInteger, Window) {
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;
 @property (nonatomic) XDUserDefineModel *model;
-@property (nonatomic) Window window;
 
 @end

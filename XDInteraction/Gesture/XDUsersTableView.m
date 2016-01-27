@@ -14,7 +14,7 @@
 @synthesize usersDeviceList;
 
 - (id)init {
-  self = [super initWithFrame:CGRectMake(40, 210, 240, 300) style:UITableViewStylePlain];
+  self = [super initWithFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width - 280, 80, 240, 300) style:UITableViewStylePlain];
   if (self) {
     self.dataSource = self;
   }

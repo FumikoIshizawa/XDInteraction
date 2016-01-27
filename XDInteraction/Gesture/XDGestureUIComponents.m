@@ -10,7 +10,7 @@
 
 @interface XDGestureUIComponents () {
   UIView *parentView;
-  BOOL _keyLogOpend;
+//  BOOL _keyLogOpend;
   BOOL _tableViewOpend;
 }
 
@@ -20,7 +20,7 @@
 
 @synthesize gestureManager;
 @synthesize motionManager;
-@synthesize keyLogManager;
+//@synthesize keyLogManager;
 @synthesize tableView;
 
 - (id)initWithView:(UIView *)view {
@@ -29,30 +29,31 @@
     parentView = view;
     gestureManager = [[XDGestureManager alloc] initWithView:view];
     motionManager = [[XDMotionManager alloc] initWith];
-    keyLogManager = [[XDKeyLogManager alloc] initWithView:view];
+//    keyLogManager = [[XDKeyLogManager alloc] initWithView:view];
     tableView = [[XDUsersTableView alloc] init];
+//    tableView.hidden = YES;
 
-    _keyLogOpend = NO;
+//    _keyLogOpend = NO;
     _tableViewOpend = NO;
     view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];
     
-    CGAffineTransform t1 = CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, 0);
-    CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/150);
-    keyLogManager.transform = t2;
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, -150);
+    CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/300);
     tableView.transform = t2;
+//    keyLogManager.transform = t2;
     
 //    [parentView addSubview:keyLogManager];
     [parentView addSubview:tableView];
     
-    WSUIButton *keyButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 210,
-                                                     40,
-                                                     60,
-                                                     60)
-                                withTitle:@"keyboard"];
-    [keyButton addTarget:self
-                  action:@selector(keyButtonTapped:)
-        forControlEvents:UIControlEventTouchUpInside];
+//    WSUIButton *keyButton =
+//        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 210,
+//                                                     40,
+//                                                     60,
+//                                                     60)
+//                                withTitle:@"keyboard"];
+//    [keyButton addTarget:self
+//                  action:@selector(keyButtonTapped:)
+//        forControlEvents:UIControlEventTouchUpInside];
 //    [view addSubview:keyButton];
 
     WSUIButton *selectButton =
@@ -69,34 +70,34 @@
   return self;
 }
 
-- (void)keyButtonTapped:(UIButton *)button {
-  if (_keyLogOpend) {
-    [UIView animateWithDuration:0.2f
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                       CGAffineTransform t1 =
-                       CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, 0);
-                       CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/150);
-                       keyLogManager.transform = t2;
-                     }
-                     completion:^(BOOL finished){
-                     }];
-    _keyLogOpend= NO;
-  } else {
-    [UIView animateWithDuration:0.2f
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                       CGAffineTransform t1 = CGAffineTransformMakeScale(1, 1);
-                       CGAffineTransform t2 = CGAffineTransformTranslate(t1, 0, 0);
-                       keyLogManager.transform = t2;
-                     }
-                     completion:^(BOOL finished) {
-                     }];
-    _keyLogOpend= YES;
-  }
-}
+//- (void)keyButtonTapped:(UIButton *)button {
+//  if (_keyLogOpend) {
+//    [UIView animateWithDuration:0.2f
+//                          delay:0.0f
+//                        options:UIViewAnimationOptionCurveEaseOut
+//                     animations:^{
+//                       CGAffineTransform t1 =
+//                       CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, 0);
+//                       CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/150);
+//                       keyLogManager.transform = t2;
+//                     }
+//                     completion:^(BOOL finished){
+//                     }];
+//    _keyLogOpend= NO;
+//  } else {
+//    [UIView animateWithDuration:0.2f
+//                          delay:0.0f
+//                        options:UIViewAnimationOptionCurveEaseOut
+//                     animations:^{
+//                       CGAffineTransform t1 = CGAffineTransformMakeScale(1, 1);
+//                       CGAffineTransform t2 = CGAffineTransformTranslate(t1, 0, 0);
+//                       keyLogManager.transform = t2;
+//                     }
+//                     completion:^(BOOL finished) {
+//                     }];
+//    _keyLogOpend= YES;
+//  }
+//}
 
 - (void)selectButtonTapped:(UIButton *)button {
   if (_tableViewOpend) {
@@ -105,12 +106,13 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                        CGAffineTransform t1 =
-                       CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, 0);
-                       CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/150);
+                       CGAffineTransformMakeTranslation(parentView.frame.size.width - 140, -150);
+                       CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/300);
                        tableView.transform = t2;
                      }
                      completion:^(BOOL finished){
                      }];
+//    self.tableView.hidden = YES;
     _tableViewOpend = NO;
   } else {
     [UIView animateWithDuration:0.2f
@@ -123,6 +125,7 @@
                      }
                      completion:^(BOOL finished) {
                      }];
+//    self.tableView.hidden = NO;
     _tableViewOpend = YES;
   }
 }

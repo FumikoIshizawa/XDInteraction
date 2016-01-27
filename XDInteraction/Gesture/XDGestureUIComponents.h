@@ -10,7 +10,7 @@
 
 #import "XDGestureManager.h"
 #import "XDMotionManager.h"
-#import "XDKeyLogManager.h"
+//#import "XDKeyLogManager.h"
 #import "XDUsersTableView.h"
 #import "WSUIButton.h"
 
@@ -20,7 +20,7 @@
 
 @property (nonatomic) XDGestureManager *gestureManager;
 @property (nonatomic) XDMotionManager *motionManager;
-@property (nonatomic) XDKeyLogManager *keyLogManager;
+//@property (nonatomic) XDKeyLogManager *keyLogManager;
 @property (nonatomic) XDUsersTableView *tableView;
 
 @end
