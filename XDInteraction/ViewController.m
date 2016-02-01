@@ -33,7 +33,6 @@
   defineViewController = [[XDUsersDefineViewController alloc] init];
   defineNavController = [[UINavigationController alloc] initWithRootViewController:defineViewController];
   model = [[XDUserDefineModel alloc] init];
-  [defineViewController prepareForUse:model];
   jsonMessage = [[XDJsonMessageManager alloc] initWithModel:model];
   
 //  WSUIButton *ioButton =
@@ -68,7 +67,7 @@
 #if TARGET_IPHONE_SIMULATOR
   web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
 #else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.72:5001"]]];//192.168.10.54
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.30:5001"]]];//192.168.10.54
 #endif
   
   [web_socket setDelegate:self];
@@ -78,8 +77,19 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
+  [defineViewController prepareForUse:model userName:@"iOS Simulator"];
+  
+  __weak typeof(self) wself = self;
+  defineViewController.bipMessageSendBlock = ^(NSString* message) {
+    [wself sendBIPMessage:message];
+  };
+  
   [self.buttonA setTitle:[model getButtonLeftActionTitle] forState:UIControlStateNormal];
   [self.buttonB setTitle:[model getButtonRightActionTitle] forState:UIControlStateNormal];
+}
+
+- (void)sendBIPMessage:(NSString *)message {
+  [web_socket send:message];
 }
 
 - (void)ioButtonTapped:(UIButton *)button {
@@ -158,7 +168,7 @@
 }
 
 - (IBAction)buttonLeftTouchUpInside:(UIButton *)sender {
-  NSString *message = [jsonMessage getJSONMessageWithType:@"buttonLeft"];
+  NSString *message = [jsonMessage getJSONMessageWithType:@"ButtonLeft"];
   if (message != nil) {
     [web_socket send:message];
   }
@@ -166,7 +176,7 @@
 }
 
 - (IBAction)buttonRightTouchUpInside:(UIButton *)sender {
-  NSString *message = [jsonMessage getJSONMessageWithType:@"buttonRight"];
+  NSString *message = [jsonMessage getJSONMessageWithType:@"ButtonRight"];
   if (message != nil) {
     [web_socket send:message];
   }

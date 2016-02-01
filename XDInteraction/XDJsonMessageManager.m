@@ -133,4 +133,9 @@
   return json;
 }
 
+- (NSString *)getJSONMessageWithBIP:(NSString *)message {
+  
+  return nil;
+}
+
 @end

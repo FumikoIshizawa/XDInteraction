@@ -10,14 +10,15 @@ import UIKit
 
 class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   var tableView: UITableView?
-  var buttonALabelWillChangeBlock: (UserDefineType -> Void)?
-  var buttonBLabelWillChangeBlock: (UserDefineType -> Void)?
   private var userDefineCell: UsersDefineCell?
   private let nameNib:String = "UsersDefineCell"
   var model: XDUserDefineModel!
+  var bipMessageSendBlock: (String -> Void)?
+  var userName: String?
   
-  func prepareForUse(model: XDUserDefineModel) {
+  func prepareForUse(model: XDUserDefineModel, userName: String) {
     self.model = model
+    self.userName = userName
   }
 
   override func viewDidLoad() {
@@ -49,21 +50,15 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
   }
 
   internal func onClickDoneButton(sender: UIButton) {
+    let jsonMessage = model.getBIPJsonMessage(userName ?? "No Name")
+    if let bipMessageSendBlock = bipMessageSendBlock {
+      bipMessageSendBlock(jsonMessage)
+    }
     self.dismissViewControllerAnimated(true, completion: nil)
   }
 
   func changeUDInteraction(defineType: UserDefineType, selectedRow: Int) {
     model.changeInteraction(defineType, actionType: ActionType(rawValue: selectedRow)!)
-    
-    if selectedRow == 10 {
-      if let buttonALabelWillChangeBlock = buttonALabelWillChangeBlock {
-        buttonALabelWillChangeBlock(defineType)
-      }
-    } else if selectedRow == 11 {
-      if let buttonBLabelWillChangeBlock = buttonBLabelWillChangeBlock {
-        buttonBLabelWillChangeBlock(defineType)
-      }
-    }
   }
   
   func changeWindowSelect(defineType: UserDefineType, value: Int) {

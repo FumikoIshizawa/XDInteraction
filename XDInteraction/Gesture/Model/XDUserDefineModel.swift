@@ -17,10 +17,11 @@ enum UserDefineType: String {
   case SwipeRight = "SwipeRight"
   case SingleTap = "SingleTap"
   case DoubleTap = "DoubleTap"
-  case ButtonLeft = "buttonLeft"
-  case ButtonRight = "buttonRight"
+  case ButtonLeft = "ButtonLeft"
+  case ButtonRight = "ButtonRight"
 
   static let count = 12
+  static let allValues = ["GyroUp", "GyroDown", "PinchIn", "PinchOut", "SwipeUp", "SwipeDown", "SwipeLeft", "SwipeRight", "SingleTap", "DoubleTap", "ButtonLeft", "ButtonRight"]
 }
 
 enum ActionType: Int {
@@ -63,6 +64,7 @@ enum ActionType: Int {
 class XDUserDefineModel: NSObject {
   var userDefineDictionary: Dictionary<UserDefineType, ActionType>!
   var defineWindowDictionary: Dictionary<UserDefineType, Int>!
+  var jsonMessage: String?
 
   override init() {
     userDefineDictionary = Dictionary<UserDefineType, ActionType>()
@@ -94,6 +96,8 @@ class XDUserDefineModel: NSObject {
     defineWindowDictionary[.ButtonRight] = 0
 
     super.init()
+    
+    jsonMessage = getBIPJsonMessage("No Name")
   }
 
   func changeInteraction(defineType: UserDefineType, actionType: ActionType) {
@@ -127,5 +131,19 @@ class XDUserDefineModel: NSObject {
     default:
       return "1"
     }
+  }
+  
+  func getBIPJsonMessage(userName: String) -> String {
+    var obj = Dictionary<String, AnyObject>()
+    obj["type"] = "bip"
+    obj["origin"] = userName
+    
+    for type in UserDefineType.allValues {
+      obj[type] = ["action": userDefineDictionary[UserDefineType(rawValue: type)!]!.toString() ?? "No Gesture", "window": defineWindowDictionary[UserDefineType(rawValue: type)!]! ?? 0]
+    }
+    
+    print(obj)
+    let json = JSON(obj)
+    return json.toString()
   }
 }

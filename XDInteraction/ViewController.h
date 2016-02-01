@@ -25,6 +25,8 @@
   UITextView *textView;
 }
 
+- (void)sendBIPMessage:(NSString *)message;
+
 @property (nonatomic) XDGestureUIComponents *gestureUIComponents;
 @property (nonatomic) XDOutputViewController *outputView;
 @property (nonatomic) UINavigationController *defineNavController;
