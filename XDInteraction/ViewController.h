@@ -36,6 +36,8 @@
 @property (nonatomic) XDUserDefineModel *model;
 @property (weak, nonatomic) IBOutlet UIButton *buttonA;
 @property (weak, nonatomic) IBOutlet UIButton *buttonB;
+@property (nonatomic) NSString *userName;
+@property (nonatomic) BOOL firstView;
 
 @end
 

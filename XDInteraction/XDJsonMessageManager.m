@@ -51,14 +51,14 @@
   
 #if TARGET_IPHONE_SIMULATOR
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"iOS Simulator" forKey:@"name"];
+  [dict setObject:self.myName forKey:@"name"];
   [dict setObject:@"ios_sim" forKey:@"device"];
-  self.myName = @"iOS Simulator";
+  //self.myName = @"iOS Simulator";
 #else
   [dict setObject:@"open" forKey:@"type"];
-  [dict setObject:@"myiOS" forKey:@"name"];
+  [dict setObject:self.myName forKey:@"name"];
   [dict setObject:@"ios_dev" forKey:@"device"];
-  self.myName = @"myiOS";
+  //self.myName = @"myiOS";
 #endif
   
   NSData *data = [NSJSONSerialization dataWithJSONObject:dict

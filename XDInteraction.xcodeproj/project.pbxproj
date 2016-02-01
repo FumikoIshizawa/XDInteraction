@@ -20,6 +20,8 @@
 		56503AAA1B2F26DF0066779A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56503AA91B2F26DF0066779A /* Foundation.framework */; };
 		56503AAD1B2F2DB20066779A /* XDJsonMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */; };
 		9E0E3BCF1C5B1B0E005AAC3F /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E3BCE1C5B1B0E005AAC3F /* json.swift */; };
+		9E1242C11C5F39CB001CA469 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1242C01C5F39CB001CA469 /* StartViewController.swift */; };
+		9E1242C31C5F39DC001CA469 /* StartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E1242C21C5F39DC001CA469 /* StartViewController.storyboard */; };
 		9E39E0BF1B3E811000E31F19 /* XDOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */; };
 		9E3A31251B3C2FE0006A7E5E /* XDUsersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3A31241B3C2FE0006A7E5E /* XDUsersTableView.m */; };
 		9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E39641B399D5F00481526 /* WSUIButton.m */; };
@@ -68,6 +70,8 @@
 		56503AAB1B2F2DB20066779A /* XDJsonMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDJsonMessageManager.h; path = ../XDJsonMessageManager.h; sourceTree = "<group>"; };
 		56503AAC1B2F2DB20066779A /* XDJsonMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDJsonMessageManager.m; path = ../XDJsonMessageManager.m; sourceTree = "<group>"; };
 		9E0E3BCE1C5B1B0E005AAC3F /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
+		9E1242C01C5F39CB001CA469 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		9E1242C21C5F39DC001CA469 /* StartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StartViewController.storyboard; sourceTree = "<group>"; };
 		9E39E0BD1B3E811000E31F19 /* XDOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDOutputViewController.h; path = OutputWindow/XDOutputViewController.h; sourceTree = "<group>"; };
 		9E39E0BE1B3E811000E31F19 /* XDOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDOutputViewController.m; path = OutputWindow/XDOutputViewController.m; sourceTree = "<group>"; };
 		9E3A31231B3C2FE0006A7E5E /* XDUsersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDUsersTableView.h; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
 				56503AA01B2F26800066779A /* ViewController.h */,
 				56503AA11B2F26800066779A /* ViewController.m */,
+				9E1242C01C5F39CB001CA469 /* StartViewController.swift */,
+				9E1242C21C5F39DC001CA469 /* StartViewController.storyboard */,
 				9EA16BD71B5AA4C9007725C5 /* XDInteraction-Bridging-Header.h */,
 				9ED6AF0E1B205C8C00D97675 /* Main.storyboard */,
 				9ED6AF111B205C8C00D97675 /* Images.xcassets */,
@@ -334,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1242C31C5F39DC001CA469 /* StartViewController.storyboard in Resources */,
 				9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */,
 				9EA16BDF1B5C8222007725C5 /* UsersDefineCell.xib in Resources */,
 				9ED6AF151B205C8C00D97675 /* LaunchScreen.xib in Resources */,
@@ -360,6 +367,7 @@
 				56503A9B1B2F263A0066779A /* XDGestureUIComponents.m in Sources */,
 				9EA16BDE1B5C8222007725C5 /* UsersDefineCell.swift in Sources */,
 				56503A9F1B2F263A0066779A /* XDWebSocketManager.m in Sources */,
+				9E1242C11C5F39CB001CA469 /* StartViewController.swift in Sources */,
 				56503A9C1B2F263A0066779A /* XDKeyLogManager.m in Sources */,
 				9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */,
 				9EA16BD91B5AA4CA007725C5 /* XDUsersDefineViewController.swift in Sources */,

@@ -23,11 +23,13 @@
 @synthesize defineNavController;
 @synthesize defineViewController;
 @synthesize model;
+@synthesize userName;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   self.jsonTextview.editable = NO;
+  self.firstView = YES;
 
   outputView = [[XDOutputViewController alloc] init];
   defineViewController = [[XDUsersDefineViewController alloc] init];
@@ -63,12 +65,34 @@
   gestureUIComponents.gestureManager.delegate = self;
   gestureUIComponents.tableView.delegate = self;
   gestureUIComponents.motionManager.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
   
-#if TARGET_IPHONE_SIMULATOR
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://localhost:5001"]]];//192.168.10.67
-#else
-  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://192.168.10.30:5001"]]];//192.168.10.54
-#endif
+  if (self.firstView) {
+    self.firstView = NO;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StartViewController" bundle:nil];
+    StartViewController *startViewController = [storyboard instantiateInitialViewController];
+    
+    __weak typeof(self) wself = self;
+    startViewController.userNameChangeBlock = ^(NSString *name) {
+      wself.userName = name;
+      wself.jsonMessage.myName = name;
+    };
+    startViewController.addressChangeBlock = ^(NSString *address) {
+      [wself openWebSocket:address];
+    };
+    
+    [self presentViewController:startViewController animated:YES completion:nil];
+  }
+}
+
+- (void)openWebSocket:(NSString *)address {
+  NSString *url = @"ws://";
+  url = [url stringByAppendingString:address];
+  url = [url stringByAppendingString:@":5001"];
+  web_socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
   
   [web_socket setDelegate:self];
   [web_socket open];
@@ -77,7 +101,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  [defineViewController prepareForUse:model userName:@"iOS Simulator"];
+  [defineViewController prepareForUse:model userName:userName];
   
   __weak typeof(self) wself = self;
   defineViewController.bipMessageSendBlock = ^(NSString* message) {
