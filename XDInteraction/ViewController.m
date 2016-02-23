@@ -48,16 +48,16 @@
 //     forControlEvents:UIControlEventTouchUpInside];
 //  [self.view addSubview:ioButton];
 
-  WSUIButton *defineButton =
-  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
-                                               40,
-                                               60,
-                                               60)
-                          withTitle:@"output"];
-  [defineButton addTarget:self
-               action:@selector(defineButtonTapped:)
-         forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:defineButton];
+//  WSUIButton *defineButton =
+//  [[WSUIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
+//                                               40,
+//                                               60,
+//                                               60)
+//                          withTitle:@"output"];
+//  [defineButton addTarget:self
+//               action:@selector(defineButtonTapped:)
+//         forControlEvents:UIControlEventTouchUpInside];
+//  [self.view addSubview:defineButton];
 
   gestureUIComponents = [[XDGestureUIComponents alloc] initWithView:self.view];
 
@@ -110,6 +110,14 @@
   
   [self.buttonA setTitle:[model getButtonLeftActionTitle] forState:UIControlStateNormal];
   [self.buttonB setTitle:[model getButtonRightActionTitle] forState:UIControlStateNormal];
+}
+
+- (IBAction)defineButtonTouchUpInside:(UIButton *)sender {
+    [self defineButtonTapped:sender];
+}
+
+- (IBAction)connectButtonTouchUpInside:(UIButton *)sender {
+    [gestureUIComponents selectButtonTapped:sender];
 }
 
 - (void)sendBIPMessage:(NSString *)message {

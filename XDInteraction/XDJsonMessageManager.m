@@ -85,10 +85,6 @@
   NSString *detail;
 
   switch (actionType) {
-    case Click:
-      detail = @"click";
-      [dict setObject:@"click" forKey:@"command"];
-      break;
     case ScrollUp:
     case ScrollDown:
       detail = (actionType == ScrollUp) ? @"up" : @"down";
@@ -97,8 +93,8 @@
       break;
     case ZoomOut:
     case ZoomIn:
-      detail = (actionType == ZoomOut) ? @"out" : @"in";
-      [dict setObject:@"zoom" forKey:@"command"];
+      detail = (actionType == ZoomOut) ? @"up" : @"down";
+      [dict setObject:@"size" forKey:@"command"];
       [dict setObject:detail forKey:@"detail"];
       break;
     case TextBig:
@@ -108,6 +104,7 @@
       [dict setObject:detail forKey:@"detail"];
       break;
     case NextPage:
+    case BackPage:
       detail = (actionType == NextPage) ? @"next" : @"back";
       [dict setObject:@"page" forKey:@"command"];
       [dict setObject:detail forKey:@"detail"];

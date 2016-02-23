@@ -25,34 +25,34 @@ enum UserDefineType: String {
 }
 
 enum ActionType: Int {
-  case Click = 0
-  case ScrollUp = 1
-  case ScrollDown = 2
-  case ZoomIn = 3
-  case ZoomOut = 4
-  case TextBig = 5
-  case TextSmall = 6
-  case NextPage = 7
+  case ScrollUp = 0
+  case ScrollDown = 1
+  case ZoomIn = 2
+  case ZoomOut = 3
+  case TextBig = 4
+  case TextSmall = 5
+  case NextPage = 6
+  case BackPage = 7
   case NoGesture = 8
 
   func toString() -> String {
     switch self {
-    case .Click:
-      return "Click"
     case .ScrollUp:
       return "Scroll Up"
     case .ScrollDown:
       return "Scroll Down"
     case .ZoomIn:
-      return "Zoom In"
+      return "Size Up"
     case .ZoomOut:
-      return "Zoom Out"
+      return "Size Down"
     case .TextBig:
       return "Text Big"
     case .TextSmall:
       return "Text Small"
     case .NextPage:
       return "Next Page"
+    case .BackPage:
+      return "Back Page"
     case .NoGesture:
       return "No Gesture"
     }
@@ -75,7 +75,7 @@ class XDUserDefineModel: NSObject {
     userDefineDictionary[.SwipeUp] = .TextBig
     userDefineDictionary[.SwipeDown] = .TextSmall
     userDefineDictionary[.SwipeLeft] = .NextPage
-    userDefineDictionary[.SwipeRight] = .NoGesture
+    userDefineDictionary[.SwipeRight] = .BackPage
     userDefineDictionary[.SingleTap] = .NoGesture
     userDefineDictionary[.DoubleTap] = .NoGesture
     userDefineDictionary[.ButtonLeft] = .NoGesture

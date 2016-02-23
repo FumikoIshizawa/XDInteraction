@@ -17,8 +17,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gyro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-UN-r3W">
-                        <rect key="frame" x="25" y="25" width="37" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="25" y="25" width="46.5" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -37,14 +37,14 @@
                         </variation>
                     </pickerView>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MRq-Sc-peh">
-                        <rect key="frame" x="25" y="60" width="110" height="29"/>
+                        <rect key="frame" x="25" y="66" width="110" height="29"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="750" constant="200" id="9TP-5o-09g"/>
                         </constraints>
                         <segments>
-                            <segment title="1"/>
-                            <segment title="2"/>
-                            <segment title="b"/>
+                            <segment title="L"/>
+                            <segment title="R"/>
+                            <segment title="B"/>
                         </segments>
                         <variation key="default">
                             <mask key="constraints">

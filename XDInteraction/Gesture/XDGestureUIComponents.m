@@ -56,16 +56,16 @@
 //        forControlEvents:UIControlEventTouchUpInside];
 //    [view addSubview:keyButton];
 
-    WSUIButton *selectButton =
-        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 140,
-                                                     40,
-                                                     60,
-                                                     60)
-                                withTitle:@"select"];
-    [selectButton addTarget:self
-                    action:@selector(selectButtonTapped:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:selectButton];
+//    WSUIButton *selectButton =
+//        [[WSUIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 140,
+//                                                     40,
+//                                                     60,
+//                                                     60)
+//                                withTitle:@"select"];
+//    [selectButton addTarget:self
+//                    action:@selector(selectButtonTapped:)
+//          forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:selectButton];
   }
   return self;
 }

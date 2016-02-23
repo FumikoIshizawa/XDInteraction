@@ -17,6 +17,7 @@
 @interface XDGestureUIComponents : NSObject
 
 - (id)initWithView:(UIView *)view;
+- (void)selectButtonTapped:(UIButton *)button;
 
 @property (nonatomic) XDGestureManager *gestureManager;
 @property (nonatomic) XDMotionManager *motionManager;
