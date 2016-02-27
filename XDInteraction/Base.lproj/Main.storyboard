@@ -31,13 +31,15 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP5-Wa-Vcw">
                                 <rect key="frame" x="315" y="120" width="270" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="FF4-Gd-vyv"/>
                                     <constraint firstAttribute="height" constant="100" id="M4F-kh-RQV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="B"/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="FF4-Gd-vyv"/>
@@ -48,14 +50,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brE-B5-Ypv">
-                                <rect key="frame" x="25" y="120" width="283" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="25" y="120" width="275" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="SIt-SS-uK7"/>
                                     <constraint firstAttribute="width" constant="125" id="yxk-TR-dlY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="A"/>
+                                <state key="normal" title="A">
+                                    <color key="titleColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="yxk-TR-dlY"/>
@@ -95,7 +99,7 @@
                             <constraint firstItem="f4O-6D-XcR" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="6Ix-LR-aTB"/>
                             <constraint firstAttribute="trailing" secondItem="VO7-Lc-mii" secondAttribute="trailing" constant="20" id="8xu-LG-CM3"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="j6H-WG-pTb" secondAttribute="bottom" constant="44" id="GNp-Kb-HoK"/>
-                            <constraint firstItem="brE-B5-Ypv" firstAttribute="trailingMargin" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GgO-dP-5Xu"/>
+                            <constraint firstItem="brE-B5-Ypv" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GgO-dP-5Xu"/>
                             <constraint firstItem="f4O-6D-XcR" firstAttribute="top" secondItem="VO7-Lc-mii" secondAttribute="top" id="ImO-Va-9Yi"/>
                             <constraint firstItem="j6H-WG-pTb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Je8-1F-6wK"/>
                             <constraint firstItem="VO7-Lc-mii" firstAttribute="leading" secondItem="f4O-6D-XcR" secondAttribute="trailing" constant="10" id="Kxk-qQ-DWk"/>
@@ -116,14 +120,14 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="rGh-zW-xxy"/>
-                                <exclude reference="asF-Ac-PsI"/>
-                                <exclude reference="hWi-bO-zQL"/>
-                                <exclude reference="mDZ-j1-7NR"/>
                                 <exclude reference="6Ix-LR-aTB"/>
                                 <exclude reference="T6H-yE-Wfc"/>
                                 <exclude reference="cGJ-nf-6CY"/>
                                 <exclude reference="fPF-vm-AIY"/>
+                                <exclude reference="rGh-zW-xxy"/>
+                                <exclude reference="asF-Ac-PsI"/>
+                                <exclude reference="hWi-bO-zQL"/>
+                                <exclude reference="mDZ-j1-7NR"/>
                                 <exclude reference="Kxk-qQ-DWk"/>
                             </mask>
                         </variation>
@@ -136,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-124" y="253"/>
+            <point key="canvasLocation" x="-181" y="215"/>
         </scene>
     </scenes>
     <resources>

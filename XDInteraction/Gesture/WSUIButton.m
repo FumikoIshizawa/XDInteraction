@@ -14,7 +14,7 @@
 
 - (void)drawRect:(CGRect)rect {
   CGContextRef context = UIGraphicsGetCurrentContext();
-  UIColor *outerTop = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+  UIColor *outerTop = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.f];
   UIColor *shadowColor = [UIColor colorWithRed:0.1 green:0.1  blue:0.1 alpha:0.5];
   
   if (self.state != UIControlStateHighlighted) {

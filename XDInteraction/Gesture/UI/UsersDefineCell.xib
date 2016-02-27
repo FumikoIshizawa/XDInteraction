@@ -22,20 +22,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tG-lV-tdE">
-                        <rect key="frame" x="160" y="8" width="152" height="145.5"/>
-                        <accessibility key="accessibilityConfiguration">
-                            <accessibilityTraits key="traits" staticText="YES"/>
-                        </accessibility>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="200" id="51S-fa-J5V"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="51S-fa-J5V"/>
-                            </mask>
-                        </variation>
-                    </pickerView>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MRq-Sc-peh">
                         <rect key="frame" x="25" y="66" width="110" height="29"/>
                         <constraints>
@@ -52,9 +38,24 @@
                             </mask>
                         </variation>
                     </segmentedControl>
+                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tG-lV-tdE">
+                        <rect key="frame" x="160" y="8" width="152" height="146.5"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" staticText="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="51S-fa-J5V"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="51S-fa-J5V"/>
+                            </mask>
+                        </variation>
+                    </pickerView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1tG-lV-tdE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" id="1BQ-IA-2r9"/>
+                    <constraint firstItem="1tG-lV-tdE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5Cf-Pp-3TL"/>
                     <constraint firstItem="MRq-Sc-peh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="9FD-ob-OqX"/>
                     <constraint firstItem="Wf2-UN-r3W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="EwZ-u5-lxS"/>
                     <constraint firstAttribute="trailingMargin" secondItem="1tG-lV-tdE" secondAttribute="trailing" id="FY6-ou-FkO"/>
@@ -69,6 +70,7 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="RrN-5g-JcP"/>
+                        <exclude reference="FY6-ou-FkO"/>
                         <exclude reference="fgR-Kp-zjf"/>
                     </mask>
                 </variation>

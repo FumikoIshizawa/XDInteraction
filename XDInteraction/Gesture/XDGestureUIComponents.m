@@ -35,7 +35,8 @@
 
 //    _keyLogOpend = NO;
     _tableViewOpend = NO;
-    view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];
+//    view.backgroundColor = [UIColor colorWithRed:0.94 green:0.97 blue:1 alpha:1];
+    view.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
     
     CGAffineTransform t1 = CGAffineTransformMakeTranslation(parentView.frame.size.width - 80, -150);
     CGAffineTransform t2 = CGAffineTransformScale(t1, 1/240, 1/300);
