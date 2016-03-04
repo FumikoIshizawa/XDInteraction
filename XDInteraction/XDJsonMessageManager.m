@@ -93,7 +93,7 @@
       break;
     case ZoomOut:
     case ZoomIn:
-      detail = (actionType == ZoomOut) ? @"up" : @"down";
+      detail = (actionType == ZoomOut) ? @"down" : @"up";
       [dict setObject:@"size" forKey:@"command"];
       [dict setObject:detail forKey:@"detail"];
       break;
