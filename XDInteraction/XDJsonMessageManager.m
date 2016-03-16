@@ -135,4 +135,44 @@
   return nil;
 }
 
+- (NSString *)getJSONMessageForConnect {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  [dict setObject:@"connect" forKey:@"type"];
+  [dict setObject:self.myName forKey:@"from"];
+  [dict setObject:self.endUser forKey:@"to"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"Send: %@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
+- (NSString *)getJSONMessageForDisconnect {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  [dict setObject:@"disconnect" forKey:@"type"];
+  [dict setObject:self.myName forKey:@"from"];
+  [dict setObject:self.endUser forKey:@"to"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"Send: %@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
 @end

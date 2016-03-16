@@ -100,7 +100,7 @@
 //  }
 //}
 
-- (void)selectButtonTapped:(UIButton *)button {
+- (void)showTableView {
   if (_tableViewOpend) {
     [UIView animateWithDuration:0.2f
                           delay:0.0f
@@ -113,7 +113,7 @@
                      }
                      completion:^(BOOL finished){
                      }];
-//    self.tableView.hidden = YES;
+    //    self.tableView.hidden = YES;
     _tableViewOpend = NO;
   } else {
     [UIView animateWithDuration:0.2f
@@ -126,9 +126,13 @@
                      }
                      completion:^(BOOL finished) {
                      }];
-//    self.tableView.hidden = NO;
+    //    self.tableView.hidden = NO;
     _tableViewOpend = YES;
   }
+}
+
+- (void)selectButtonTapped:(UIButton *)button {
+  [self showTableView];
 }
 
 @end

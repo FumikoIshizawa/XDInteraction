@@ -18,6 +18,7 @@
 
 - (id)initWithView:(UIView *)view;
 - (void)selectButtonTapped:(UIButton *)button;
+- (void)showTableView;
 
 @property (nonatomic) XDGestureManager *gestureManager;
 @property (nonatomic) XDMotionManager *motionManager;

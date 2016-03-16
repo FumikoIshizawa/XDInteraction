@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger, actionType) {
 - (NSMutableDictionary *)parseJsonMessage:(NSString *)jsonString;
 - (NSString *)jsonInit;
 - (NSString *)getJSONMessageWithType:(NSString *)type;
+- (NSString *)getJSONMessageForConnect;
+- (NSString *)getJSONMessageForDisconnect;
 
 @property (nonatomic) NSString *endUser;
 @property (nonatomic) NSString *myName;

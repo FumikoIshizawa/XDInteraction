@@ -24,12 +24,14 @@
 @synthesize defineViewController;
 @synthesize model;
 @synthesize userName;
+@synthesize isConnected;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   self.jsonTextview.editable = NO;
   self.firstView = YES;
+  self.isConnected = false;
 
   outputView = [[XDOutputViewController alloc] init];
   defineViewController = [[XDUsersDefineViewController alloc] init];
@@ -150,6 +152,14 @@
                       withDevices:[dict objectForKey:@"devices"]];
   } else if ([type isEqualToString:@"error"]) {
     NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
+  } else if ([type isEqualToString:@"connected"]) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"接続されました" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+  } else if ([type isEqualToString:@"disconnected"]) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"接続が解除されました" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
   } else if ([type isEqualToString:@"swipe"]) {
     if ([[dict objectForKey:@"detail"] isEqualToString:@"Up"]) {
       // 5 tmp
@@ -201,7 +211,7 @@
 
 - (IBAction)buttonLeftTouchUpInside:(UIButton *)sender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"ButtonLeft"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: Button left");
@@ -209,7 +219,7 @@
 
 - (IBAction)buttonRightTouchUpInside:(UIButton *)sender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"ButtonRight"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: Button right");
@@ -251,7 +261,7 @@ replacementString:(NSString *)string
 #pragma XDGestureDelegate
 - (void)swipeLeftSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeLeft"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: SwipeLeft");
@@ -259,7 +269,7 @@ replacementString:(NSString *)string
 
 - (void)swipeRightSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeRight"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: SwipeRight");
@@ -267,7 +277,7 @@ replacementString:(NSString *)string
 
 - (void)swipeUpSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeUp"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: SwipeUp");
@@ -275,7 +285,7 @@ replacementString:(NSString *)string
 
 - (void)swipeDownSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"SwipeDown"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: SwipeDown");
@@ -284,9 +294,18 @@ replacementString:(NSString *)string
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  if (![jsonMessage.myName
-        isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+  if (isConnected && [jsonMessage.myName
+                      isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
+    NSString *message = [jsonMessage getJSONMessageForDisconnect];
+    [web_socket send:message];
+    isConnected = false;
+    [gestureUIComponents showTableView];
+  } else if (!isConnected) {
     jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
+    NSString *message = [jsonMessage getJSONMessageForConnect];
+    [web_socket send:message];
+    isConnected = true;
+    [gestureUIComponents showTableView];
   }
 }
 
@@ -294,7 +313,7 @@ replacementString:(NSString *)string
 #pragma mark tapSender
 - (void)singleTapSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"SingleTap"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: SingleTap");
@@ -302,7 +321,7 @@ replacementString:(NSString *)string
 
 - (void)doubleTapSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"DoubleTap"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: DoubleTap");
@@ -321,7 +340,7 @@ replacementString:(NSString *)string
     message = [jsonMessage getJSONMessageWithType:@"PinchOut"];
     NSLog(@"Detected: PinchOut");
   }
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
 }
@@ -330,7 +349,7 @@ replacementString:(NSString *)string
 #pragma mark
 - (void)motionUpSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"GyroUp"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: GyroUp");
@@ -338,7 +357,7 @@ replacementString:(NSString *)string
 
 - (void)motionDownSender {
   NSString *message = [jsonMessage getJSONMessageWithType:@"GyroDown"];
-  if (message != nil) {
+  if (message != nil && isConnected) {
     [web_socket send:message];
   }
   NSLog(@"Detected: GyroDown");

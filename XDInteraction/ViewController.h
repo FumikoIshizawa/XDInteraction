@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonB;
 @property (nonatomic) NSString *userName;
 @property (nonatomic) BOOL firstView;
+@property (nonatomic) BOOL isConnected;
 
 @end
 
