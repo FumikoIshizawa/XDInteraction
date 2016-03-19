@@ -80,7 +80,7 @@
                                     <action selector="defineButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ViN-5f-7gs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-6D-XcR" customClass="WSUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-6D-XcR" customClass="WSUIButton">
                                 <rect key="frame" x="30" y="30" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="EMc-um-qf0"/>

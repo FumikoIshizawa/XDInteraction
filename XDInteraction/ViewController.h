@@ -15,6 +15,7 @@
 #import "XDGestureManager.h"
 #import "XDOutputViewController.h"
 #import "XDInteraction-Swift.h"
+#import "MessagingViewController.h"
 
 @interface ViewController : UIViewController <SRWebSocketDelegate,
                                               UITextFieldDelegate,

@@ -113,7 +113,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="V1p-rs-Zwl" id="9oK-Jb-tca"/>
                         <outlet property="addressTextField" destination="PTM-4n-dGg" id="maa-Ax-mI3"/>
+                        <outlet property="nameLabel" destination="9Ds-Op-u9l" id="MtI-XT-GBR"/>
                         <outlet property="userNameTextField" destination="G87-ON-yit" id="fz1-3t-Cu4"/>
                     </connections>
                 </viewController>

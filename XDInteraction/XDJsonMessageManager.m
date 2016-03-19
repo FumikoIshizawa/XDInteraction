@@ -175,4 +175,24 @@
   return json;
 }
 
+- (NSString *)getJSONMessageWithCustomMessage:(NSString *)message {
+  NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+  NSError *error = nil;
+  
+  [dict setObject:@"custom" forKey:@"type"];
+  [dict setObject:self.myName forKey:@"from"];
+  [dict setObject:message forKey:@"detail"];
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:dict
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  NSString *jsonstr = [[NSString alloc] initWithData:data
+                                            encoding:NSUTF8StringEncoding];
+  NSLog(@"Send: %@", jsonstr);
+  NSString *json = [jsonstr stringByReplacingOccurrencesOfString:@"\n"
+                                                      withString:@""];
+  
+  return json;
+}
+
 @end

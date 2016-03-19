@@ -85,6 +85,7 @@
     startViewController.addressChangeBlock = ^(NSString *address) {
       [wself openWebSocket:address];
     };
+    [startViewController loadViewData];
     
     [self presentViewController:startViewController animated:YES completion:nil];
   }
@@ -98,6 +99,11 @@
   
   [web_socket setDelegate:self];
   [web_socket open];
+}
+
+- (void)sendCustomMessage:(NSString *)message {
+  NSString *json = [jsonMessage getJSONMessageWithCustomMessage:message];
+  [web_socket send:json];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -293,20 +299,60 @@ replacementString:(NSString *)string
 
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  UIAlertController *alertController =
+    [UIAlertController alertControllerWithTitle:@"Please select"
+                                        message:nil
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+  NSString *connectionMessage = isConnected ? @"Disconnect" : @"Connect";
+  [alertController addAction:
+     [UIAlertAction actionWithTitle:connectionMessage
+                              style:UIAlertActionStyleDefault
+                            handler: ^(UIAlertAction *action) {
+                              [self startOrStopConnection:tableView
+                                  didSelectRowAtIndexPath:indexPath
+                               ];
+                            }]];
+  [alertController addAction:
+     [UIAlertAction actionWithTitle:@"Send Message"
+                              style:UIAlertActionStyleDefault
+                            handler:^(UIAlertAction *action) {
+                              [self sendCustomMessage];
+                            }]];
+  [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                                      style:  UIAlertActionStyleCancel
+                                                    handler:nil]];
+  [self presentViewController:alertController animated:YES completion:nil];
+  [gestureUIComponents showTableView];
+}
+
+- (void)startOrStopConnection:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   if (isConnected && [jsonMessage.myName
                       isEqualToString:gestureUIComponents.tableView.usersNameList[indexPath.row]]) {
     NSString *message = [jsonMessage getJSONMessageForDisconnect];
     [web_socket send:message];
     isConnected = false;
-    [gestureUIComponents showTableView];
   } else if (!isConnected) {
     jsonMessage.endUser = gestureUIComponents.tableView.usersNameList[indexPath.row];
     NSString *message = [jsonMessage getJSONMessageForConnect];
     [web_socket send:message];
     isConnected = true;
-    [gestureUIComponents showTableView];
   }
+}
+
+- (void)sendCustomMessage {
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StartViewController" bundle:nil];
+  StartViewController *messageViewController = [storyboard instantiateInitialViewController];
+  
+  __weak typeof(self) wself = self;
+
+  messageViewController.isStartView = false;
+  messageViewController.sendMessageBlock = ^(NSString *message) {
+    [wself sendCustomMessage:message];
+  };
+  
+  [self presentViewController:messageViewController animated:YES completion:nil];
+  [messageViewController loadViewData];
 }
 
 #pragma -

@@ -29,6 +29,7 @@
 		9EA16BD91B5AA4CA007725C5 /* XDUsersDefineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA16BD81B5AA4CA007725C5 /* XDUsersDefineViewController.swift */; };
 		9EA16BDE1B5C8222007725C5 /* UsersDefineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA16BDC1B5C8222007725C5 /* UsersDefineCell.swift */; };
 		9EA16BDF1B5C8222007725C5 /* UsersDefineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA16BDD1B5C8222007725C5 /* UsersDefineCell.xib */; };
+		9EC389B91C9D0BC000B62A6E /* MessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC389B81C9D0BC000B62A6E /* MessagingViewController.m */; };
 		9ED6AF071B205C8C00D97675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF061B205C8C00D97675 /* main.m */; };
 		9ED6AF0A1B205C8C00D97675 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6AF091B205C8C00D97675 /* AppDelegate.m */; };
 		9ED6AF101B205C8C00D97675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED6AF0E1B205C8C00D97675 /* Main.storyboard */; };
@@ -83,6 +84,8 @@
 		9EA16BD81B5AA4CA007725C5 /* XDUsersDefineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XDUsersDefineViewController.swift; path = UI/XDUsersDefineViewController.swift; sourceTree = "<group>"; };
 		9EA16BDC1B5C8222007725C5 /* UsersDefineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersDefineCell.swift; path = UI/UsersDefineCell.swift; sourceTree = "<group>"; };
 		9EA16BDD1B5C8222007725C5 /* UsersDefineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UsersDefineCell.xib; path = UI/UsersDefineCell.xib; sourceTree = "<group>"; };
+		9EC389B71C9D0BC000B62A6E /* MessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingViewController.h; sourceTree = "<group>"; };
+		9EC389B81C9D0BC000B62A6E /* MessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingViewController.m; sourceTree = "<group>"; };
 		9ED6AF011B205C8C00D97675 /* XDInteraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDInteraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED6AF051B205C8C00D97675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ED6AF061B205C8C00D97675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				9ED6AF091B205C8C00D97675 /* AppDelegate.m */,
 				56503AA01B2F26800066779A /* ViewController.h */,
 				56503AA11B2F26800066779A /* ViewController.m */,
+				9EC389B71C9D0BC000B62A6E /* MessagingViewController.h */,
+				9EC389B81C9D0BC000B62A6E /* MessagingViewController.m */,
 				9E1242C01C5F39CB001CA469 /* StartViewController.swift */,
 				9E1242C21C5F39DC001CA469 /* StartViewController.storyboard */,
 				9EA16BD71B5AA4C9007725C5 /* XDInteraction-Bridging-Header.h */,
@@ -373,6 +378,7 @@
 				9EA16BD91B5AA4CA007725C5 /* XDUsersDefineViewController.swift in Sources */,
 				56503A9E1B2F263A0066779A /* SRWebSocket.m in Sources */,
 				9E78C0D31B60F08A004E4075 /* XDUserDefineModel.swift in Sources */,
+				9EC389B91C9D0BC000B62A6E /* MessagingViewController.m in Sources */,
 				9E5E39651B399D5F00481526 /* WSUIButton.m in Sources */,
 				9ED6AF071B205C8C00D97675 /* main.m in Sources */,
 				9E0E3BCF1C5B1B0E005AAC3F /* json.swift in Sources */,
