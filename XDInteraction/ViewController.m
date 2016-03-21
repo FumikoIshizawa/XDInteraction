@@ -113,7 +113,9 @@
   
   __weak typeof(self) wself = self;
   defineViewController.bipMessageSendBlock = ^(NSString* message) {
-    [wself sendBIPMessage:message];
+    if (wself.isConnected) {
+      [wself sendBIPMessage:message];
+    }
   };
   
   [self.buttonA setTitle:[model getButtonLeftActionTitle] forState:UIControlStateNormal];
