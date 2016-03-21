@@ -161,11 +161,11 @@
   } else if ([type isEqualToString:@"error"]) {
     NSLog(@"Error: %@", [dict objectForKey:@"detail"]);
   } else if ([type isEqualToString:@"connected"]) {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"接続されました" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"ログの取得を開始しました" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
   } else if ([type isEqualToString:@"disconnected"]) {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"接続が解除されました" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Connection" message:@"ログの取得を停止しました" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
   } else if ([type isEqualToString:@"swipe"]) {
@@ -305,7 +305,7 @@ replacementString:(NSString *)string
     [UIAlertController alertControllerWithTitle:@"Please select"
                                         message:nil
                                  preferredStyle:UIAlertControllerStyleActionSheet];
-  NSString *connectionMessage = isConnected ? @"Disconnect" : @"Connect";
+  NSString *connectionMessage = isConnected ? @"Stop" : @"Start";
   [alertController addAction:
      [UIAlertAction actionWithTitle:connectionMessage
                               style:UIAlertActionStyleDefault
@@ -320,6 +320,8 @@ replacementString:(NSString *)string
                             handler:^(UIAlertAction *action) {
                               [self sendCustomMessage];
                             }]];
+  alertController.popoverPresentationController.sourceView = self.view;
+  alertController.popoverPresentationController.sourceRect = CGRectMake(100.0, 100.0, 20.0, 20.0);
   [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
                                                       style:  UIAlertActionStyleCancel
                                                     handler:nil]];

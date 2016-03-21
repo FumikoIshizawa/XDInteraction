@@ -76,11 +76,13 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell:UsersDefineCell = tableView.dequeueReusableCellWithIdentifier(nameNib, forIndexPath: indexPath) as! UsersDefineCell
+//    let cell = UsersDefineCell()
 
     switch indexPath.row {
     case 0:
       cell.title = UserDefineType.GyroUp.rawValue
       cell.defineType = .GyroUp
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.GyroUp] ?? 0
       if let row = model.userDefineDictionary[.GyroUp]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -93,6 +95,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 1:
       cell.title = UserDefineType.GyroDown.rawValue
       cell.defineType = .GyroDown
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.GyroDown] ?? 0
       if let row = model.userDefineDictionary[.GyroDown]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -105,6 +108,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 2:
       cell.title = UserDefineType.PinchIn.rawValue
       cell.defineType = .PinchIn
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.PinchIn] ?? 0
       if let row = model.userDefineDictionary[.PinchIn]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -117,6 +121,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 3:
       cell.title = UserDefineType.PinchOut.rawValue
       cell.defineType = .PinchOut
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.PinchOut] ?? 0
       if let row = model.userDefineDictionary[.PinchOut]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -129,6 +134,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 4:
       cell.title = UserDefineType.SwipeUp.rawValue
       cell.defineType = .SwipeUp
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeUp] ?? 0
       if let row = model.userDefineDictionary[.SwipeUp]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -141,6 +147,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 5:
       cell.title = UserDefineType.SwipeDown.rawValue
       cell.defineType = .SwipeDown
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeDown] ?? 0
       if let row = model.userDefineDictionary[.SwipeDown]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -153,6 +160,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 6:
       cell.title = UserDefineType.SwipeLeft.rawValue
       cell.defineType = .SwipeLeft
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeLeft] ?? 0
       if let row = model.userDefineDictionary[.SwipeLeft]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -165,6 +173,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 7:
       cell.title = UserDefineType.SwipeRight.rawValue
       cell.defineType = .SwipeRight
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeRight] ?? 0
       if let row = model.userDefineDictionary[.SwipeRight]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -177,6 +186,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 8:
       cell.title = UserDefineType.SingleTap.rawValue
       cell.defineType = .SingleTap
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SingleTap] ?? 0
       if let row = model.userDefineDictionary[.SingleTap]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -189,6 +199,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 9:
       cell.title = UserDefineType.DoubleTap.rawValue
       cell.defineType = .DoubleTap
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.DoubleTap] ?? 0
       if let row = model.userDefineDictionary[.DoubleTap]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -201,6 +212,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 10:
       cell.title = UserDefineType.ButtonLeft.rawValue
       cell.defineType = .ButtonLeft
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.ButtonLeft] ?? 0
       if let row = model.userDefineDictionary[.ButtonLeft]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }
@@ -213,6 +225,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
     case 11:
       cell.title = UserDefineType.ButtonRight.rawValue
       cell.defineType = .ButtonRight
+      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.ButtonRight] ?? 0
       if let row = model.userDefineDictionary[.ButtonRight]?.rawValue {
         cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
       }

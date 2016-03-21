@@ -61,15 +61,15 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
 //    return ActionType(rawValue: row)?.toString()
 //  }
   
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
-      let pickerLabel = UILabel()
-      if let titleLabel = ActionType(rawValue: row)?.toString() {
-        let attributedText = NSAttributedString(string: titleLabel, attributes: [NSFontAttributeName: UIFont(name: "HiraKakuProN-W6", size: 22.0)!])
-        pickerLabel.attributedText = attributedText
-      }
-      
-      return pickerLabel
+  func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    let pickerLabel = UILabel()
+    if let titleLabel = ActionType(rawValue: row)?.toString() {
+      let attributedText = NSAttributedString(string: titleLabel, attributes: [NSFontAttributeName: UIFont(name: "HiraKakuProN-W6", size: 22.0)!])
+      pickerLabel.attributedText = attributedText
     }
+    
+    return pickerLabel
+  }
 
   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     pickerValue = row
