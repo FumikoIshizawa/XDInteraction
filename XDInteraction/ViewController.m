@@ -212,6 +212,7 @@
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction *action) {}]];
     [self presentViewController:alertController animated:YES completion:nil];
+    self.isConnected = false;
   }
   [gestureUIComponents.tableView updateTableViewWith:names
                                          withDevices:devices];
