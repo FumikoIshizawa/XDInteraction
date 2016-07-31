@@ -396,22 +396,22 @@ replacementString:(NSString *)string
   }
 }
 
-#pragma -
-#pragma mark
-- (void)motionUpSender {
-  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroUp"];
-  if (message != nil && isConnected) {
-    [web_socket send:message];
-  }
-  NSLog(@"Detected: GyroUp");
-}
-
-- (void)motionDownSender {
-  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroDown"];
-  if (message != nil && isConnected) {
-    [web_socket send:message];
-  }
-  NSLog(@"Detected: GyroDown");
-}
+//#pragma -
+//#pragma mark
+//- (void)motionUpSender {
+//  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroUp"];
+//  if (message != nil && isConnected) {
+//    [web_socket send:message];
+//  }
+//  NSLog(@"Detected: GyroUp");
+//}
+//
+//- (void)motionDownSender {
+//  NSString *message = [jsonMessage getJSONMessageWithType:@"GyroDown"];
+//  if (message != nil && isConnected) {
+//    [web_socket send:message];
+//  }
+//  NSLog(@"Detected: GyroDown");
+//}
 
 @end

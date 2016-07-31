@@ -80,32 +80,6 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
 
     switch indexPath.row {
     case 0:
-      cell.title = UserDefineType.GyroUp.rawValue
-      cell.defineType = .GyroUp
-      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.GyroUp] ?? 0
-      if let row = model.userDefineDictionary[.GyroUp]?.rawValue {
-        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
-      }
-      cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.GyroUp, selectedRow: selectedRow)
-      }
-      cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
-        self.changeWindowSelect(.GyroUp, value: value)
-      }
-    case 1:
-      cell.title = UserDefineType.GyroDown.rawValue
-      cell.defineType = .GyroDown
-      cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.GyroDown] ?? 0
-      if let row = model.userDefineDictionary[.GyroDown]?.rawValue {
-        cell.dataPicker.selectRow(row, inComponent: 0, animated: false)
-      }
-      cell.userDefinePickerChangedBlock = {(selectedRow: Int) in
-        self.changeUDInteraction(.GyroDown, selectedRow: selectedRow)
-      }
-      cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
-        self.changeWindowSelect(.GyroDown, value: value)
-      }
-    case 2:
       cell.title = UserDefineType.PinchIn.rawValue
       cell.defineType = .PinchIn
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.PinchIn] ?? 0
@@ -118,7 +92,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.PinchIn, value: value)
       }
-    case 3:
+    case 1:
       cell.title = UserDefineType.PinchOut.rawValue
       cell.defineType = .PinchOut
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.PinchOut] ?? 0
@@ -131,7 +105,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.PinchOut, value: value)
       }
-    case 4:
+    case 2:
       cell.title = UserDefineType.SwipeUp.rawValue
       cell.defineType = .SwipeUp
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeUp] ?? 0
@@ -144,7 +118,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.SwipeUp, value: value)
       }
-    case 5:
+    case 3:
       cell.title = UserDefineType.SwipeDown.rawValue
       cell.defineType = .SwipeDown
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeDown] ?? 0
@@ -157,7 +131,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.SwipeDown, value: value)
       }
-    case 6:
+    case 4:
       cell.title = UserDefineType.SwipeLeft.rawValue
       cell.defineType = .SwipeLeft
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeLeft] ?? 0
@@ -170,7 +144,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.SwipeLeft, value: value)
       }
-    case 7:
+    case 5:
       cell.title = UserDefineType.SwipeRight.rawValue
       cell.defineType = .SwipeRight
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SwipeRight] ?? 0
@@ -183,7 +157,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.SwipeRight, value: value)
       }
-    case 8:
+    case 6:
       cell.title = UserDefineType.SingleTap.rawValue
       cell.defineType = .SingleTap
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.SingleTap] ?? 0
@@ -196,7 +170,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.SingleTap, value: value)
       }
-    case 9:
+    case 7:
       cell.title = UserDefineType.DoubleTap.rawValue
       cell.defineType = .DoubleTap
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.DoubleTap] ?? 0
@@ -209,7 +183,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.DoubleTap, value: value)
       }
-    case 10:
+    case 8:
       cell.title = UserDefineType.ButtonLeft.rawValue
       cell.defineType = .ButtonLeft
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.ButtonLeft] ?? 0
@@ -222,7 +196,7 @@ class XDUsersDefineViewController: UIViewController, UITableViewDelegate, UITabl
       cell.segmentedControlChangedBlock = {(selectedRow: Int, value: Int) in
         self.changeWindowSelect(.ButtonLeft, value: value)
       }
-    case 11:
+    case 9:
       cell.title = UserDefineType.ButtonRight.rawValue
       cell.defineType = .ButtonRight
       cell.windowSegmentedControl.selectedSegmentIndex = model.defineWindowDictionary[.ButtonRight] ?? 0

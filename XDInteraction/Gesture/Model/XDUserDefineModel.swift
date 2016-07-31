@@ -7,21 +7,19 @@
 //
 
 enum UserDefineType: String {
-  case GyroUp = "GyroUp"
-  case GyroDown = "GyroDown"
-  case PinchIn = "PinchIn"
-  case PinchOut = "PinchOut"
-  case SwipeUp = "SwipeUp"
-  case SwipeDown = "SwipeDown"
-  case SwipeLeft = "SwipeLeft"
-  case SwipeRight = "SwipeRight"
-  case SingleTap = "SingleTap"
-  case DoubleTap = "DoubleTap"
-  case ButtonLeft = "ButtonLeft"
-  case ButtonRight = "ButtonRight"
+  case PinchIn = "Pinch In"
+  case PinchOut = "Pinch Out"
+  case SwipeUp = "Swipe Up"
+  case SwipeDown = "Swipe Down"
+  case SwipeLeft = "Swipe Left"
+  case SwipeRight = "Swipe Right"
+  case SingleTap = "Tap"
+  case DoubleTap = "Double Tap"
+  case ButtonLeft = "Button Left"
+  case ButtonRight = "Button Right"
 
-  static let count = 12
-  static let allValues = ["GyroUp", "GyroDown", "PinchIn", "PinchOut", "SwipeUp", "SwipeDown", "SwipeLeft", "SwipeRight", "SingleTap", "DoubleTap", "ButtonLeft", "ButtonRight"]
+  static let count = 8
+  static let allValues = ["Pinch In", "Pinch Out", "Swipe Up", "Swipe Down", "Swipe Left", "Swipe Right", "Tap", "Double Tap", "Button Left", "Button Right"]
 }
 
 enum ActionType: Int {
@@ -42,19 +40,19 @@ enum ActionType: Int {
     case .ScrollDown:
       return "Scroll Down"
     case .ZoomIn:
-      return "Size Up"
+      return "Increase Size"
     case .ZoomOut:
-      return "Size Down"
+      return "Decrease Size"
     case .TextBig:
-      return "Text Big"
+      return "Increase Text Size"
     case .TextSmall:
-      return "Text Small"
+      return "Decrease Text Size"
     case .NextPage:
       return "Next Page"
     case .BackPage:
-      return "Back Page"
+      return "Previous Page"
     case .NoGesture:
-      return "No Gesture"
+      return "Null"
     }
   }
 
@@ -68,8 +66,6 @@ class XDUserDefineModel: NSObject {
 
   override init() {
     userDefineDictionary = Dictionary<UserDefineType, ActionType>()
-    userDefineDictionary[.GyroUp] = .ScrollUp
-    userDefineDictionary[.GyroDown] = .ScrollDown
     userDefineDictionary[.PinchIn] = .ZoomIn
     userDefineDictionary[.PinchOut] = .ZoomOut
     userDefineDictionary[.SwipeUp] = .TextBig
@@ -82,8 +78,6 @@ class XDUserDefineModel: NSObject {
     userDefineDictionary[.ButtonRight] = .NoGesture
     
     defineWindowDictionary = Dictionary<UserDefineType, Int>()
-    defineWindowDictionary[.GyroUp] = 0
-    defineWindowDictionary[.GyroDown] = 0
     defineWindowDictionary[.PinchIn] = 0
     defineWindowDictionary[.PinchOut] = 0
     defineWindowDictionary[.SwipeUp] = 0

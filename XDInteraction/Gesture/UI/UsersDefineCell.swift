@@ -64,7 +64,7 @@ class UsersDefineCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
   func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
     let pickerLabel = UILabel()
     if let titleLabel = ActionType(rawValue: row)?.toString() {
-      let attributedText = NSAttributedString(string: titleLabel, attributes: [NSFontAttributeName: UIFont(name: "HiraKakuProN-W6", size: 22.0)!])
+      let attributedText = NSAttributedString(string: titleLabel, attributes: [NSFontAttributeName: UIFont(name: "HiraKakuProN-W3", size: 16.0)!])
       pickerLabel.attributedText = attributedText
     }
     
